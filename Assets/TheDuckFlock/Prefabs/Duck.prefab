@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 149562539436698436}
   - component: {fileID: 8685070516565441733}
   - component: {fileID: 1567471311620346221}
-  - component: {fileID: 2337499073768933402}
   m_Layer: 0
   m_Name: RightWingCapsule
   m_TagString: Untagged
@@ -84,19 +83,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &2337499073768933402
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 69033427531532754}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &80922891416100495
 GameObject:
   m_ObjectHideFlags: 0
@@ -424,7 +410,6 @@ GameObject:
   - component: {fileID: 3231880550608809806}
   - component: {fileID: 5907544911204314996}
   - component: {fileID: 8454584184406017086}
-  - component: {fileID: 8384231529747252119}
   m_Layer: 0
   m_Name: LeftWingCapsule
   m_TagString: Untagged
@@ -497,19 +482,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &8384231529747252119
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 878848406899977825}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1404054080850512379
 GameObject:
   m_ObjectHideFlags: 0
@@ -758,7 +730,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2321300584492322777}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalPosition: {x: 0, y: 0.25, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -842,8 +814,8 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
+  m_Constraints: 90
+  m_CollisionDetection: 1
 --- !u!1 &3012795126648236360
 GameObject:
   m_ObjectHideFlags: 0
@@ -1568,6 +1540,7 @@ GameObject:
   - component: {fileID: 8254111013785530715}
   - component: {fileID: 5770754482513487163}
   - component: {fileID: 1826587464877880390}
+  - component: {fileID: 3508870777478424015}
   m_Layer: 0
   m_Name: RighFlipperBox
   m_TagString: Untagged
@@ -1640,6 +1613,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &3508870777478424015
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6689459827593199896}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 0.99999994}
+  m_Center: {x: -0.000000059604645, y: 0, z: -0.000000029802322}
 --- !u!1 &6765396443031062441
 GameObject:
   m_ObjectHideFlags: 0
@@ -1687,7 +1673,6 @@ GameObject:
   - component: {fileID: 1855634134327177971}
   - component: {fileID: 137522012748542144}
   - component: {fileID: 5628685616769816780}
-  - component: {fileID: 609888954782429913}
   m_Layer: 0
   m_Name: BodyCapsule
   m_TagString: Untagged
@@ -1772,19 +1757,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60c81689961036c429455d38304f38f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!65 &609888954782429913
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7241836178601238811}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &7485425983695776179
 GameObject:
   m_ObjectHideFlags: 0
@@ -1813,7 +1785,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7485425983695776179}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.05, z: 0}
+  m_LocalPosition: {x: 0, y: -0.75, z: 0}
   m_LocalScale: {x: 4, y: 0.1, z: 4}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1897,7 +1869,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 14
   m_CollisionDetection: 0
 --- !u!1 &7641892561714421638
 GameObject:
@@ -1943,6 +1915,7 @@ GameObject:
   - component: {fileID: 9024948836966558421}
   - component: {fileID: 5973068979155572966}
   - component: {fileID: 340692270360007248}
+  - component: {fileID: 6849602466686439077}
   m_Layer: 0
   m_Name: LeftFlipperBox
   m_TagString: Untagged
@@ -2015,6 +1988,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &6849602466686439077
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7958831058600398587}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 0.99999994}
+  m_Center: {x: -0.000000059604645, y: 0, z: -0.000000029802322}
 --- !u!1 &8229242709393386485
 GameObject:
   m_ObjectHideFlags: 0

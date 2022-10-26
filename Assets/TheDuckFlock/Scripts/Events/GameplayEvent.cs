@@ -1,20 +1,26 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 
 namespace TheDuckFlock
 {
     public enum GameplayEvent
     {
-       /// <summary>
-       /// Spawns player tank on position x, y
-       /// </summary>
-       PlayerTankSpawn,
+        StartGame,
+        EndRound,
+        GameOver,
 
-       /// <summary>
-       /// 
-       /// </summary>
-       PlayerTankMove
+        SpawnEgg,
+        EggHatched,
+        EggCrashed,
+
+        NewDuckie,
+        DuckieMiss,
+
+        NewDuck,
+
+        ThrowSeed,
+        CallForCubs,
+
+        FlockShattered
+
 
     }
 }
