@@ -1260,6 +1260,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78a7680ce6e108541900bc7fb0c560d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  grainList: []
 --- !u!1001 &625547609
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2357,6 +2358,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Duckie (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 166016, guid: cc83291d6f189c542914154971901da6, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 466016, guid: cc83291d6f189c542914154971901da6, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -2742,6 +2747,10 @@ PrefabInstance:
     - target: {fileID: 166016, guid: cc83291d6f189c542914154971901da6, type: 3}
       propertyPath: m_Name
       value: Duckie (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 166016, guid: cc83291d6f189c542914154971901da6, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 466016, guid: cc83291d6f189c542914154971901da6, type: 3}
       propertyPath: m_RootOrder
@@ -3289,6 +3298,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Duckie (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 166016, guid: cc83291d6f189c542914154971901da6, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 466016, guid: cc83291d6f189c542914154971901da6, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -3438,6 +3451,10 @@ PrefabInstance:
     - target: {fileID: 166016, guid: cc83291d6f189c542914154971901da6, type: 3}
       propertyPath: m_Name
       value: Duckie (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 166016, guid: cc83291d6f189c542914154971901da6, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 466016, guid: cc83291d6f189c542914154971901da6, type: 3}
       propertyPath: m_RootOrder

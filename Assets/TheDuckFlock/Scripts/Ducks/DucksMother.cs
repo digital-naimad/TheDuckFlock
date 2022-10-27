@@ -17,7 +17,8 @@ namespace TheDuckFlock
         // Update is called once per frame
         void Update()
         {
-
+            base.Update();
+            Debug.Log("DUCKS MOTHER UPDATE");
         }
     }
 }

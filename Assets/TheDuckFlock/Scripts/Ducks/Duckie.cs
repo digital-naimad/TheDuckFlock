@@ -5,7 +5,7 @@ using UnityEngine;
 namespace TheDuckFlock
 {
 
-    public class Duckie : MonoBehaviour
+    public class Duckie : Duck
     {
         [SerializeField] private Transform _toFollow;
 
@@ -18,7 +18,9 @@ namespace TheDuckFlock
         // Update is called once per frame
         void Update()
         {
+            base.Update();
 
+            Debug.Log("DUCKIE UPDATE");
         }
     }
 }
