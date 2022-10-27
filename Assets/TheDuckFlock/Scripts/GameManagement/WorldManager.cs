@@ -6,11 +6,17 @@ namespace TheDuckFlock
 {
     public class WorldManager : MonoSingleton<WorldManager>
     {
+        [SerializeField] private LayerMask grainLayerMask;
+
         [SerializeField] private Camera mainCamera;
         [SerializeField] private Transform worldRoot;
 
         [SerializeField] private Transform dropZoneMarker;
-       // [SerializeField] private Transform screenAnchor;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public Transform WorldRoot { get { return worldRoot; } }
 
         // Start is called before the first frame update
         void Start()
@@ -64,21 +70,20 @@ namespace TheDuckFlock
             Vector3 cameraPosition = mainCamera.transform.position;
             Vector3 rayDirection = Vector3.Normalize( positionToCheck - cameraPosition);
 
-            if (Physics.Raycast(positionToCheck, rayDirection, out hit, Mathf.Infinity))
+            if (Physics.Raycast(positionToCheck, rayDirection, out hit, Mathf.Infinity, grainLayerMask))
             {
-                //Debug.DrawRay(positionToCheck, mainCamera.transform.forward * hit.distance, Color.red);
-                Debug.DrawRay(positionToCheck, rayDirection, Color.red);
 
-                Debug.Log(">>> Did Hit");
+                Debug.Log(name + " >> RaycastWorld hit >> " + hit.collider.name);
 
+                //Debug.DrawRay(positionToCheck, rayDirection, Color.red);
 
                 UpdateDropZoneMarker(hit.point, true);
+
+                GrainManager.Instance.SpawnGrainAtPosition(hit.point);
             }
             else
             {
-                //UpdateDropZoneMarker(mainCamera.transform.forward * 1000, false);
-                //Debug.DrawRay(positionToCheck, mainCamera.transform.forward * 1000, Color.white);
-                Debug.Log(">>> Did not Hit");
+                Debug.Log(name + " >> RaycastWorld not hit anything");
             }
         }
 
@@ -88,11 +93,6 @@ namespace TheDuckFlock
             //dropZoneMarker.GetComponent<Renderer>().material.color = isHit ? Color.yellow : Color.red;
         }
 
-        private void DropGrain(Vector3 position)
-        {
-            GameObject grainObject = ObjectPooler.Instance.SpawnFromPool(PoolTag.Grain);
-            grainObject.transform.parent = worldRoot;
-            grainObject.transform.position = position;
-        }
+        
     }
 }
