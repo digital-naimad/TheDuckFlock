@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace TheDuckFlock
 {
-    public class DucksMother : Duck
+    public class DucksMother : DuckController
     {
         // Start is called before the first frame update
         void Start()
@@ -24,7 +24,12 @@ namespace TheDuckFlock
         private void Init()
         {
             currentDuckState = DuckState.LookingForFood;
+
+            duckRadius = 8f;
             grainScopeRadius = 32f;
+
+            moveDuration = 3f;
+            moveDistance = 2f;
         }
 
         private void DoState()
@@ -33,16 +38,16 @@ namespace TheDuckFlock
             {
                 case DuckState.LookingForFood:
                     DoLookingForFood();
-
                     break;
                 case DuckState.EatingGrain:
-
+                    DoEatGrain();
                     break;
                 case DuckState.Lost:
-
+                    DoLost();
                     break;
                 case DuckState.Idling:
                 default:
+                    DoIdling(true);
                     break;
 
             }

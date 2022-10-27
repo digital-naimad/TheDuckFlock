@@ -5,13 +5,9 @@ using UnityEngine;
 namespace TheDuckFlock
 {
 
-    public class Duckie : Duck
+    public class Duckie : DuckController
     {
-        
-
-        [SerializeField] private Transform _toFollow;
-
-        [SerializeField] private float parentScopeRadius = 50f;
+       
 
         // Start is called before the first frame update
         void Start()
@@ -31,7 +27,12 @@ namespace TheDuckFlock
         private void Init()
         {
             currentDuckState = DuckState.LookingForFood;
+
+            duckRadius = 4f;
             grainScopeRadius = 16f;
+
+            moveDuration = 1.5f;
+            moveDistance = 1.5f;
         }
 
         private void DoState()
@@ -39,19 +40,20 @@ namespace TheDuckFlock
             switch (currentDuckState)
             {
                 case DuckState.FollowingParent:
-
+                    DoFollowParent();
                     break;
                 case DuckState.LookingForFood:
                     DoLookingForFood();
                     break;
                 case DuckState.EatingGrain:
-
+                    DoEatGrain();
                     break;
                 case DuckState.Lost:
-
+                    DoLost();
                     break;
                 case DuckState.Idling:
                 default:
+                    DoIdling(false);
                     break;
 
             }
