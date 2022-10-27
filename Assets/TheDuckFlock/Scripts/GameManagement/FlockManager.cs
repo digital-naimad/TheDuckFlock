@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace TheDuckFlock
 {
-    public class AnimalsManager : MonoBehaviour
+    public class FlockManager : MonoBehaviour
     {
 
         [SerializeField] private List<Duck> duckMothers = new List<Duck>();
