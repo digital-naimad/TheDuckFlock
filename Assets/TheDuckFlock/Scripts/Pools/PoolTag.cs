@@ -16,8 +16,20 @@ namespace TheDuckFlock
        /// Egg to find on the board build with Ground and Water Blocks
        /// </summary>
        Egg,
-       Duck,
+
+       /// <summary>
+       /// The biggest white duck
+       /// </summary>
+       DucksMother,
+
+       /// <summary>
+       /// All of a small yellowish duckies
+       /// </summary>
        Duckie,
+
+       /// <summary>
+       /// Seed 
+       /// </summary>
        Grain
 
     }
