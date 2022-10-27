@@ -37,25 +37,8 @@ namespace TheDuckFlock
             Debug.DrawRay(touchPosition, Vector3.forward, Color.blue);
             Debug.DrawRay(touchPosition, Vector3.back, Color.blue);
 
-            //ThrowGrain(touchPosition);
+            
             RaycastWorld(touchPosition);
-            //TopDownRaycast(touchPosition);
-        }
-
-        private void TopDownRaycast(Vector3 position)
-        {
-            Ray ray = mainCamera.ScreenPointToRay(position);
-
-            Debug.DrawRay(ray.origin, ray.direction, Color.green);
-
-            if (Physics.Raycast(ray,200))
-            {
-                Debug.Log(">>> Did Hit");
-            }
-            else
-            {
-                Debug.Log(">>> Did not Hit");
-            }
         }
 
         private void ThrowGrain(Vector3 position)
@@ -82,7 +65,6 @@ namespace TheDuckFlock
             Vector3 rayDirection = Vector3.Normalize( positionToCheck - cameraPosition);
 
             if (Physics.Raycast(positionToCheck, rayDirection, out hit, Mathf.Infinity))
-            //if (Physics.Raycast(positionToCheck, Vector3.down, out hit, 200))
             {
                 //Debug.DrawRay(positionToCheck, mainCamera.transform.forward * hit.distance, Color.red);
                 Debug.DrawRay(positionToCheck, rayDirection, Color.red);
