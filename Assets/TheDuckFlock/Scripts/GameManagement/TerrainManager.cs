@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace TheDuckFlock
 {
-    public class TerrainManager : MonoBehaviour
+    public class TerrainManager : MonoSingleton<TerrainManager>
     {
 
         //[SerializeField] private List<GameObject> terrainprefabs = new List<TerrainType>();
@@ -29,6 +29,18 @@ namespace TheDuckFlock
         // Update is called once per frame
         void Update()
         {
+
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sizeX"></param>
+        /// <param name="sizeY"></param>
+        public void GenerateTerrain()
+        {
+            Debug.Log(name + " >> Generate terrain x=" + gridSize.x + " y=" + gridSize.y);
+
 
         }
     }

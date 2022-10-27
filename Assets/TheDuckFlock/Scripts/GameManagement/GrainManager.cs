@@ -48,7 +48,7 @@ namespace TheDuckFlock
         {
             GrainController[] grainTable = WorldManager.Instance.GrainRoot.GetComponentsInChildren<GrainController>();
 
-            Debug.Log(name + " >> grain piles count = " + grainTable.Length);   
+           // Debug.Log(name + " >> grain piles count = " + grainTable.Length);   
 
             if (grainTable.Length == 0)
             {

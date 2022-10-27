@@ -1,11 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace TheDuckFlock
 {
-    public class GameManager : MonoSingleton<GameManager>
+    public class UIManager : MonoSingleton<UIManager>
     {
+        [SerializeField] private Button startButton;
+
         // Start is called before the first frame update
         void Start()
         {
@@ -21,12 +25,13 @@ namespace TheDuckFlock
         /// <summary>
         /// 
         /// </summary>
-        public void StartGame()
+        public void OnStartButtonClick()
         {
-            Debug.Log(name + " >> Starts game");
+            Debug.Log(name + " >> OnStartButtonClick()");
 
-            TerrainManager.Instance.GenerateTerrain();
-
+            startButton.gameObject.SetActive(false);
+            GameManager.Instance.StartGame();
         }
+
     }
 }
