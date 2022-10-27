@@ -4,10 +4,9 @@ using UnityEngine;
 
 namespace TheDuckFlock
 {
-
-    public class Duckie : MonoBehaviour
+    public class DucksMother : Duck
     {
-        [SerializeField] private Transform _toFollow;
+       
 
         // Start is called before the first frame update
         void Start()
@@ -22,3 +21,4 @@ namespace TheDuckFlock
         }
     }
 }
+

@@ -7,7 +7,7 @@ namespace TheDuckFlock
     public class FlockManager : MonoBehaviour
     {
 
-        [SerializeField] private List<Duck> duckMothers = new List<Duck>();
+        [SerializeField] private List<DucksMother> duckMothers = new List<DucksMother>();
         [SerializeField] private List<Duckie> duckies = new List<Duckie>();
 
         // Start is called before the first frame update
