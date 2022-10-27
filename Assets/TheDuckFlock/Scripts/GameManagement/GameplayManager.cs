@@ -2,12 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
 namespace TheDuckFlock
 {
-    public class Duck : MonoBehaviour
+    public class GameplayManager : MonoSingleton<GameplayManager>
     {
-        [SerializeField] private Transform _toFollow;
+       // [SerializeField] private Transform worldRoot;
+       // [SerializeField] private Transform screenAnchor;
+       
+
 
         // Start is called before the first frame update
         void Start()
@@ -20,6 +22,10 @@ namespace TheDuckFlock
         {
 
         }
+
+       
+
+        
+
     }
 }
-

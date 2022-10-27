@@ -18,7 +18,7 @@ namespace TheDuckFlock
        Egg,
        Duck,
        Duckie,
-       Seed
+       Grain
 
     }
 }
