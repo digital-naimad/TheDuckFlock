@@ -1447,7 +1447,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!114 &1700057271734950941
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1460,6 +1460,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2204e0e634b7dd7489b6d617c5a760c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentDuckState: 0
+  rotationDuration: 3
+  grainScopeRadius: 30
+  movingSpeed: 2
 --- !u!1 &1672846694798482
 GameObject:
   m_ObjectHideFlags: 0
@@ -1572,8 +1576,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 622107090292395549, guid: e064959ab68bade42b714422a3aaf5a6,
         type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.5
+      propertyPath: m_LocalScale.x
+      value: 64
+      objectReference: {fileID: 0}
+    - target: {fileID: 622107090292395549, guid: e064959ab68bade42b714422a3aaf5a6,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 64
       objectReference: {fileID: 0}
     - target: {fileID: 622107090292395549, guid: e064959ab68bade42b714422a3aaf5a6,
         type: 3}

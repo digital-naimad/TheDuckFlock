@@ -9,7 +9,9 @@ namespace TheDuckFlock
         [SerializeField] private LayerMask grainLayerMask;
 
         [SerializeField] private Camera mainCamera;
+
         [SerializeField] private Transform worldRoot;
+        [SerializeField] private Transform grainRoot;
 
         [SerializeField] private Transform dropZoneMarker;
 
@@ -17,6 +19,8 @@ namespace TheDuckFlock
         /// 
         /// </summary>
         public Transform WorldRoot { get { return worldRoot; } }
+        public Transform GrainRoot { get { return grainRoot; } }
+
 
         // Start is called before the first frame update
         void Start()
@@ -45,22 +49,6 @@ namespace TheDuckFlock
 
             
             RaycastWorld(touchPosition);
-        }
-
-        private void ThrowGrain(Vector3 position)
-        {
-
-
-            Vector3 fixedPosition = new Vector3(position.x, position.y, 0);
-            //new Vector3(position.x + screenAnchor.position.x, 10, position.y + screenAnchor.position.y);
-            // new Vector3(position.x, position.y, position.z);
-            //new Vector3(position.x, 0, position.y);
-
-            GameObject grainObject = ObjectPooler.Instance.SpawnFromPool(PoolTag.Grain);
-            grainObject.transform.parent = worldRoot;
-            grainObject.transform.position = fixedPosition;
-
-            Debug.Log(name + " >> x " + fixedPosition.x + " y " + fixedPosition.y + " z " + fixedPosition.z);
         }
 
         private void RaycastWorld(Vector3 positionToCheck)

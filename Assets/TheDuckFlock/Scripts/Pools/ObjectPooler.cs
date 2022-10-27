@@ -81,13 +81,17 @@ namespace TheDuckFlock
         {
             if (!poolDictionary.ContainsKey(tag))
             {
-                Debug.Log("Warning: Pool with tag " + tag + " does not exist");
+                Debug.Log(name + " >> Warning: Pool with tag " + tag + " does not exist");
                 return null;
             }
 
+            //Debug.Log(name + " SPAWN FROM  POOL >> current count " + poolDictionary[tag].Count);
             GameObject objectToSpawn = poolDictionary[tag].Dequeue();
+            objectToSpawn.SetActive(false);
             objectToSpawn.SetActive(true);
+
            
+
             /*
             IPooledObject pooledObject = objectToSpawn.GetComponent<IPooledObject>();
 
