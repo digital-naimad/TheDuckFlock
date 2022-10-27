@@ -673,6 +673,18 @@ MonoBehaviour:
   - tag: 2
     prefab: {fileID: 166016, guid: cc83291d6f189c542914154971901da6, type: 3}
     poolSize: 20
+  - tag: 6
+    prefab: {fileID: 5233153825981275571, guid: e188d1d2e28afba4f84a786632b095bc,
+      type: 3}
+    poolSize: 100
+  - tag: 7
+    prefab: {fileID: 5233153825981275571, guid: 53f582e05cde186489a3aa7a0948270e,
+      type: 3}
+    poolSize: 100
+  - tag: 8
+    prefab: {fileID: 5233153825981275571, guid: d433c5e77c3cbb4478c5658ba19bb49b,
+      type: 3}
+    poolSize: 100
   poolRoot: {fileID: 306909828}
 --- !u!1001 &411588534
 PrefabInstance:

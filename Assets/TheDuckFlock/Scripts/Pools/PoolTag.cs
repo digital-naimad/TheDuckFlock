@@ -22,7 +22,11 @@ namespace TheDuckFlock
        /// <summary>
        /// Seed 
        /// </summary>
-       Grain = 5
+       Grain = 5,
+
+        GrassTerrain,
+        GrassWithFences,
+        EmptyTerrain,
 
     }
 }
