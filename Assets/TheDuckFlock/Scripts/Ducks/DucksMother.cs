@@ -23,7 +23,7 @@ namespace TheDuckFlock
 
         private void Init()
         {
-            currentDuckState = DuckState.LookingForFood;
+            currentDuckState = DuckState.Idling;
 
             duckRadius = 8f;
             grainScopeRadius = 32f;

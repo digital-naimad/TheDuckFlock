@@ -4,33 +4,25 @@ namespace TheDuckFlock
 {
     public enum PoolTag
     {
-        /// <summary>
-        /// Full block
-        /// </summary>
-       GroundBlock,
-       /// <summary>
-       /// Empty/filled with water?
-       /// </summary>
-       WaterBlock,
        /// <summary>
        /// Egg to find on the board build with Ground and Water Blocks
        /// </summary>
-       Egg,
+       Egg = 2,
 
        /// <summary>
        /// The biggest white duck
        /// </summary>
-       DucksMother,
+       DucksMother = 3,
 
        /// <summary>
        /// All of a small yellowish duckies
        /// </summary>
-       Duckie,
+       Duckie = 4,
 
        /// <summary>
        /// Seed 
        /// </summary>
-       Grain
+       Grain = 5
 
     }
 }

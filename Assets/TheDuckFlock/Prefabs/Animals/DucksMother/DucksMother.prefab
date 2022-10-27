@@ -1461,9 +1461,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentDuckState: 0
-  rotationDuration: 3
+  duckRadius: 8
   grainScopeRadius: 30
-  movingSpeed: 2
+  parentScopeRadius: 50
+  rotationDuration: 3
+  moveDuration: 2
+  moveDistance: 2
+  parentToFollow: {fileID: 0}
 --- !u!1 &1672846694798482
 GameObject:
   m_ObjectHideFlags: 0
@@ -1482,7 +1486,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4849418800400582
 Transform:
   m_ObjectHideFlags: 0
@@ -1638,6 +1642,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: GrainScope_DucksMother
+      objectReference: {fileID: 0}
+    - target: {fileID: 3125147448004056478, guid: e064959ab68bade42b714422a3aaf5a6,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e064959ab68bade42b714422a3aaf5a6, type: 3}
