@@ -39,9 +39,22 @@ namespace TheDuckFlock
         /// </summary>
         public void SpawnEgg()
         {
+            Debug.Log(name + " >> Spawn Egg >> markers count=" + EggSpawnMarkers.Length);
+
+            // Sets object active
             GameObject eggObject = ObjectPooler.Instance.SpawnFromPool(PoolTag.Egg);
             eggObject.SetActive(true);
-            //eggObject.transform.position = 
+
+            // Hides marker
+            SpawnMarker spawnMarker = EggSpawnMarkers[Random.Range(0, EggSpawnMarkers.Length)];
+            spawnMarker.Hide();
+            spawnMarker.IsUsed = true;
+
+            // Sets position
+            eggObject.transform.parent = WorldManager.Instance.EggsRoot;
+            eggObject.transform.position = spawnMarker.transform.position;
+
+            
         }
     }
 }

@@ -6,7 +6,10 @@ namespace TheDuckFlock
 {
     public class SpawnMarker : MonoBehaviour
     {
-
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool IsUsed = false;
 
 
         // Start is called before the first frame update

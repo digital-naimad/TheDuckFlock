@@ -22,6 +22,10 @@ namespace TheDuckFlock
 
         }
 
+        public void StartGame()
+        {
+
+        }
        
 
         

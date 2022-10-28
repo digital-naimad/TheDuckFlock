@@ -14,6 +14,7 @@ namespace TheDuckFlock
         [SerializeField] private Transform terrainRoot;
         [SerializeField] private Transform grainRoot;
         [SerializeField] private Transform flockRoot;
+        [SerializeField] private Transform eggsRoot;
 
         [SerializeField] private Transform dropZoneMarker;
 
@@ -24,6 +25,7 @@ namespace TheDuckFlock
         public Transform TerrainRoot { get { return terrainRoot; } }
         public Transform GrainRoot { get { return grainRoot; } }
         public Transform FlockRoot { get { return flockRoot; } }
+        public Transform EggsRoot { get { return eggsRoot; } }
 
 
         // Start is called before the first frame update
