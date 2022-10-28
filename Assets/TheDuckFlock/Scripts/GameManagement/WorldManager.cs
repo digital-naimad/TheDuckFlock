@@ -11,6 +11,7 @@ namespace TheDuckFlock
         [SerializeField] private Camera mainCamera;
 
         [SerializeField] private Transform worldRoot;
+        [SerializeField] private Transform terrainRoot;
         [SerializeField] private Transform grainRoot;
         [SerializeField] private Transform flockRoot;
 
@@ -20,6 +21,7 @@ namespace TheDuckFlock
         /// 
         /// </summary>
         public Transform WorldRoot { get { return worldRoot; } }
+        public Transform TerrainRoot { get { return terrainRoot; } }
         public Transform GrainRoot { get { return grainRoot; } }
         public Transform FlockRoot { get { return flockRoot; } }
 
