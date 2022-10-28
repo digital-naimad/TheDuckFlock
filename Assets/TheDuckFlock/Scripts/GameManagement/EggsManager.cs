@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace TheDuckFlock
 {
-    public class GameManager : MonoSingleton<GameManager>
+    public class EggsManager : MonoSingleton<EggsManager>
     {
         // Start is called before the first frame update
         void Start()
@@ -21,13 +21,8 @@ namespace TheDuckFlock
         /// <summary>
         /// 
         /// </summary>
-        public void StartGame()
+        public void SpawnEgg()
         {
-            Debug.Log(name + " >> Starts game");
-
-            //TerrainManager.Instance.GenerateTerrain();
-            FlockManager.Instance.SpawnDucksMother();
-            CameraController.Instance.IsFollowDucksMother = true;
 
         }
     }

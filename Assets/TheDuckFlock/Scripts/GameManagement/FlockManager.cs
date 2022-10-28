@@ -10,6 +10,16 @@ namespace TheDuckFlock
         [SerializeField] private List<DucksMother> duckMothers = new List<DucksMother>();
         [SerializeField] private List<Duckie> duckies = new List<Duckie>();
 
+        /// <summary>
+        /// 
+        /// </summary>
+        //public DucksMother Mother { get { return duckMothers[0]; } }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public Vector3 MotherPosition { get { return duckMothers[0].transform.position; } }
+
         // Start is called before the first frame update
         void Start()
         {
