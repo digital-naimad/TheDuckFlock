@@ -7,7 +7,7 @@ namespace TheDuckFlock
     public class InputManager : MonoBehaviour
     {
         [SerializeField] private Camera mainCamera;
-        [SerializeField] private float inputRefreshUpdate = .5f;
+        [SerializeField] private float inputRefreshUpdate = 0;//.5f;
          private float inputRefreshCounter = 0f;
 
         // Start is called before the first frame update

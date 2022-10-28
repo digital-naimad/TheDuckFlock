@@ -6,8 +6,7 @@ namespace TheDuckFlock
 {
     public class GameplayManager : MonoSingleton<GameplayManager>
     {
-       // [SerializeField] private Transform worldRoot;
-       // [SerializeField] private Transform screenAnchor;
+        
        
 
 
