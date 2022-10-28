@@ -25,6 +25,27 @@ namespace TheDuckFlock
         /// <summary>
         /// 
         /// </summary>
+        public void SpawnDucksMother()
+        {
+            // Sets DucksMother active
+            GameObject duckObject = ObjectPooler.Instance.SpawnFromPool(PoolTag.DucksMother);
+            duckObject.SetActive(true);
+
+            // Adds mother to list
+            DucksMother newDuck = duckObject.GetComponent<DucksMother>();
+            duckMothers.Add(newDuck);
+
+            // Hide spawn marker
+            SpawnMarker marker = WorldManager.Instance.FlockRoot.GetComponentInChildren<SpawnMarker>();
+            marker.Hide();
+             
+            // Sets position
+            duckObject.transform.position = marker.transform.position;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
         /// <param name="positionToCheck"></param>
         /// <returns></returns>
         public DuckController GetClosestDuckController(Vector3 positionToCheck)

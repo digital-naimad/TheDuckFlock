@@ -4,8 +4,11 @@ using UnityEngine;
 
 namespace TheDuckFlock
 {
-    public class GameManager : MonoSingleton<GameManager>
+    public class SpawnMarker : MonoBehaviour
     {
+
+
+
         // Start is called before the first frame update
         void Start()
         {
@@ -18,16 +21,14 @@ namespace TheDuckFlock
 
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        public void StartGame()
+        public void Show()
         {
-            Debug.Log(name + " >> Starts game");
+            GetComponent<MeshRenderer>().enabled = true;
+        }
 
-            //TerrainManager.Instance.GenerateTerrain();
-            FlockManager.Instance.SpawnDucksMother();
-
+        public void Hide()
+        {
+            GetComponent<MeshRenderer>().enabled = false;
         }
     }
 }

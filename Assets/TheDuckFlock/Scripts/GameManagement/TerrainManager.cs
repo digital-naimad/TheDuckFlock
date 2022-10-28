@@ -45,7 +45,7 @@ namespace TheDuckFlock
         // Start is called before the first frame update
         void Start()
         {
-
+            GenerateTerrain();
         }
 
         // Update is called once per frame
@@ -69,6 +69,7 @@ namespace TheDuckFlock
                 {
                     GameObject newTile = ObjectPooler.Instance.SpawnFromPool(RandomTerrainTag);
                     newTile.transform.SetParent(WorldManager.Instance.TerrainRoot, false);
+                    //newTile.transform.parent = WorldManager.Instance.TerrainRoot;
                     newTile.transform.position = new Vector3(
                         iColumn * cellSize.x + gridShift.x, 
                         0, 
