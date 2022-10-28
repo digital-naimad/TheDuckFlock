@@ -10,6 +10,16 @@ namespace TheDuckFlock
         [SerializeField] private List<DucksMother> duckMothers = new List<DucksMother>();
         [SerializeField] private List<Duckie> duckies = new List<Duckie>();
 
+        /// <summary>
+        /// 
+        /// </summary>
+        //public DucksMother Mother { get { return duckMothers[0]; } }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public Vector3 MotherPosition { get { return duckMothers[0].transform.position; } }
+
         // Start is called before the first frame update
         void Start()
         {
@@ -20,6 +30,27 @@ namespace TheDuckFlock
         void Update()
         {
 
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void SpawnDucksMother()
+        {
+            // Sets DucksMother active
+            GameObject duckObject = ObjectPooler.Instance.SpawnFromPool(PoolTag.DucksMother);
+            duckObject.SetActive(true);
+
+            // Adds mother to list
+            DucksMother newDuck = duckObject.GetComponent<DucksMother>();
+            duckMothers.Add(newDuck);
+
+            // Hide spawn marker
+            SpawnMarker marker = WorldManager.Instance.FlockRoot.GetComponentInChildren<SpawnMarker>();
+            marker.Hide();
+             
+            // Sets position
+            duckObject.transform.position = marker.transform.position;
         }
 
         /// <summary>

@@ -73,7 +73,7 @@ namespace TheDuckFlock
 
         protected void DoLookingForFood()
         {
-            Debug.Log(name + " >> " + "DoLookingForFood()");
+            //Debug.Log(name + " >> " + "DoLookingForFood()");
 
             GrainController closestGrain = GrainManager.Instance.GetClosestGrainPile(transform.position);
             if (closestGrain != null)
