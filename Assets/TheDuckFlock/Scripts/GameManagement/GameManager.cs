@@ -9,7 +9,7 @@ namespace TheDuckFlock
         // Start is called before the first frame update
         void Start()
         {
-
+            
         }
 
         // Update is called once per frame
@@ -26,8 +26,8 @@ namespace TheDuckFlock
             Debug.Log(name + " >> Starts game");
 
             //TerrainManager.Instance.GenerateTerrain();
-            FlockManager.Instance.SpawnDucksMother();
-            CameraController.Instance.IsFollowDucksMother = true;
+            GameplayManager.Instance.LaunchNextStage();
+           
 
         }
     }

@@ -15,19 +15,24 @@ namespace TheDuckFlock
         [SerializeField] private Transform grainRoot;
         [SerializeField] private Transform flockRoot;
         [SerializeField] private Transform eggsRoot;
+        [SerializeField] private Transform nestsRoot;
 
         [SerializeField] private Transform dropZoneMarker;
 
-        /// <summary>
-        /// 
-        /// </summary>
+        #region Transform getters
         public Transform WorldRoot { get { return worldRoot; } }
         public Transform TerrainRoot { get { return terrainRoot; } }
         public Transform GrainRoot { get { return grainRoot; } }
         public Transform FlockRoot { get { return flockRoot; } }
         public Transform EggsRoot { get { return eggsRoot; } }
+        public Transform NestsRoot { get { return nestsRoot; } }
+        #endregion
 
-        public NestSpawnMarker[] NestSpawnMarkers { get { return TerrainRoot.GetComponentsInChildren<NestSpawnMarker>(); } }
+        #region GetComponentsInChildren
+        public SpawnMarker[] DucksMotherSpawnMarkers { get { return TerrainRoot.GetComponentsInChildren<DucksMotherSpawnMarker>(); } }
+        public SpawnMarker[] NestSpawnMarkers { get { return TerrainRoot.GetComponentsInChildren<NestSpawnMarker>(); } }
+        public SpawnMarker[] EggSpawnMarkers { get { return TerrainRoot.GetComponentsInChildren<EggSpawnMarker>(); } }
+        #endregion
 
 
         // Start is called before the first frame update
@@ -42,6 +47,20 @@ namespace TheDuckFlock
 
         }
 
+        #region Public methods
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /*
+        public void HideMarkers()
+        {
+            var nestMarkers = NestSpawnMarkers;
+            var duckMarkers = DucksMotherSpawnMarkers;
+            var eggMarkers = EggSpawnMarkers;
+
+        }
+        */
         /// <summary>
         /// 
         /// </summary>
@@ -88,7 +107,7 @@ namespace TheDuckFlock
             dropZoneMarker.transform.position = position;
             //dropZoneMarker.GetComponent<Renderer>().material.color = isHit ? Color.yellow : Color.red;
         }
+        #endregion
 
-        
     }
 }

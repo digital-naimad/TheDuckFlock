@@ -11,6 +11,10 @@ namespace TheDuckFlock
         /// </summary>
         public bool IsUsed = false;
 
+        private void Awake()
+        {
+            Hide();
+        }
 
         // Start is called before the first frame update
         void Start()
