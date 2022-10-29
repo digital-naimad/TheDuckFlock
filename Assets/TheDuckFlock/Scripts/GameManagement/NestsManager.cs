@@ -4,10 +4,9 @@ using UnityEngine;
 
 namespace TheDuckFlock
 {
-    public class GameplayManager : MonoSingleton<GameplayManager>
+    public class NestsManager : MonoBehaviour
     {
-        
-        private 
+
 
 
         // Start is called before the first frame update
@@ -21,14 +20,5 @@ namespace TheDuckFlock
         {
 
         }
-
-        public void StartGame()
-        {
-
-        }
-       
-
-        
-
     }
 }
