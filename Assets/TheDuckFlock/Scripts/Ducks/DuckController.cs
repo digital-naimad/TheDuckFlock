@@ -120,10 +120,10 @@ namespace TheDuckFlock
                     }
                     else
                     {
-                        //currentDuckState = DuckState.EatingGrain;
-                        GrainManager.Instance.Peck(closestGrain);
+                        currentDuckState = DuckState.EatingGrain;
+                        //GrainManager.Instance.Peck(closestGrain);
 
-                        currentDuckState = DuckState.Idling;
+                        //currentDuckState = DuckState.Idling;
                     }
                 }
             }
