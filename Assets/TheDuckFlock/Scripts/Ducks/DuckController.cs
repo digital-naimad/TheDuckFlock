@@ -68,7 +68,7 @@ namespace TheDuckFlock
             {
                 float distance = Vector3.Distance(transform.position, closestGrain.transform.position);
 
-                if (distance < grainScopeRadius && distance > 8f)
+                if (distance < grainScopeRadius) // && distance > 8f)
                 {
                     currentDuckState = DuckState.LookingForFood;
                 }
