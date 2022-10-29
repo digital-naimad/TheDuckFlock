@@ -20,6 +20,8 @@ namespace TheDuckFlock
 
         [SerializeField] protected Transform parentToFollow = null;
 
+        [SerializeField] private float lostHeightThreshold = -3f;
+
         protected Rigidbody rigidbody
         {
             get 
@@ -34,6 +36,9 @@ namespace TheDuckFlock
 
         private Rigidbody _rigidbody;
 
+        private Tween rotateTween = null;
+        private Tween moveTween = null;
+
         // Start is called before the first frame update
         void Start()
         {
@@ -44,7 +49,10 @@ namespace TheDuckFlock
         protected void Update()
         {
             //Debug.Log("DUCK UPDATE");
-            
+            if (transform.position.y < lostHeightThreshold)
+            {
+                currentDuckState = DuckState.Lost;
+            }
         }
 
         /// <summary>
@@ -86,8 +94,7 @@ namespace TheDuckFlock
             */
         }
 
-
-        private Tween moveTween = null;
+        
 
         protected void DoLookingForFood()
         {
@@ -97,13 +104,12 @@ namespace TheDuckFlock
             if (closestGrain != null)
             {
                 // Rotates the duck
-                transform.DODynamicLookAt(closestGrain.transform.position, rotationDuration);
-                //rigidbody.DOLookAt(closestGrain.transform.position, rotationDuration);
+                rotateTween = transform.DODynamicLookAt(closestGrain.transform.position, rotationDuration);
 
                 float distance = Vector3.Distance(transform.position, closestGrain.transform.position);
                 if (distance < grainScopeRadius)
                 {
-                    if (distance > 8f)
+                    if (distance > duckRadius)
                     {
                         if (moveTween != null && !moveTween.IsComplete())
                         {
@@ -114,7 +120,10 @@ namespace TheDuckFlock
                     }
                     else
                     {
-                        currentDuckState = DuckState.EatingGrain;
+                        //currentDuckState = DuckState.EatingGrain;
+                        GrainManager.Instance.Peck(closestGrain);
+
+                        currentDuckState = DuckState.Idling;
                     }
                 }
             }
@@ -182,7 +191,17 @@ namespace TheDuckFlock
 
         protected void DoLost()
         {
+            if (rotateTween != null)
+            {
+                rotateTween.Complete();
+                rotateTween = null;
+            }
 
+            if (moveTween != null)
+            {
+                moveTween.Complete();
+                moveTween = null;
+            }
         }
 
         protected void SwitchRigidbodyFreeze(bool isFreezed)

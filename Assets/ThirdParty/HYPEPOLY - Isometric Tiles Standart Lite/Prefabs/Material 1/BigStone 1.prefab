@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8680660289773115111}
   - component: {fileID: 9150354937097879569}
   - component: {fileID: 1410297243592514326}
-  - component: {fileID: 4944615613505071656}
+  - component: {fileID: 2683379907327525861}
   m_Layer: 0
   m_Name: BigStone 1
   m_TagString: Untagged
@@ -29,6 +29,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -52,10 +53,12 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -80,16 +83,18 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &4944615613505071656
-BoxCollider:
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!136 &2683379907327525861
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8540302878977628445}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: c7914c7a24b3ba040b04cc76ac71e565, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1.6256819, y: 1.6988746, z: 1.6788056}
-  m_Center: {x: 0.037582874, y: -0.07967996, z: -0.0055883224}
+  m_Radius: 0.8394029
+  m_Height: 1.6988748
+  m_Direction: 1
+  m_Center: {x: 0.037582397, y: -0.079679966, z: -0.005588323}

@@ -48,7 +48,7 @@ MonoBehaviour:
   - tag: 5
     prefab: {fileID: 7112351152351867588, guid: 9540333458cf65a4ab3e7260eb520b89,
       type: 3}
-    poolSize: 10
+    poolSize: 20
   - tag: 3
     prefab: {fileID: 166016, guid: c2c0591d2f36f6048a4d12d3c9827d66, type: 3}
     poolSize: 1
