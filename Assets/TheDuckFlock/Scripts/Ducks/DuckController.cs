@@ -15,10 +15,24 @@ namespace TheDuckFlock
         [SerializeField] protected float parentScopeRadius = 50f;
 
         [SerializeField] protected float rotationDuration = 1f;
-        [SerializeField] protected float moveDuration = 2f;
+        [SerializeField] protected float moveDuration = 1f;
         [SerializeField] protected float moveDistance = 2f;
 
         [SerializeField] protected Transform parentToFollow = null;
+
+        protected Rigidbody rigidbody
+        {
+            get 
+            { 
+                if (_rigidbody == null)
+                {
+                    _rigidbody = GetComponent<Rigidbody>();
+                }
+                return _rigidbody; 
+            }
+        }
+
+        private Rigidbody _rigidbody;
 
         // Start is called before the first frame update
         void Start()
@@ -41,7 +55,7 @@ namespace TheDuckFlock
         {
 
             // CHECKS FOOD
-            GrainController closestGrain = GrainManager.Instance.GetClosestGrainPile(transform.position);
+            GrainController closestGrain = GrainManager.Instance.GetClosestGrain(transform.position);
             if (closestGrain != null)
             {
                 float distance = Vector3.Distance(transform.position, closestGrain.transform.position);
@@ -52,6 +66,7 @@ namespace TheDuckFlock
                 }
             }
 
+            /*
             // CHECKS PARENT
             if (currentDuckState == DuckState.Idling) // state not changed
             {
@@ -68,25 +83,34 @@ namespace TheDuckFlock
                     }
                 }
             }
+            */
         }
 
+
+        private Tween moveTween = null;
 
         protected void DoLookingForFood()
         {
             //Debug.Log(name + " >> " + "DoLookingForFood()");
 
-            GrainController closestGrain = GrainManager.Instance.GetClosestGrainPile(transform.position);
+            GrainController closestGrain = GrainManager.Instance.GetClosestGrain(transform.position);
             if (closestGrain != null)
             {
                 // Rotates the duck
                 transform.DODynamicLookAt(closestGrain.transform.position, rotationDuration);
+                //rigidbody.DOLookAt(closestGrain.transform.position, rotationDuration);
 
                 float distance = Vector3.Distance(transform.position, closestGrain.transform.position);
                 if (distance < grainScopeRadius)
                 {
                     if (distance > 8f)
                     {
-                        transform.DOMove(transform.position + transform.forward * moveDistance, moveDuration);
+                        if (moveTween != null && !moveTween.IsComplete())
+                        {
+                            moveTween.Kill();
+                        }
+                        moveTween = rigidbody.DOMove(transform.position + transform.forward * moveDistance, moveDuration);
+                       
                     }
                     else
                     {
@@ -113,7 +137,8 @@ namespace TheDuckFlock
                     {
                         if (distance > 8f)
                         {
-                            transform.DOMove(transform.position + transform.forward * moveDistance, moveDuration);
+                            //transform.DOMove(transform.position + transform.forward * moveDistance, moveDuration);
+                            rigidbody.DOMove(transform.position + transform.forward * moveDistance, moveDuration);
                         }
                         else
                         {
@@ -134,7 +159,7 @@ namespace TheDuckFlock
                 {
                     if (distance > 8f)
                     {
-                        transform.DOMove(transform.position + transform.forward * moveDistance, moveDuration);
+                        rigidbody.DOMove(transform.position + transform.forward * moveDistance, moveDuration);
                     }
                     else
                     {
@@ -146,7 +171,13 @@ namespace TheDuckFlock
 
         protected void DoEatGrain()
         {
+            var closestGrain = GrainManager.Instance.GetClosestGrain(transform.position);
+            if (closestGrain != null)
+            {
+                GrainManager.Instance.Peck(closestGrain);
 
+                currentDuckState = DuckState.Idling;
+            }
         }
 
         protected void DoLost()
@@ -154,6 +185,11 @@ namespace TheDuckFlock
 
         }
 
+        protected void SwitchRigidbodyFreeze(bool isFreezed)
+        {
+            //rigidbody.freezeRotation = isFreezed;
+            rigidbody.constraints = RigidbodyConstraints.FreezeAll;
+        }
 
     }
 }

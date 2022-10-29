@@ -44,11 +44,11 @@ namespace TheDuckFlock
         /// </summary>
         /// <param name="positionToCheck"></param>
         /// <returns>can be null if there is no any GrainController spawned</returns>
-        public GrainController GetClosestGrainPile(Vector3 positionToCheck)
+        public GrainController GetClosestGrain(Vector3 positionToCheck)
         {
             GrainController[] grainTable = WorldManager.Instance.GrainRoot.GetComponentsInChildren<GrainController>();
 
-           // Debug.Log(name + " >> grain piles count = " + grainTable.Length);   
+           // Debug.Log(name + " | grain piles count = " + grainTable.Length);   
 
             if (grainTable.Length == 0)
             {
@@ -71,6 +71,15 @@ namespace TheDuckFlock
 
             return closestGrainController;
             
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="grainToPeck"></param>
+        public void Peck(GrainController grainToPeck)
+        {
+            grainToPeck.gameObject.SetActive(false);
         }
     }
 }

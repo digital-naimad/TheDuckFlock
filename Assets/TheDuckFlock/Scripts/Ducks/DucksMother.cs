@@ -26,9 +26,9 @@ namespace TheDuckFlock
             currentDuckState = DuckState.Idling;
 
             duckRadius = 8f;
-            grainScopeRadius = 32f;
+            grainScopeRadius = 18*4;
 
-            moveDuration = 3f;
+            moveDuration = 1f;
             moveDistance = 2f;
         }
 

@@ -88,7 +88,7 @@ namespace TheDuckFlock
             if (Physics.Raycast(positionToCheck, rayDirection, out hit, Mathf.Infinity, grainLayerMask))
             {
 
-                Debug.Log(name + " >> RaycastWorld hit >> " + hit.collider.name);
+                //Debug.Log(name + " | RaycastWorld hit >> " + hit.collider.name);
 
                 //Debug.DrawRay(positionToCheck, rayDirection, Color.red);
 
@@ -98,7 +98,7 @@ namespace TheDuckFlock
             }
             else
             {
-                Debug.Log(name + " >> RaycastWorld not hit anything");
+                //Debug.Log(name + " | RaycastWorld not hit anything");
             }
         }
 
