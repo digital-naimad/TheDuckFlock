@@ -7,7 +7,7 @@ namespace TheDuckFlock
     public class GameplayManager : MonoSingleton<GameplayManager>
     {
         
-        private 
+        //private 
 
 
         // Start is called before the first frame update

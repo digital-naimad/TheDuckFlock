@@ -37,6 +37,8 @@ namespace TheDuckFlock
         Segment_6,
         Segment_7,
         Segment_8,
-        Segment_9
+        Segment_9,
+
+        Nest = 19
     }
 }

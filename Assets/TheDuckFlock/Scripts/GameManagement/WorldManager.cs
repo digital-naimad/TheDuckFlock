@@ -27,6 +27,8 @@ namespace TheDuckFlock
         public Transform FlockRoot { get { return flockRoot; } }
         public Transform EggsRoot { get { return eggsRoot; } }
 
+        public NestSpawnMarker[] NestSpawnMarkers { get { return TerrainRoot.GetComponentsInChildren<NestSpawnMarker>(); } }
+
 
         // Start is called before the first frame update
         void Start()

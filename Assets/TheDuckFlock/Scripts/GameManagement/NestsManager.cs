@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace TheDuckFlock
 {
-    public class NestsManager : MonoBehaviour
+    public class NestsManager : MonoSingleton<NestsManager>
     {
 
 
@@ -18,6 +18,14 @@ namespace TheDuckFlock
         // Update is called once per frame
         void Update()
         {
+
+        }
+
+        public void SpawnNest()
+        {
+            NestSpawnMarker[] nestSpawnMarkers = WorldManager.Instance.NestSpawnMarkers;
+            NestSpawnMarker choosenMarker = nestSpawnMarkers[Random.Range(0, nestSpawnMarkers.Length)];
+            choosenMarker.Hide();
 
         }
     }
