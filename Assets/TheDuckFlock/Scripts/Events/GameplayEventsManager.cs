@@ -12,25 +12,21 @@ namespace TheDuckFlock
 
             CurrentListeners = listeners;
 
-            // PLAYER TANK SPAWN
-            //RegisterListener(GameplayEvent.PlayerTankSpawn, listeners.OnPlayerTankSpawn);
+            // StartGame
+            RegisterListener(GameplayEvent.StartGame, listeners.OnStartGame);
 
-            // PLAYER TANK MOVE
-           // RegisterListener(GameplayEvent.PlayerTankMove, listeners.OnPlayerTankMove);
         }
 
-        private static void RemoveListeners()
+        public static void RemoveListeners()
         {
             if (CurrentListeners == null)
             {
                 return;
             }
 
-            // PLAYER TANK SPAWN
-           // UnregisterListener(GameplayEvent.PlayerTankSpawn, CurrentListeners.OnPlayerTankSpawn);
+            // StartGame
+            UnregisterListener(GameplayEvent.StartGame, CurrentListeners.OnStartGame);
 
-            // PLAYER TANK MOVE
-            //UnregisterListener(GameplayEvent.PlayerTankMove, CurrentListeners.OnPlayerTankMove);
         }
 
     }

@@ -30,7 +30,7 @@ namespace TheDuckFlock
 
         #region GetComponentsInChildren
         public SpawnMarker[] DucksMotherSpawnMarkers { get { return TerrainRoot.GetComponentsInChildren<DucksMotherSpawnMarker>(); } }
-        public SpawnMarker[] NestSpawnMarkers { get { return TerrainRoot.GetComponentsInChildren<NestSpawnMarker>(); } }
+        public NestSpawnMarker[] NestSpawnMarkers { get { return TerrainRoot.GetComponentsInChildren<NestSpawnMarker>(); } }
         public SpawnMarker[] EggSpawnMarkers { get { return TerrainRoot.GetComponentsInChildren<EggSpawnMarker>(); } }
         #endregion
 

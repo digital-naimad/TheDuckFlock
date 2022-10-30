@@ -6,13 +6,8 @@ namespace TheDuckFlock
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="data"></param>
-       // public void OnPlayerTankSpawn(params int[] list);
-        
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="data"></param>
-        //public void OnPlayerTankMove(params int[] list);
+        /// <param name="parameters"></param>
+        public void OnStartGame(params int[] parameters);
+
     }
 }

@@ -23,10 +23,10 @@ namespace TheDuckFlock
         /// </summary>
         public void StartGame()
         {
-            Debug.Log(name + " >> Starts game");
+            Debug.Log(name + "| Starts game");
 
             //TerrainManager.Instance.GenerateTerrain();
-            GameplayManager.Instance.LaunchNextStage();
+            GameplayEventsManager.DispatchEvent(GameplayEvent.StartGame);
            
 
         }

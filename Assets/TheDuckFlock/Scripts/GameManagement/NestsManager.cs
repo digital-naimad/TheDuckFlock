@@ -22,19 +22,19 @@ namespace TheDuckFlock
         /// <summary>
         /// Spawns Nest prefab at the position of randomely choosen NestSpawnMarker
         /// </summary>
-        public DucksMotherSpawnMarker SpawnNest()
+        public NestSpawnMarker SpawnNest()
         {
             Debug.Log(name + " | SpawnNest");
 
-            SpawnMarker[] nestSpawnMarkers = WorldManager.Instance.NestSpawnMarkers;
-            SpawnMarker choosenMarker = nestSpawnMarkers[Random.Range(0, nestSpawnMarkers.Length)];
+            NestSpawnMarker[] nestSpawnMarkers = WorldManager.Instance.NestSpawnMarkers;
+            NestSpawnMarker choosenMarker = nestSpawnMarkers[Random.Range(0, nestSpawnMarkers.Length)];
             //choosenMarker.transform.localScale = Vector3.one * 5;
 
             GameObject nestObject = ObjectPooler.Instance.SpawnFromPool(PoolTag.Nest);
             nestObject.transform.parent = WorldManager.Instance.NestsRoot;
             nestObject.transform.position = choosenMarker.transform.position;
 
-            return choosenMarker.GetComponentInChildren<DucksMotherSpawnMarker>();
+            return choosenMarker;
         }
     }
 }

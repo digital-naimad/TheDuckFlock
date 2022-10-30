@@ -72,7 +72,7 @@ namespace TheDuckFlock
         /// <param name="dataValues"> dynamic values list of type int. Using by some of an eventTypes</param>
         public static void DispatchEvent(CustomEvent eventType, params int[] dataValues)
         {
-            //Debug.Log(this.name + " >> Call to dispatch event: " + eventType);
+            //Debug.Log( " >> Call to dispatch event: " + eventType);
 
             if (!listenersDictionary.ContainsKey(eventType))
             {

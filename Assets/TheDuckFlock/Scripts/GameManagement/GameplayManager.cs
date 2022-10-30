@@ -3,12 +3,14 @@ using UnityEngine;
 
 namespace TheDuckFlock
 {
-    public class GameplayManager : MonoSingleton<GameplayManager>
+    public class GameplayManager : MonoSingleton<GameplayManager>, IGameplayEventsListener
     {
 
         private void Awake()
         {
             CameraController.Instance.IsFollowDucksMother = false;
+
+            GameplayEventsManager.SetupListeners(this);
         }
 
 
@@ -31,13 +33,25 @@ namespace TheDuckFlock
         {
             Debug.Log(name + " | LaunchNextStage");
 
-            DucksMotherSpawnMarker motherMarker = NestsManager.Instance.SpawnNest();
+            NestSpawnMarker nestMarker = NestsManager.Instance.SpawnNest();
+            DucksMotherSpawnMarker motherMarker = nestMarker.DucksMotherSpawnMarker;
             FlockManager.Instance.SpawnDucksMother(motherMarker);
             CameraController.Instance.IsFollowDucksMother = true; // warning: order of the calls matters
         }
-       
 
-        
+
+        public void OnStartGame(params int[] parameters)
+        {
+            LaunchNextStage();
+
+            
+
+        }
+
+        private void OnDestroy()
+        {
+            GameplayEventsManager.RemoveListeners();
+        }
 
     }
 }
