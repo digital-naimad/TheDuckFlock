@@ -201,6 +201,8 @@ namespace TheDuckFlock
 
         protected void DoLost()
         {
+            animator.SetBool(nameof(DuckAnimation.stun), true);
+
             if (rotateTween != null)
             {
                 rotateTween.Complete();
