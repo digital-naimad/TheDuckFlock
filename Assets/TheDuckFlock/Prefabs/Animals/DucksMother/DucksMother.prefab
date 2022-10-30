@@ -1372,6 +1372,8 @@ GameObject:
   - component: {fileID: 3119245524868070256}
   - component: {fileID: 1700057271734950941}
   - component: {fileID: 5368736423345968847}
+  - component: {fileID: 5482926625677487159}
+  - component: {fileID: 9007041259585228675}
   m_Layer: 0
   m_Name: DucksMother
   m_TagString: Untagged
@@ -1455,6 +1457,7 @@ MonoBehaviour:
   moveDuration: 1
   moveDistance: 2
   parentToFollow: {fileID: 0}
+  lostHeightThreshold: -3
 --- !u!65 &5368736423345968847
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1462,12 +1465,40 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 166016}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 4c84466db17cfaa4899eda67ff0ebc4c, type: 2}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 6.360778, y: 10.314627, z: 7.1547213}
-  m_Center: {x: 0.17408276, y: 5.2116947, z: 0.46851063}
+  m_Center: {x: 0, y: 5.2116947, z: 0}
+--- !u!136 &5482926625677487159
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 166016}
+  m_Material: {fileID: 13400000, guid: 4c84466db17cfaa4899eda67ff0ebc4c, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 3
+  m_Height: 10
+  m_Direction: 1
+  m_Center: {x: 0, y: 6, z: 0}
+--- !u!136 &9007041259585228675
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 166016}
+  m_Material: {fileID: 13400000, guid: 4c84466db17cfaa4899eda67ff0ebc4c, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 3
+  m_Height: 10
+  m_Direction: 1
+  m_Center: {x: 0, y: 6, z: 0.74}
 --- !u!1 &1672846694798482
 GameObject:
   m_ObjectHideFlags: 0
