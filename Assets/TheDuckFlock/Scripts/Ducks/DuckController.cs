@@ -20,10 +20,6 @@ namespace TheDuckFlock
 
         [SerializeField] protected Transform parentToFollow = null;
 
-
-
-        [SerializeField] private Animator animator;
-
         protected Rigidbody rigidbody
         {
             get 
@@ -40,6 +36,13 @@ namespace TheDuckFlock
 
         private Tween rotateTween = null;
         private Tween moveTween = null;
+
+        private Animator animator;
+
+        private void Awake()
+        {
+            animator = GetComponent<Animator>();
+        }
 
         // Start is called before the first frame update
         void Start()
