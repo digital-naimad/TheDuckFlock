@@ -33,6 +33,7 @@ namespace TheDuckFlock
         {
             Debug.Log(name + " | LaunchNextStage");
 
+            TerrainManager.Instance.GenerateTerrain();  
             NestSpawnMarker nestMarker = NestsManager.Instance.SpawnNest();
             DucksMotherSpawnMarker motherMarker = nestMarker.DucksMotherSpawnMarker;
             FlockManager.Instance.SpawnDucksMother(motherMarker);
