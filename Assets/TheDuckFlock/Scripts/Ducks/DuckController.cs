@@ -22,6 +22,8 @@ namespace TheDuckFlock
 
         [SerializeField] private float lostHeightThreshold = -3f;
 
+        [SerializeField] private Animator animator;
+
         protected Rigidbody rigidbody
         {
             get 
@@ -61,6 +63,8 @@ namespace TheDuckFlock
         /// <param name="isDucksMother"></param>
         protected void DoIdling(bool isDucksMother = false)
         {
+            animator.SetBool(nameof(DuckAnimation.idle), true);
+
 
             // CHECKS FOOD
             GrainController closestGrain = GrainManager.Instance.GetClosestGrain(transform.position);
@@ -111,12 +115,7 @@ namespace TheDuckFlock
                 {
                     if (distance > duckRadius)
                     {
-                        if (moveTween != null && !moveTween.IsComplete())
-                        {
-                            moveTween.Kill();
-                        }
-                        moveTween = rigidbody.DOMove(transform.position + transform.forward * moveDistance, moveDuration);
-                       
+                        Walk();
                     }
                     else
                     {
@@ -127,6 +126,17 @@ namespace TheDuckFlock
                     }
                 }
             }
+        }
+
+        private void Walk()
+        {
+            animator.SetBool(nameof(DuckAnimation.walk), true);
+
+            if (moveTween != null && !moveTween.IsComplete())
+            {
+                moveTween.Kill();
+            }
+            moveTween = rigidbody.DOMove(transform.position + transform.forward * moveDistance, moveDuration);
         }
 
         protected void DoFollowParent()
