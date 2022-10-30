@@ -47,8 +47,8 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 42
-  m_CollisionDetection: 0
+  m_Constraints: 0
+  m_CollisionDetection: 1
 --- !u!1001 &4871954452258440981
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -152,10 +152,22 @@ MeshCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5718939389660396100}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 7b42cc3a61dfa2e4184acf6bcdfe609a, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -5495902117074765545, guid: bacae3879f2e8df4ca9db743b1ee4936, type: 3}
+--- !u!114 &4082259176196598805
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5718939389660396100}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee61c742913de0349b0d22990e7c2099, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

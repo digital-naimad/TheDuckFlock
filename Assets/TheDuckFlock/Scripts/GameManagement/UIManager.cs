@@ -27,7 +27,7 @@ namespace TheDuckFlock
         /// </summary>
         public void OnStartButtonClick()
         {
-            Debug.Log(name + " >> OnStartButtonClick()");
+            Debug.Log(name + " | OnStartButtonClick()");
 
             startButton.gameObject.SetActive(false);
 

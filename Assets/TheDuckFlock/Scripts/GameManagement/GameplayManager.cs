@@ -13,8 +13,9 @@ namespace TheDuckFlock
             GameplayEventsManager.SetupListeners(this);
         }
 
-
+        #region MonoBehaviour callbacks
         // Start is called before the first frame update
+        /*
         void Start()
         {
             
@@ -25,10 +26,15 @@ namespace TheDuckFlock
         {
 
         }
+        */
 
+        private void OnDestroy()
+        {
+            GameplayEventsManager.RemoveListeners();
+        }
+        #endregion
 
-
-
+        #region GameplayEvent listeners
         public void OnStartGame(params int[] parameters)
         {
             Debug.Log(name + " | OnStartGame()");
@@ -44,16 +50,28 @@ namespace TheDuckFlock
 
         }
 
-        public void OnDucksMotherLost()
+        public void OnDucksMotherLost(params int[] parameters)
         {
             CameraController.Instance.IsFollowDucksMother = false;
-            //
         }
 
-        private void OnDestroy()
+        /// <summary>
+        /// Spawns random new egg
+        /// </summary>
+        /// <param name="parameters"></param>
+        public void OnEggLost(params int[] parameters)
         {
-            GameplayEventsManager.RemoveListeners();
+            EggsManager.Instance.SpawnEgg();
         }
 
+        public void OnEggHatched(params int[] parameters)
+        {
+            /// TODO:
+            /// * clear hatched egg (with animation?)
+            /// * spawn new duckie
+
+            EggsManager.Instance.SpawnEgg();
+        }
+        #endregion
     }
 }

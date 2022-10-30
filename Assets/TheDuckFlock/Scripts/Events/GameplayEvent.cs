@@ -6,6 +6,13 @@ namespace TheDuckFlock
         
 
         StartGame,
+
+        DucksMotherLost,
+
+        EggLost,
+        EggHatched,
+
+        /*
         EndRound,
         GameOver,
 
@@ -22,7 +29,7 @@ namespace TheDuckFlock
         CallForCubs,
 
         FlockShattered
-
+        */
 
     }
 }

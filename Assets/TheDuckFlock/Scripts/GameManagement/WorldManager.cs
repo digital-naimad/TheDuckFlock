@@ -6,6 +6,9 @@ namespace TheDuckFlock
 {
     public class WorldManager : MonoSingleton<WorldManager>
     {
+        [SerializeField] private float lostDuckThreshold = -5f;
+        [SerializeField] private float lostEggThreshold = -10f;
+
         [SerializeField] private LayerMask grainLayerMask;
 
         [SerializeField] private Camera mainCamera;
@@ -19,13 +22,16 @@ namespace TheDuckFlock
 
         [SerializeField] private Transform dropZoneMarker;
 
-        #region Transform getters
+        #region Public getters
         public Transform WorldRoot { get { return worldRoot; } }
         public Transform TerrainRoot { get { return terrainRoot; } }
         public Transform GrainRoot { get { return grainRoot; } }
         public Transform FlockRoot { get { return flockRoot; } }
         public Transform EggsRoot { get { return eggsRoot; } }
         public Transform NestsRoot { get { return nestsRoot; } }
+
+        public float LostDuckThreshold { get { return lostDuckThreshold; } }
+        public float LostEggThreshold { get { return lostEggThreshold; } }
         #endregion
 
         #region GetComponentsInChildren
@@ -33,19 +39,6 @@ namespace TheDuckFlock
         public NestSpawnMarker[] NestSpawnMarkers { get { return TerrainRoot.GetComponentsInChildren<NestSpawnMarker>(); } }
         public SpawnMarker[] EggSpawnMarkers { get { return TerrainRoot.GetComponentsInChildren<EggSpawnMarker>(); } }
         #endregion
-
-
-        // Start is called before the first frame update
-        void Start()
-        {
-
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-
-        }
 
         #region Public methods
 

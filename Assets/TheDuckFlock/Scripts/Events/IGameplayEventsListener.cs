@@ -3,11 +3,12 @@ namespace TheDuckFlock
 {
     public interface IGameplayEventsListener
     {
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="parameters"></param>
         public void OnStartGame(params int[] parameters);
+
+        public void OnDucksMotherLost(params int[] parameters);
+
+        public void OnEggLost(params int[] parameters);
+        public void OnEggHatched(params int[] parameters);
 
     }
 }

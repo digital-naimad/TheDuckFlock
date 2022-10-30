@@ -20,7 +20,7 @@ namespace TheDuckFlock
 
         [SerializeField] protected Transform parentToFollow = null;
 
-        [SerializeField] private float lostHeightThreshold = -3f;
+
 
         [SerializeField] private Animator animator;
 
@@ -51,7 +51,7 @@ namespace TheDuckFlock
         protected void Update()
         {
             //Debug.Log("DUCK UPDATE");
-            if (transform.position.y < lostHeightThreshold)
+            if (transform.position.y < WorldManager.Instance.LostDuckThreshold)
             {
                 currentDuckState = DuckState.Lost;
             }
@@ -202,6 +202,9 @@ namespace TheDuckFlock
         protected void DoLost()
         {
             animator.SetBool(nameof(DuckAnimation.stun), true);
+
+            GameplayEventsManager.DispatchEvent(GameplayEvent.DucksMotherLost);
+
 
             if (rotateTween != null)
             {

@@ -12,8 +12,12 @@ namespace TheDuckFlock
 
             CurrentListeners = listeners;
 
-            // StartGame
             RegisterListener(GameplayEvent.StartGame, listeners.OnStartGame);
+
+            RegisterListener(GameplayEvent.DucksMotherLost, listeners.OnDucksMotherLost);
+
+            RegisterListener(GameplayEvent.EggLost, listeners.OnEggLost);
+            RegisterListener(GameplayEvent.EggHatched, listeners.OnEggHatched);
 
         }
 
@@ -24,8 +28,12 @@ namespace TheDuckFlock
                 return;
             }
 
-            // StartGame
             UnregisterListener(GameplayEvent.StartGame, CurrentListeners.OnStartGame);
+
+            UnregisterListener(GameplayEvent.DucksMotherLost, CurrentListeners.OnDucksMotherLost);
+
+            UnregisterListener(GameplayEvent.EggLost, CurrentListeners.OnEggLost);
+            UnregisterListener(GameplayEvent.EggHatched, CurrentListeners.OnEggHatched);
 
         }
 

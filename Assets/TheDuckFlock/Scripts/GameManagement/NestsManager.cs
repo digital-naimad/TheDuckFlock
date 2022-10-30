@@ -5,20 +5,6 @@ namespace TheDuckFlock
     public class NestsManager : MonoSingleton<NestsManager>
     {
 
-
-
-        // Start is called before the first frame update
-        void Start()
-        {
-
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-
-        }
-
         /// <summary>
         ///  /// <summary>
         /// Spawns Nest prefab at the position of randomely choosen NestSpawnMarker
