@@ -44,5 +44,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6be5fdf6a2c4fd743b5b9055041630ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainCamera: {fileID: 0}
   inputRefreshUpdate: 0.5
+  isMultitouchEnabled: 1
+  isSwipeEnabled: 1
