@@ -18,17 +18,6 @@ namespace TheDuckFlock
 
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        public void StartGame()
-        {
-            Debug.Log(name + "| Starts game");
 
-            //TerrainManager.Instance.GenerateTerrain();
-            GameplayEventsManager.DispatchEvent(GameplayEvent.StartGame);
-           
-
-        }
     }
 }

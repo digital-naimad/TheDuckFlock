@@ -26,27 +26,28 @@ namespace TheDuckFlock
 
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        public void LaunchNextStage()
-        {
-            Debug.Log(name + " | LaunchNextStage");
 
-            TerrainManager.Instance.GenerateTerrain();  
-            NestSpawnMarker nestMarker = NestsManager.Instance.SpawnNest();
-            DucksMotherSpawnMarker motherMarker = nestMarker.DucksMotherSpawnMarker;
-            FlockManager.Instance.SpawnDucksMother(motherMarker);
-            CameraController.Instance.IsFollowDucksMother = true; // warning: order of the calls matters
-        }
 
 
         public void OnStartGame(params int[] parameters)
         {
-            LaunchNextStage();
+            Debug.Log(name + " | OnStartGame()");
 
-            
+            TerrainManager.Instance.GenerateTerrain();
 
+            NestSpawnMarker nestMarker = NestsManager.Instance.SpawnNest();
+
+            EggsManager.Instance.SpawnEgg(nestMarker.EggSpawnMarker);
+            FlockManager.Instance.SpawnDucksMother(nestMarker.DucksMotherSpawnMarker);
+
+            CameraController.Instance.IsFollowDucksMother = true; // warning: order of the calls matters
+
+        }
+
+        public void OnDucksMotherLost()
+        {
+            CameraController.Instance.IsFollowDucksMother = false;
+            //
         }
 
         private void OnDestroy()

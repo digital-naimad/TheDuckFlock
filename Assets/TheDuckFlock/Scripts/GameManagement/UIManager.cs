@@ -30,8 +30,8 @@ namespace TheDuckFlock
             Debug.Log(name + " >> OnStartButtonClick()");
 
             startButton.gameObject.SetActive(false);
-            GameManager.Instance.StartGame();
-        }
 
+            GameplayEventsManager.DispatchEvent(GameplayEvent.StartGame);
+        }
     }
 }

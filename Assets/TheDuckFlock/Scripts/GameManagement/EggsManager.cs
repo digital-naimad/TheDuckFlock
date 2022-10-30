@@ -7,7 +7,6 @@ namespace TheDuckFlock
     public class EggsManager : MonoSingleton<EggsManager>
     {
 
-
         private SpawnMarker[] EggSpawnMarkers
         {
             get
@@ -37,16 +36,17 @@ namespace TheDuckFlock
         /// <summary>
         /// 
         /// </summary>
-        public void SpawnEgg()
+        /// <param name="spawnMarker"> optional - if left blank, then will be randomized</param>
+        public void SpawnEgg(EggSpawnMarker eggSpawnMarker = null)
         {
-            Debug.Log(name + " >> Spawn Egg >> markers count=" + EggSpawnMarkers.Length);
+            Debug.Log(name + " | Spawn Egg ");
 
             // Sets object active
             GameObject eggObject = ObjectPooler.Instance.SpawnFromPool(PoolTag.Egg);
             eggObject.SetActive(true);
 
             // Hides marker
-            SpawnMarker spawnMarker = EggSpawnMarkers[Random.Range(0, EggSpawnMarkers.Length)];
+            SpawnMarker spawnMarker = eggSpawnMarker == null ? EggSpawnMarkers[Random.Range(0, EggSpawnMarkers.Length)] : eggSpawnMarker;
             spawnMarker.Hide();
             spawnMarker.IsUsed = true;
 
