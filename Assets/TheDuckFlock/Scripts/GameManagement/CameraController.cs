@@ -9,7 +9,7 @@ namespace TheDuckFlock
     {
         [SerializeField] private bool isFollowDucksMother = false;
         [SerializeField] private float moveDuration = 1f;
-        [SerializeField] private Vector3 positionShift = new Vector3(0, 0, -50);
+        [SerializeField] private Vector3 positionShift = new Vector3(-45, 0, -45);
 
         public bool IsFollowDucksMother { get { return isFollowDucksMother; } set { isFollowDucksMother = value; } }
 

@@ -983,6 +983,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a137f5d6359561f45ad180d2ce0bc8f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lostDuckThreshold: -5
+  lostEggThreshold: -10
   grainLayerMask:
     serializedVersion: 2
     m_Bits: 128
@@ -2012,22 +2014,22 @@ PrefabInstance:
     - target: {fileID: 3470055404097300902, guid: 61bafaa53c08fd4408a61f4927d9a4ae,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.8660254
+      value: 0.8001032
       objectReference: {fileID: 0}
     - target: {fileID: 3470055404097300902, guid: 61bafaa53c08fd4408a61f4927d9a4ae,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.5
+      value: 0.46193978
       objectReference: {fileID: 0}
     - target: {fileID: 3470055404097300902, guid: 61bafaa53c08fd4408a61f4927d9a4ae,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: 0.33141357
       objectReference: {fileID: 0}
     - target: {fileID: 3470055404097300902, guid: 61bafaa53c08fd4408a61f4927d9a4ae,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0.19134171
       objectReference: {fileID: 0}
     - target: {fileID: 3470055404097300902, guid: 61bafaa53c08fd4408a61f4927d9a4ae,
         type: 3}
@@ -2037,12 +2039,22 @@ PrefabInstance:
     - target: {fileID: 3470055404097300902, guid: 61bafaa53c08fd4408a61f4927d9a4ae,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: 45
       objectReference: {fileID: 0}
     - target: {fileID: 3470055404097300902, guid: 61bafaa53c08fd4408a61f4927d9a4ae,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3470055404097300903, guid: 61bafaa53c08fd4408a61f4927d9a4ae,
+        type: 3}
+      propertyPath: positionShift.x
+      value: -45
+      objectReference: {fileID: 0}
+    - target: {fileID: 3470055404097300903, guid: 61bafaa53c08fd4408a61f4927d9a4ae,
+        type: 3}
+      propertyPath: positionShift.z
+      value: -45
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 61bafaa53c08fd4408a61f4927d9a4ae, type: 3}
