@@ -65,7 +65,7 @@ namespace TheDuckFlock
         /// 
         /// </summary>
         /// <param name="touchPosition"></param>
-        public void OnTap(Vector3 touchPosition)
+        public void OnTap(Vector3 touchPosition, bool isOrtographic)
         {
             Debug.DrawRay(touchPosition, Vector3.up, Color.green);
             Debug.DrawRay(touchPosition, Vector3.down, Color.green);
@@ -74,16 +74,15 @@ namespace TheDuckFlock
             Debug.DrawRay(touchPosition, Vector3.forward, Color.blue);
             Debug.DrawRay(touchPosition, Vector3.back, Color.blue);
 
-            
-            RaycastWorld(touchPosition);
+            RaycastWorld(touchPosition, isOrtographic);
         }
-
-        private void RaycastWorld(Vector3 positionToCheck)
+        
+        private void RaycastWorld(Vector3 positionToCheck, bool isOrtographic)
         {
             RaycastHit hit;
 
             Vector3 cameraPosition = mainCamera.transform.position;
-            Vector3 rayDirection = Vector3.Normalize( positionToCheck - cameraPosition);
+            Vector3 rayDirection = isOrtographic ? mainCamera.transform.forward : Vector3.Normalize( positionToCheck - cameraPosition);
 
             if (Physics.Raycast(positionToCheck, rayDirection, out hit, Mathf.Infinity, grainLayerMask))
             {

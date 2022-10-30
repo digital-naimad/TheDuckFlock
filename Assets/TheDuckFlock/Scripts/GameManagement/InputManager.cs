@@ -8,7 +8,13 @@ namespace TheDuckFlock
     {
         [SerializeField] private Camera mainCamera;
         [SerializeField] private float inputRefreshUpdate = .5f;
-         private float inputRefreshCounter = 0f;
+
+        private float inputRefreshCounter = 0f;
+
+        private void Awake()
+        {
+            mainCamera = Camera.main;
+        }
 
         // Start is called before the first frame update
         void Start()
@@ -19,6 +25,8 @@ namespace TheDuckFlock
         // Update is called once per frame
         void Update()
         {
+            
+
             inputRefreshCounter += Time.deltaTime;
 
             if (inputRefreshCounter > inputRefreshUpdate)
@@ -37,16 +45,18 @@ namespace TheDuckFlock
                     //if (Input.touches[iTouch].phase == TouchPhase.Ended) // is finger up?
                     {
                         Vector3 inputPosition = Input.touches[iTouch].position;
-                        //Debug.Log(name + " >> inputPosition x " + inputPosition.x + " y " + inputPosition.y);
+                        Vector3 touchPosition;
+
+
+                        //Debug.Log(name + " | inputPosition x " + inputPosition.x + " y " + inputPosition.y);
 
                         inputPosition.z = mainCamera.nearClipPlane;
-                        Vector3 touchPosition = mainCamera.ScreenToWorldPoint(inputPosition);
-                        //Debug.Log(name + " >> touchPosition x " + touchPosition.x + " y " + touchPosition.y + " z " + touchPosition.z);
+                        touchPosition = mainCamera.ScreenToWorldPoint(inputPosition);
+                        //Debug.Log(name + " | touchPosition x " + touchPosition.x + " y " + touchPosition.y + " z " + touchPosition.z);
 
                         Debug.DrawRay(touchPosition, Vector3.up, Color.red);
 
-
-                        WorldManager.Instance.OnTap(touchPosition);
+                        WorldManager.Instance.OnTap(touchPosition, mainCamera.orthographic);
                     }
                 }
             }
