@@ -11,6 +11,9 @@ namespace TheDuckFlock
         //[SerializeField] private Vector2 cellSize = new Vector2(18, 18);
         [SerializeField] private Vector2 cellSize = new Vector2(18 * 4, 18 * 4);
 
+        #region Getters
+        public GameObject CentralSegment { get { return _centralSegment; } }
+
         private PoolTag RandomTerrainTag 
         { 
             get 
@@ -21,7 +24,10 @@ namespace TheDuckFlock
 
         private float RandomTileAngle { get { return tileAngles[Random.Range(0, tileAngles.Length)]; } }
 
-        // private PoolTag[] poolTags = { PoolTag.GrassTerrain, PoolTag.EmptyTerrain, PoolTag.GrassWithFences };
+        #endregion
+
+        #region Private fields
+        
         private PoolTag[] poolTags = {
             PoolTag.Segment_0,
             PoolTag.Segment_1,
@@ -36,6 +42,10 @@ namespace TheDuckFlock
         };
 
         private float[] tileAngles = { 0, 90, 180, 270 };
+
+        private GameObject _centralSegment;
+
+        #endregion
 
         private void Awake()
         {
@@ -63,21 +73,26 @@ namespace TheDuckFlock
         {
             ClearTerrain();
 
-            Debug.Log(name + " >> Generate terrain x=" + gridSize.x + " y=" + gridSize.y);
+            Debug.Log(name + " >> Generate terrain (x = " + gridSize.x + ", y = " + gridSize.y + ")");
 
             for (int iRow = 0; iRow < gridSize.y; iRow++)
             {
                 for (int iColumn = 0; iColumn < gridSize.x; iColumn++)
                 {
-                    GameObject newTile = ObjectPooler.Instance.SpawnFromPool(RandomTerrainTag);
-                    newTile.transform.SetParent(WorldManager.Instance.TerrainRoot, false);
-                    newTile.transform.position = new Vector3(
+                    GameObject newSegment = ObjectPooler.Instance.SpawnFromPool(RandomTerrainTag);
+                    newSegment.transform.SetParent(WorldManager.Instance.TerrainRoot, false);
+                    newSegment.transform.position = new Vector3(
                         iColumn * cellSize.x + gridShift.x, 
                         0, 
                         iRow * cellSize.y + gridShift.y
                     );
 
-                    newTile.transform.Rotate(0f, RandomTileAngle, 0.0f, Space.Self);
+                    newSegment.transform.Rotate(0f, RandomTileAngle, 0.0f, Space.Self);
+
+                    if (iRow == Mathf.Floor(gridSize.y/2) && iColumn == Mathf.Floor(gridSize.x/2))
+                    {
+                        _centralSegment = newSegment;
+                    }
                 }
             }
         }
@@ -92,5 +107,6 @@ namespace TheDuckFlock
                 child.gameObject.SetActive(false);
             }
         }
+
     }
 }

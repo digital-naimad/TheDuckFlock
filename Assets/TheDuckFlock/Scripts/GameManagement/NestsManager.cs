@@ -20,15 +20,16 @@ namespace TheDuckFlock
         }
 
         /// <summary>
+        ///  /// <summary>
         /// Spawns Nest prefab at the position of randomely choosen NestSpawnMarker
+        /// 
         /// </summary>
+        /// <returns>Centrally placed NestSpawnMarker</returns>
         public NestSpawnMarker SpawnNest()
         {
             Debug.Log(name + " | SpawnNest");
 
-            NestSpawnMarker[] nestSpawnMarkers = WorldManager.Instance.NestSpawnMarkers;
-            NestSpawnMarker choosenMarker = nestSpawnMarkers[Random.Range(0, nestSpawnMarkers.Length)];
-            //choosenMarker.transform.localScale = Vector3.one * 5;
+            NestSpawnMarker choosenMarker = TerrainManager.Instance.CentralSegment.GetComponentInChildren<NestSpawnMarker>(); 
 
             GameObject nestObject = ObjectPooler.Instance.SpawnFromPool(PoolTag.Nest);
             nestObject.transform.parent = WorldManager.Instance.NestsRoot;
