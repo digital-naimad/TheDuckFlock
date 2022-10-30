@@ -1472,6 +1472,7 @@ MonoBehaviour:
   moveDistance: 2
   parentToFollow: {fileID: 0}
   lostHeightThreshold: -3
+  animator: {fileID: 9565948}
 --- !u!65 &5368736423345968847
 BoxCollider:
   m_ObjectHideFlags: 0
