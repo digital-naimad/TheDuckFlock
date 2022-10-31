@@ -8,7 +8,7 @@ namespace TheDuckFlock
 {
     public class UIManager : MonoSingleton<UIManager>
     {
-        [SerializeField] private Button startButton;
+        [SerializeField] private ResultsScreen resultsScreen;
 
         // Start is called before the first frame update
         void Start()
@@ -25,11 +25,11 @@ namespace TheDuckFlock
         /// <summary>
         /// 
         /// </summary>
-        public void OnStartButtonClick()
+        public void OnPlayButtonClick()
         {
-            Debug.Log(name + " | OnStartButtonClick()");
+            Debug.Log(name + " | OnPlayButtonClick()");
 
-            startButton.gameObject.SetActive(false);
+            resultsScreen.SwitchVisibility(false);
 
             GameplayEventsManager.DispatchEvent(GameplayEvent.StartGame);
         }
