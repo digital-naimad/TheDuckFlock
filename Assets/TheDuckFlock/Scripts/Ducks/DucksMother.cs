@@ -28,8 +28,8 @@ namespace TheDuckFlock
             duckRadius = 8f;
             grainScopeRadius = 18*4;
 
-            moveDuration = .5f;
-            moveDistance = 2f;
+            moveDuration = 1f;
+            moveDistance = 4f;
         }
 
         private void DoState()
