@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7250309964994055805}
   - component: {fileID: 1916555151026121338}
   m_Layer: 0
-  m_Name: Particles
+  m_Name: GrainParticles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4985,7 +4985,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 126
-  m_CollisionDetection: 1
+  m_CollisionDetection: 0
 --- !u!114 &8072635654188812705
 MonoBehaviour:
   m_ObjectHideFlags: 0
