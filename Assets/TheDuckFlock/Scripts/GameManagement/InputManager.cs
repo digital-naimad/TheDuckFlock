@@ -35,6 +35,7 @@ namespace TheDuckFlock
 
                 if (Input.touchCount > 0)
                 {
+                    Debug.Log(name + " | TAP ");
                     for (int iTouch = 0; iTouch < (isMultitouchEnabled ? Input.touchCount : 1); iTouch++)
                     {
                         //Debug.Log(name + " | iTouch " + iTouch);
@@ -44,7 +45,7 @@ namespace TheDuckFlock
                         {
                             Vector3 inputPosition = singleTouch.position;
                             inputPosition.z = mainCamera.nearClipPlane;
-                            //Debug.Log(name + " | inputPosition x " + inputPosition.x + " y " + inputPosition.y);
+                            Debug.Log(name + " | inputPosition x " + inputPosition.x + " y " + inputPosition.y);
 
                             Vector3 touchPosition = mainCamera.ScreenToWorldPoint(inputPosition);
                             //Debug.Log(name + " | touchPosition x " + touchPosition.x + " y " + touchPosition.y + " z " + touchPosition.z);
