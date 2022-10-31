@@ -51,7 +51,7 @@ MonoBehaviour:
     poolSize: 20
   - tag: 3
     prefab: {fileID: 166016, guid: c2c0591d2f36f6048a4d12d3c9827d66, type: 3}
-    poolSize: 1
+    poolSize: 5
   - tag: 4
     prefab: {fileID: 166016, guid: cc83291d6f189c542914154971901da6, type: 3}
     poolSize: 10

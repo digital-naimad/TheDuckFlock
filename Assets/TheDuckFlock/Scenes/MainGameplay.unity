@@ -808,7 +808,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a137f5d6359561f45ad180d2ce0bc8f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lostDuckThreshold: -5
+  lostDuckThreshold: -25
   lostEggThreshold: -10
   grainLayerMask:
     serializedVersion: 2
@@ -1813,6 +1813,56 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 148965447}
     m_Modifications:
+    - target: {fileID: 2842144577645210000, guid: a200dbe71752dd349a5113c1d35a07ab,
+        type: 3}
+      propertyPath: m_Maskable
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2842144577645210000, guid: a200dbe71752dd349a5113c1d35a07ab,
+        type: 3}
+      propertyPath: m_FillCenter
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4775898241230043298, guid: a200dbe71752dd349a5113c1d35a07ab,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4775898241230043298, guid: a200dbe71752dd349a5113c1d35a07ab,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4775898241230043298, guid: a200dbe71752dd349a5113c1d35a07ab,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4775898241230043298, guid: a200dbe71752dd349a5113c1d35a07ab,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4951607515100452832, guid: a200dbe71752dd349a5113c1d35a07ab,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4951607515100452832, guid: a200dbe71752dd349a5113c1d35a07ab,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4951607515100452832, guid: a200dbe71752dd349a5113c1d35a07ab,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4951607515100452832, guid: a200dbe71752dd349a5113c1d35a07ab,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6945303572252738204, guid: a200dbe71752dd349a5113c1d35a07ab,
         type: 3}
       propertyPath: m_RootOrder

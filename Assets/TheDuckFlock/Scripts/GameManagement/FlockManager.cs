@@ -47,7 +47,27 @@ namespace TheDuckFlock
 
             // Sets position
             duckObject.transform.parent = WorldManager.Instance.FlockRoot;
-            duckObject.transform.position = marker.transform.position;
+            duckObject.transform.position = marker.transform.position + Vector3.up;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void RemoveAllDucks()
+        {
+            // Clears lists
+            duckMothers.Clear();
+            duckies.Clear();
+
+            // Clears FlockRoot
+            DuckController[] ducks = WorldManager.Instance.FlockRoot.GetComponentsInChildren<DuckController>();
+
+            foreach (DuckController duck in ducks)
+            {
+                duck.transform.SetParent(ObjectPooler.Instance.PoolRoot, false);
+                duck.transform.position = Vector3.zero;
+                duck.gameObject.SetActive(false);
+            }
         }
 
         /// <summary>
@@ -58,11 +78,11 @@ namespace TheDuckFlock
         public DuckController GetClosestDuckController(Vector3 positionToCheck)
         {
 
-            DuckController[] ducksTable = WorldManager.Instance.FlockRoot.GetComponentsInChildren<DuckController>();
+            DuckController[] ducks = WorldManager.Instance.FlockRoot.GetComponentsInChildren<DuckController>();
 
-            Debug.Log(name + " >> ducks count = " + ducksTable.Length);
+            Debug.Log(name + " >> ducks count = " + ducks.Length);
 
-            if (ducksTable.Length == 0)
+            if (ducks.Length == 0)
             {
                 return null;
             }
@@ -70,7 +90,7 @@ namespace TheDuckFlock
             float minDistance = float.PositiveInfinity;
             DuckController closestDuckController = null;
 
-            foreach (DuckController duck in ducksTable)
+            foreach (DuckController duck in ducks)
             {
                 float distance = Vector3.Distance(positionToCheck, duck.transform.position);
                 if (distance < minDistance)
@@ -84,5 +104,7 @@ namespace TheDuckFlock
             return closestDuckController;
 
         }
+
+      
     }
 }

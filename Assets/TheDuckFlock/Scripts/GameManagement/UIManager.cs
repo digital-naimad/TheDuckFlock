@@ -33,5 +33,13 @@ namespace TheDuckFlock
 
             GameplayEventsManager.DispatchEvent(GameplayEvent.StartGame);
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void ShowResultScreen()
+        {
+            resultsScreen.SwitchVisibility(true);
+        }
     }
 }

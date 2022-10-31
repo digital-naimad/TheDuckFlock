@@ -14,6 +14,11 @@ namespace TheDuckFlock
         [SerializeField] private Transform poolRoot;
         #endregion
 
+        /// <summary>
+        /// 
+        /// </summary>
+        public Transform PoolRoot { get { return poolRoot; } }
+
         private Dictionary<PoolTag, Queue<GameObject>> poolDictionary;
 
         #region Life-cycle callbacks

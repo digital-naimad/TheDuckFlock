@@ -8,7 +8,8 @@ namespace TheDuckFlock
 
         private void Awake()
         {
-            CameraController.Instance.IsFollowDucksMother = false;
+            CameraController.Instance.IsFollowingDucksMother = false;
+            
 
             GameplayEventsManager.SetupListeners(this);
         }
@@ -46,13 +47,15 @@ namespace TheDuckFlock
             EggsManager.Instance.SpawnEgg(nestMarker.EggSpawnMarker);
             FlockManager.Instance.SpawnDucksMother(nestMarker.DucksMotherSpawnMarker);
 
-            CameraController.Instance.IsFollowDucksMother = true; // warning: order of the calls matters
-
+            CameraController.Instance.IsFollowingDucksMother = true; // warning: order of the calls matters
         }
 
         public void OnDucksMotherLost(params int[] parameters)
         {
-            CameraController.Instance.IsFollowDucksMother = false;
+            CameraController.Instance.IsFollowingDucksMother = false;
+           
+            FlockManager.Instance.RemoveAllDucks();
+            UIManager.Instance.ShowResultScreen();
         }
 
         /// <summary>
