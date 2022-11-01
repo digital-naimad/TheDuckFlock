@@ -49,10 +49,13 @@ namespace TheDuckFlock
                 
                 // Food
                 case DuckState.LookForFood:
-                    DoLookForFood();
+                    DoLookForFood(() =>
+                    {
+                        return DistanceToParent > parentFollowRadius;
+                    });
                     break;
                 case DuckState.EatGrain:
-                    DoEatGrain();
+                    DoEatGrain(DuckState.GoToParent);
                     break;
 
                 // General
@@ -60,7 +63,7 @@ namespace TheDuckFlock
                     DoAnimateSpawn();
                     break;
                 case DuckState.Lost:
-                    DoLost();
+                    DoAnimateLost(DoLost);
                     break;
                 case DuckState.Idle:
                 default:
@@ -105,6 +108,13 @@ namespace TheDuckFlock
                 }
                 
             }
+        }
+
+        protected override void DoLost()
+        {
+            base.DoLost();
+
+            GameplayEventsManager.DispatchEvent(GameplayEvent.DuckieLost);
         }
 
         private  void DoGoToParent()

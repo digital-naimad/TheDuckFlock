@@ -57,6 +57,12 @@ namespace TheDuckFlock
             UIManager.Instance.ShowResultScreen();
         }
 
+        public void OnDuckieLost(params Vector3[] parameters)
+        {
+            Debug.Log(name + " | OnDuckieLost");
+            
+        }
+
         /// <summary>
         /// Spawns random new egg
         /// </summary>
@@ -79,6 +85,8 @@ namespace TheDuckFlock
 
 
         }
+
+       
         #endregion
     }
 }

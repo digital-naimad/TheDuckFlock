@@ -45,5 +45,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gridShift: {x: -24, y: -104}
-  gridSize: {x: 8, y: 12}
+  gridSize: {x: 3, y: 6}
   cellSize: {x: 72, y: 72}

@@ -34,7 +34,7 @@ namespace TheDuckFlock
                     DoLookForFood();
                     break;
                 case DuckState.EatGrain:
-                    DoEatGrain();
+                    DoEatGrain(DuckState.Idle);
                     break;
 
                 // General ducks
@@ -42,7 +42,7 @@ namespace TheDuckFlock
                     DoAnimateSpawn();
                     break;
                 case DuckState.Lost:
-                    DoLost();
+                    DoAnimateLost(DoLost);
                     break;
                 case DuckState.Idle:
                 default:
@@ -72,7 +72,12 @@ namespace TheDuckFlock
             }
         }
 
-        
+        protected override void DoLost()
+        {
+            base.DoLost();
+
+            GameplayEventsManager.DispatchEvent(GameplayEvent.DucksMotherLost);
+        }
 
         private void Init()
         {
@@ -83,7 +88,7 @@ namespace TheDuckFlock
             grainScopeRadius = 18*4;
 
             moveDuration = 1f;
-            moveDistance = 4f;
+            moveDistance = 8f;
         }
 
         

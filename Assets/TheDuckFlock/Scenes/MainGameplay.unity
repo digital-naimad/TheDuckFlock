@@ -529,78 +529,6 @@ Transform:
   m_Father: {fileID: 1350463628}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &625547609
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 1506468570}
-    m_Modifications:
-    - target: {fileID: 166016, guid: cc83291d6f189c542914154971901da6, type: 3}
-      propertyPath: m_Name
-      value: Duckie
-      objectReference: {fileID: 0}
-    - target: {fileID: 166016, guid: cc83291d6f189c542914154971901da6, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 466016, guid: cc83291d6f189c542914154971901da6, type: 3}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 466016, guid: cc83291d6f189c542914154971901da6, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -12.71
-      objectReference: {fileID: 0}
-    - target: {fileID: 466016, guid: cc83291d6f189c542914154971901da6, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 466016, guid: cc83291d6f189c542914154971901da6, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 25.88
-      objectReference: {fileID: 0}
-    - target: {fileID: 466016, guid: cc83291d6f189c542914154971901da6, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 466016, guid: cc83291d6f189c542914154971901da6, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 466016, guid: cc83291d6f189c542914154971901da6, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 466016, guid: cc83291d6f189c542914154971901da6, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 466016, guid: cc83291d6f189c542914154971901da6, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 466016, guid: cc83291d6f189c542914154971901da6, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 466016, guid: cc83291d6f189c542914154971901da6, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4817985649928672971, guid: cc83291d6f189c542914154971901da6,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 32
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: cc83291d6f189c542914154971901da6, type: 3}
---- !u!4 &625547610 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 466016, guid: cc83291d6f189c542914154971901da6,
-    type: 3}
-  m_PrefabInstance: {fileID: 625547609}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &662622167 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7644618921257669466, guid: d788bd696789c354fbc05d081faae86d,
@@ -810,6 +738,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lostDuckThreshold: -25
   lostEggThreshold: -10
+  hatchEggDistance: 10
   grainLayerMask:
     serializedVersion: 2
     m_Bits: 128
@@ -1283,8 +1212,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 625547610}
+  m_Children: []
   m_Father: {fileID: 1350463628}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1940,12 +1868,12 @@ PrefabInstance:
     - target: {fileID: 7644618921257669461, guid: d788bd696789c354fbc05d081faae86d,
         type: 3}
       propertyPath: gridSize.x
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7644618921257669461, guid: d788bd696789c354fbc05d081faae86d,
         type: 3}
       propertyPath: gridSize.y
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7644618921257669466, guid: d788bd696789c354fbc05d081faae86d,
         type: 3}

@@ -8,6 +8,7 @@ namespace TheDuckFlock
         StartGame,
 
         DucksMotherLost,
+        DuckieLost,
 
         EggLost,
         EggHatched,

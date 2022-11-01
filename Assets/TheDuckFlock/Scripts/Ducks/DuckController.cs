@@ -1,6 +1,5 @@
 using DG.Tweening;
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 
@@ -62,11 +61,9 @@ namespace TheDuckFlock
         }
 
         public abstract void OnSpawn();
-        
 
-        /// <summary>
-        /// 
-        /// </summary>
+        #region Tween based animations
+
         protected void DoAnimateSpawn()
         {
             transform
@@ -79,6 +76,16 @@ namespace TheDuckFlock
                 });
         }
 
+        protected void DoAnimateLost(Action onCompleteCallback)
+        {
+            transform
+                .DOScale(0, spawnAnimationDuration)
+                .SetEase(Ease.InCubic)
+                .OnComplete(() => onCompleteCallback());
+        }
+
+        #endregion
+
         protected virtual void DoIdle()
         {
             //Debug.Log(name + " | DuckController.DoIdling()");
@@ -86,7 +93,7 @@ namespace TheDuckFlock
             DuckAnimator.SetBool(nameof(DuckAnimation.idle), true);
         }
 
-        protected void DoLookForFood()
+        protected void DoLookForFood(Func<bool> checkCallback = null)
         {
             //Debug.Log(name + " >> " + "DoLookingForFood()");
 
@@ -107,6 +114,15 @@ namespace TheDuckFlock
                     {
                         currentDuckState = DuckState.EatGrain;
                     }
+                }
+            }
+
+            if (checkCallback != null)
+            {
+
+                if (checkCallback())
+                {
+                    currentDuckState = DuckState.GoToParent;
                 }
             }
         }
@@ -132,23 +148,20 @@ namespace TheDuckFlock
 
         
 
-        protected void DoEatGrain()
+        protected void DoEatGrain(DuckState stateAfterComplete)
         {
             var closestGrain = GrainManager.Instance.GetClosestGrain(transform.position);
             if (closestGrain != null)
             {
                 GrainManager.Instance.Peck(closestGrain);
 
-                currentDuckState = DuckState.Idle;
+                currentDuckState = stateAfterComplete;
             }
         }
 
-        protected void DoLost()
+        protected virtual void DoLost()
         {
             DuckAnimator.SetBool(nameof(DuckAnimation.stun), true);
-
-            GameplayEventsManager.DispatchEvent(GameplayEvent.DucksMotherLost);
-
 
             if (rotateTween != null)
             {
@@ -161,6 +174,8 @@ namespace TheDuckFlock
                 moveTween.Complete();
                 moveTween = null;
             }
+
+            gameObject.SetActive(false);
         }
 
         protected void SwitchRigidbodyFreeze(bool isFreezed)

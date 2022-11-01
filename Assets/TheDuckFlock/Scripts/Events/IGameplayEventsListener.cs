@@ -7,6 +7,8 @@ namespace TheDuckFlock
 
         public void OnDucksMotherLost(params CustomParameterType[] parameters);
 
+        public void OnDuckieLost(params CustomParameterType[] parameters);
+
         public void OnEggLost(params CustomParameterType[] parameters);
 
         public void OnEggHatched(params CustomParameterType[] parameters);
