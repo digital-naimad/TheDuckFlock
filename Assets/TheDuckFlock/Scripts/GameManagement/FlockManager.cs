@@ -100,7 +100,7 @@ namespace TheDuckFlock
 
             DuckController[] ducks = WorldManager.Instance.FlockRoot.GetComponentsInChildren<DuckController>();
 
-            Debug.Log(name + " >> ducks count = " + ducks.Length);
+            //Debug.Log(name + " >> ducks count = " + ducks.Length);
 
             if (ducks.Length == 0)
             {

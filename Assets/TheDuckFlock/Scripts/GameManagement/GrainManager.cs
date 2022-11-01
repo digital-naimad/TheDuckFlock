@@ -27,7 +27,8 @@ namespace TheDuckFlock
         /// <param name="positionToSpawn"></param>
         public void SpawnGrainAtPosition(Vector3 positionToSpawn)
         {
-            Debug.Log(name + " | Spawn grain at position = " + positionToSpawn);
+            //Debug.Log(name + " | Spawn grain at position = " + positionToSpawn);
+
             GameObject grainObject = ObjectPooler.Instance.SpawnFromPool(PoolTag.Grain);
             grainObject.transform.parent = WorldManager.Instance.GrainRoot;
             grainObject.transform.position = positionToSpawn;
