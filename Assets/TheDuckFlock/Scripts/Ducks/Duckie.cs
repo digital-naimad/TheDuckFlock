@@ -163,8 +163,8 @@ namespace TheDuckFlock
             duckRadius = 4f;
             grainScopeRadius = 16f;
 
-            moveDuration = 2f;
-            moveDistance = 8f;
+            moveDuration = 1f;
+            moveDistance = 4f;
         }
     }
 }

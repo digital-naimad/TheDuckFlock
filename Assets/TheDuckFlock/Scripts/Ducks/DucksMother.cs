@@ -54,7 +54,7 @@ namespace TheDuckFlock
 
         protected override void DoIdle()
         {
-            Debug.Log(name + " | DucksMother.DoIdling()");
+            //Debug.Log(name + " | DucksMother.DoIdling()");
 
             base.DoIdle();
 
@@ -87,8 +87,8 @@ namespace TheDuckFlock
             duckRadius = 8f;
             grainScopeRadius = 18*4;
 
-            moveDuration = 1f;
-            moveDistance = 8f;
+            moveDuration = .5f;
+            moveDistance = 4f;
         }
 
         
