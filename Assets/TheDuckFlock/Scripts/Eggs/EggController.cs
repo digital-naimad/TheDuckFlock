@@ -20,8 +20,20 @@ namespace TheDuckFlock
             {
                 GameplayEventsManager.DispatchEvent(GameplayEvent.EggLost);
 
-                gameObject.SetActive(false);
+                Hide();
             }
+
+            if (Vector3.Distance(transform.position, FlockManager.Instance.MotherPosition) < WorldManager.Instance.HatchEggThreshold)
+            {
+                GameplayEventsManager.DispatchEvent(GameplayEvent.EggHatched, transform.position);
+
+                Hide();
+            }
+        }
+
+        private void Hide()
+        {
+            gameObject.SetActive(false);
         }
     }
 }

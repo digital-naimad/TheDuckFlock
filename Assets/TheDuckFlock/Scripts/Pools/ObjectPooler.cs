@@ -61,7 +61,7 @@ namespace TheDuckFlock
         {
             if (!poolDictionary.ContainsKey(tag))
             {
-                Debug.Log("Warning: Pool with tag " + tag + " does not exist");
+                Debug.Log(name + " | Warning: Pool with tag " + tag + " does not exist");
                 return null;
             }
 
@@ -86,7 +86,7 @@ namespace TheDuckFlock
         {
             if (!poolDictionary.ContainsKey(tag))
             {
-                Debug.Log(name + " >> Warning: Pool with tag " + tag + " does not exist");
+                Debug.Log(name + " | Warning: Pool with tag " + tag + " does not exist");
                 return null;
             }
 
@@ -95,16 +95,14 @@ namespace TheDuckFlock
             objectToSpawn.SetActive(false);
             objectToSpawn.SetActive(true);
 
-           
 
-            /*
             IPooledObject pooledObject = objectToSpawn.GetComponent<IPooledObject>();
 
             if (pooledObject != null)
             {
                 pooledObject.OnSpawn();
             }
-            */
+            
 
             poolDictionary[tag].Enqueue(objectToSpawn);
 

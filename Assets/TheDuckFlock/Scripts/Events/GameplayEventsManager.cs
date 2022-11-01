@@ -1,12 +1,14 @@
 
+using UnityEngine;
+
 namespace TheDuckFlock
 {
     /// <summary>
     /// Implementation of Observer Pattern
     /// </summary>
-    public class GameplayEventsManager : EventsManager<GameplayEvent, IGameplayEventsListener>
+    public class GameplayEventsManager : EventsManager<GameplayEvent, IGameplayEventsListener<Vector3>, Vector3>
     {
-        public static void SetupListeners(IGameplayEventsListener listeners)
+        public static void SetupListeners(IGameplayEventsListener<Vector3> listeners)
         {
             RemoveListeners();
 

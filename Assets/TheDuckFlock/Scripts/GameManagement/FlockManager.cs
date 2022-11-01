@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Timeline;
 
 namespace TheDuckFlock
 {
@@ -41,13 +42,32 @@ namespace TheDuckFlock
             GameObject duckObject = ObjectPooler.Instance.SpawnFromPool(PoolTag.DucksMother);
             duckObject.SetActive(true);
 
-            // Adds mother to list
-            DucksMother newDuck = duckObject.GetComponent<DucksMother>();
-            duckMothers.Add(newDuck);
-
             // Sets position
             duckObject.transform.parent = WorldManager.Instance.FlockRoot;
             duckObject.transform.position = marker.transform.position + Vector3.up;
+
+            // Adds mother to list
+            DucksMother newDuck = duckObject.GetComponent<DucksMother>();
+            duckMothers.Add(newDuck);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="eggPosition"></param>
+        public void SpawnDuckie(Vector3 eggPosition)
+        {
+            // Sets Duckie active
+            GameObject duckObject = ObjectPooler.Instance.SpawnFromPool(PoolTag.Duckie);
+            duckObject.SetActive(true);
+
+            // Sets position
+            duckObject.transform.parent = WorldManager.Instance.FlockRoot;
+            duckObject.transform.position = eggPosition;
+
+            // Adds Duckie to list
+            Duckie newDuck = duckObject.GetComponent<Duckie>();
+            duckies.Add(newDuck);
         }
 
         /// <summary>
@@ -75,7 +95,7 @@ namespace TheDuckFlock
         /// </summary>
         /// <param name="positionToCheck"></param>
         /// <returns></returns>
-        public DuckController GetClosestDuckController(Vector3 positionToCheck)
+        public DuckController GetClosestDuckController(Vector3 positionToCheck, DuckController duckToExclude = null)
         {
 
             DuckController[] ducks = WorldManager.Instance.FlockRoot.GetComponentsInChildren<DuckController>();
@@ -92,11 +112,14 @@ namespace TheDuckFlock
 
             foreach (DuckController duck in ducks)
             {
-                float distance = Vector3.Distance(positionToCheck, duck.transform.position);
-                if (distance < minDistance)
+                if (duckToExclude == null || duckToExclude != duck)
                 {
-                    minDistance = distance;
-                    closestDuckController = duck;
+                    float distance = Vector3.Distance(positionToCheck, duck.transform.position);
+                    if (distance < minDistance)
+                    {
+                        minDistance = distance;
+                        closestDuckController = duck;
+                    }
                 }
 
             }

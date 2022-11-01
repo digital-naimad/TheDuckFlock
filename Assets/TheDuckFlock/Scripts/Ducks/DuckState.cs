@@ -1,31 +1,39 @@
 using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 
 namespace TheDuckFlock
 {
     public enum DuckState 
     {
         /// <summary>
+        /// Fresh duck
+        /// </summary>
+        Newborn,
+
+        /// <summary>
         /// Stands as IDLE
         /// </summary>
-        Idling,
+        Idle,
 
         /// <summary>
         /// Searching for the parent, rotates, go to target
         /// </summary>
-        FollowingParent,
+        GoToParent,
+
+        /// <summary>
+        /// Warning: Not only a duck mother can be a parent for duckie
+        /// </summary>
+        FollowParent,
 
         /// <summary>
         /// Searching for a GRAIN, rotates, go to target
         /// </summary>
-        LookingForFood,
+        LookForFood,
 
 
         /// <summary>
         /// Picks seeds
         /// </summary>
-        EatingGrain,
+        EatGrain,
 
         /// <summary>
         /// Duck is missed

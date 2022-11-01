@@ -9,7 +9,7 @@ namespace TheDuckFlock
     /// </summary>
     /// <typeparam name="CustomEvent">GamepadEvent or GameplayEvent enum</typeparam>
     /// <typeparam name="CustomListenerInterface">IGamepadEventsListener or IGameplayEventsListener interface</typeparam>
-    public class EventsManager<CustomEvent, CustomListenerInterface> : MonoBehaviour
+    public class EventsManager<CustomEvent, CustomListenerInterface, CustomParameterType> : MonoBehaviour
     {
         /// <summary>
         /// 
@@ -26,7 +26,7 @@ namespace TheDuckFlock
             }
         }
 
-        private static Dictionary<CustomEvent, List<Action<int[]>>> listenersDictionary = new Dictionary<CustomEvent, List<Action<int[]>>>();
+        private static Dictionary<CustomEvent, List<Action<CustomParameterType[]>>> listenersDictionary = new Dictionary<CustomEvent, List<Action<CustomParameterType[]>>>();
         private static CustomListenerInterface currentListeners;
 
         #region Public methods
@@ -35,11 +35,11 @@ namespace TheDuckFlock
         /// </summary>
         /// <param name="eventType">One of GamepadEvent defined in GamepadEvent enum</param>
         /// <param name="callbackFunction"></param>
-        public static void RegisterListener(CustomEvent eventType, Action<int[]> callbackFunction)
+        public static void RegisterListener(CustomEvent eventType, Action<CustomParameterType[]> callbackFunction)
         {
             if (!listenersDictionary.ContainsKey(eventType))
             {
-                listenersDictionary.Add(eventType, new List<Action<int[]>>());
+                listenersDictionary.Add(eventType, new List<Action<CustomParameterType[]>>());
             }
 
             listenersDictionary[eventType].Add(callbackFunction);
@@ -50,7 +50,7 @@ namespace TheDuckFlock
         /// </summary>
         /// <param name="eventType">One of GamepadEvents defined in GamepadEvent enum</param>
         /// <param name="callbackFunction"></param>
-        public static void UnregisterListener(CustomEvent eventType, Action<int[]> callbackFunction)
+        public static void UnregisterListener(CustomEvent eventType, Action<CustomParameterType[]> callbackFunction)
         {
             if (!listenersDictionary.ContainsKey(eventType))
             {
@@ -70,7 +70,7 @@ namespace TheDuckFlock
         /// </summary>
         /// <param name="eventType">One of a GamepadEvents defined in GamepadEvent enum</param>
         /// <param name="dataValues"> dynamic values list of type int. Using by some of an eventTypes</param>
-        public static void DispatchEvent(CustomEvent eventType, params int[] dataValues)
+        public static void DispatchEvent(CustomEvent eventType, params CustomParameterType[] dataValues)
         {
             //Debug.Log( " >> Call to dispatch event: " + eventType);
 
@@ -86,7 +86,7 @@ namespace TheDuckFlock
             }
             */
 
-            List<Action<int[]>> actionsList = listenersDictionary[eventType];//.ForEach(e => e(value));
+            List<Action<CustomParameterType[]>> actionsList = listenersDictionary[eventType];//.ForEach(e => e(value));
             //actionsList.ForEach(e => e(value));
 
             for (int i = 0; i < actionsList.Count; i++)

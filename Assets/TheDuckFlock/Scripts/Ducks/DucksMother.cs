@@ -7,24 +7,78 @@ namespace TheDuckFlock
 {
     public class DucksMother : DuckController
     {
-        // Start is called before the first frame update
-        void Start()
-        {
-            Init();
-        }
-
-        // Update is called once per frame
         void Update()
         {
            base.Update();
+
            // Debug.Log("DUCKS MOTHER UPDATE");
+
            DoState();
         }
 
+        /// <summary>
+        /// IPooledObject
+        /// </summary>
+        public override void OnSpawn()
+        {
+            //Debug.Log(name + " | OnSpawn()");
+            Init();
+        }
+
+        private void DoState()
+        {
+            switch (currentDuckState)
+            {
+                // Food
+                case DuckState.LookForFood:
+                    DoLookForFood();
+                    break;
+                case DuckState.EatGrain:
+                    DoEatGrain();
+                    break;
+
+                // General ducks
+                case DuckState.Newborn:
+                    DoAnimateSpawn();
+                    break;
+                case DuckState.Lost:
+                    DoLost();
+                    break;
+                case DuckState.Idle:
+                default:
+                    DoIdle();
+                    break;
+
+            }
+        }
+
+        protected override void DoIdle()
+        {
+            Debug.Log(name + " | DucksMother.DoIdling()");
+
+            base.DoIdle();
+
+            // CHECKS FOOD
+            GrainController closestGrain = GrainManager.Instance.GetClosestGrain(transform.position);
+            
+            if (closestGrain != null)
+            {
+                float distance = Vector3.Distance(transform.position, closestGrain.transform.position);
+
+                if (distance < grainScopeRadius) // && distance > 8f)
+                {
+                    currentDuckState = DuckState.LookForFood;
+                }
+            }
+        }
+
+        
+
         private void Init()
         {
-            currentDuckState = DuckState.Idling;
+            currentDuckState = DuckState.Newborn;
 
+            fullScale = 1f;
             duckRadius = 8f;
             grainScopeRadius = 18*4;
 
@@ -32,26 +86,7 @@ namespace TheDuckFlock
             moveDistance = 4f;
         }
 
-        private void DoState()
-        {
-            switch (currentDuckState)
-            {
-                case DuckState.LookingForFood:
-                    DoLookingForFood();
-                    break;
-                case DuckState.EatingGrain:
-                    DoEatGrain();
-                    break;
-                case DuckState.Lost:
-                    DoLost();
-                    break;
-                case DuckState.Idling:
-                default:
-                    DoIdling(true);
-                    break;
-
-            }
-        }
+        
     }
 }
 

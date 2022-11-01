@@ -1,9 +1,8 @@
-
 using UnityEngine;
 
 namespace TheDuckFlock
 {
-    public class GameplayManager : MonoSingleton<GameplayManager>, IGameplayEventsListener
+    public class GameplayManager : MonoSingleton<GameplayManager>, IGameplayEventsListener<Vector3>
     {
 
         private void Awake()
@@ -36,7 +35,7 @@ namespace TheDuckFlock
         #endregion
 
         #region GameplayEvent listeners
-        public void OnStartGame(params int[] parameters)
+        public void OnStartGame(params Vector3[] parameters)
         {
             Debug.Log(name + " | OnStartGame()");
 
@@ -50,7 +49,7 @@ namespace TheDuckFlock
             CameraController.Instance.IsFollowingDucksMother = true; // warning: order of the calls matters
         }
 
-        public void OnDucksMotherLost(params int[] parameters)
+        public void OnDucksMotherLost(params Vector3[] parameters)
         {
             CameraController.Instance.IsFollowingDucksMother = false;
            
@@ -62,18 +61,23 @@ namespace TheDuckFlock
         /// Spawns random new egg
         /// </summary>
         /// <param name="parameters"></param>
-        public void OnEggLost(params int[] parameters)
+        public void OnEggLost(params Vector3[] parameters)
         {
+            EggsManager.Instance.SpawnEgg();
             EggsManager.Instance.SpawnEgg();
         }
 
-        public void OnEggHatched(params int[] parameters)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="parameters">Should provide position of the hatched Egg at index 0</param>
+        public void OnEggHatched(params Vector3[] parameters)
         {
-            /// TODO:
-            /// * clear hatched egg (with animation?)
-            /// * spawn new duckie
+            FlockManager.Instance.SpawnDuckie(parameters[0]);
 
             EggsManager.Instance.SpawnEgg();
+
+
         }
         #endregion
     }

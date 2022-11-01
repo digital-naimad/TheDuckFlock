@@ -9,6 +9,8 @@ namespace TheDuckFlock
         [SerializeField] private float lostDuckThreshold = -25f;
         [SerializeField] private float lostEggThreshold = -10f;
 
+        [SerializeField] private float hatchEggDistance = 10f;
+
         [SerializeField] private LayerMask grainLayerMask;
 
         [SerializeField] private Camera mainCamera;
@@ -32,6 +34,8 @@ namespace TheDuckFlock
 
         public float LostDuckThreshold { get { return lostDuckThreshold; } }
         public float LostEggThreshold { get { return lostEggThreshold; } }
+
+        public float HatchEggThreshold { get { return hatchEggDistance; } }
         #endregion
 
         #region GetComponentsInChildren

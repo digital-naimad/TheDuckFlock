@@ -1,14 +1,15 @@
 
 namespace TheDuckFlock
 {
-    public interface IGameplayEventsListener
+    public interface IGameplayEventsListener<CustomParameterType>
     {
-        public void OnStartGame(params int[] parameters);
+        public void OnStartGame(params CustomParameterType[] parameters);
 
-        public void OnDucksMotherLost(params int[] parameters);
+        public void OnDucksMotherLost(params CustomParameterType[] parameters);
 
-        public void OnEggLost(params int[] parameters);
-        public void OnEggHatched(params int[] parameters);
+        public void OnEggLost(params CustomParameterType[] parameters);
+
+        public void OnEggHatched(params CustomParameterType[] parameters);
 
     }
 }
