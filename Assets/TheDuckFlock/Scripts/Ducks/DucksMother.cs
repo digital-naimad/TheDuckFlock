@@ -77,6 +77,7 @@ namespace TheDuckFlock
             base.DoLost();
 
             GameplayEventsManager.DispatchEvent(GameplayEvent.DucksMotherLost);
+            wasLostEventDispatched = true;
         }
 
         private void Init()
@@ -87,8 +88,10 @@ namespace TheDuckFlock
             duckRadius = 8f;
             grainScopeRadius = 18*4;
 
-            moveDuration = .5f;
+            moveDuration = .25f;
             moveDistance = 2f;
+
+            wasLostEventDispatched = false;
         }
 
         

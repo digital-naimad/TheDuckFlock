@@ -44,11 +44,15 @@ namespace TheDuckFlock
             }
         }
 
+        protected bool wasLostEventDispatched = false;
+
         private Rigidbody _rigidbody;
         private Animator _duckAnimator;
 
         private Tween rotateTween = null;
         private Tween moveTween = null;
+
+        
 
         // Update is called once per frame
         protected void Update()

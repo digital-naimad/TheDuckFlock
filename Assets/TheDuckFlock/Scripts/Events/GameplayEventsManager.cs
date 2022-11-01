@@ -17,6 +17,7 @@ namespace TheDuckFlock
             RegisterListener(GameplayEvent.StartGame, listeners.OnStartGame);
 
             RegisterListener(GameplayEvent.DucksMotherLost, listeners.OnDucksMotherLost);
+            RegisterListener(GameplayEvent.DuckieLost, listeners.OnDuckieLost);
 
             RegisterListener(GameplayEvent.EggLost, listeners.OnEggLost);
             RegisterListener(GameplayEvent.EggHatched, listeners.OnEggHatched);
@@ -33,6 +34,7 @@ namespace TheDuckFlock
             UnregisterListener(GameplayEvent.StartGame, CurrentListeners.OnStartGame);
 
             UnregisterListener(GameplayEvent.DucksMotherLost, CurrentListeners.OnDucksMotherLost);
+            UnregisterListener(GameplayEvent.DuckieLost, CurrentListeners.OnDuckieLost);
 
             UnregisterListener(GameplayEvent.EggLost, CurrentListeners.OnEggLost);
             UnregisterListener(GameplayEvent.EggHatched, CurrentListeners.OnEggHatched);

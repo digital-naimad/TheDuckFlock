@@ -114,7 +114,11 @@ namespace TheDuckFlock
         {
             base.DoLost();
 
-            GameplayEventsManager.DispatchEvent(GameplayEvent.DuckieLost);
+            if (!wasLostEventDispatched)
+            {
+                GameplayEventsManager.DispatchEvent(GameplayEvent.DuckieLost);
+                wasLostEventDispatched = true;
+            }
         }
 
         private  void DoGoToParent()
@@ -165,6 +169,8 @@ namespace TheDuckFlock
 
             moveDuration = .5f;
             moveDistance = 2f;
+
+            wasLostEventDispatched = false;
         }
     }
 }
