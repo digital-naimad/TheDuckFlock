@@ -58,6 +58,7 @@ namespace TheDuckFlock
         protected void Update()
         {
             //Debug.Log("DUCK UPDATE");
+
             if (transform.position.y < WorldManager.Instance.LostDuckThreshold)
             {
                 currentDuckState = DuckState.Lost;

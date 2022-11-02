@@ -22,6 +22,11 @@ namespace TheDuckFlock
             RegisterListener(GameplayEvent.EggLost, listeners.OnEggLost);
             RegisterListener(GameplayEvent.EggHatched, listeners.OnEggHatched);
 
+            RegisterListener(GameplayEvent.ReturnedToNest, listeners.OnReturnedToNest);
+
+
+            RegisterListener(GameplayEvent.ScoreGoalAchieved, listeners.OnScoreGoalAchieved);
+            RegisterListener(GameplayEvent.ScoreGoalLost, listeners.OnScoreGoalLost);
         }
 
         public static void RemoveListeners()
@@ -39,6 +44,10 @@ namespace TheDuckFlock
             UnregisterListener(GameplayEvent.EggLost, CurrentListeners.OnEggLost);
             UnregisterListener(GameplayEvent.EggHatched, CurrentListeners.OnEggHatched);
 
+            UnregisterListener(GameplayEvent.ReturnedToNest, CurrentListeners.OnReturnedToNest);
+
+            UnregisterListener(GameplayEvent.ScoreGoalAchieved, CurrentListeners.OnScoreGoalAchieved);
+            UnregisterListener(GameplayEvent.ScoreGoalLost, CurrentListeners.OnScoreGoalLost);
         }
 
     }

@@ -13,6 +13,11 @@ namespace TheDuckFlock
         EggLost,
         EggHatched,
 
+        ReturnedToNest,
+
+        ScoreGoalAchieved,
+        ScoreGoalLost
+
         /*
         EndRound,
         GameOver,

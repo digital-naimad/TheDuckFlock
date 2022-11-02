@@ -9,11 +9,19 @@ namespace TheDuckFlock
     {
         void Update()
         {
-           base.Update();
+            base.Update();
 
-           // Debug.Log("DUCKS MOTHER UPDATE");
+            // Debug.Log("DUCKS MOTHER UPDATE");
 
-           DoState();
+            DoState();
+
+            if (ScoreManager.Instance.WasGoalAchieved)
+            {
+                if (Vector3.Distance(transform.position, NestsManager.Instance.NestPosition) < NestsManager.Instance.NestScopeRadius)
+                {
+                    GameplayEventsManager.DispatchEvent(GameplayEvent.ReturnedToNest);
+                }
+            }
         }
 
         /// <summary>
@@ -76,8 +84,11 @@ namespace TheDuckFlock
         {
             base.DoLost();
 
-            GameplayEventsManager.DispatchEvent(GameplayEvent.DucksMotherLost);
-            wasLostEventDispatched = true;
+            if (!wasLostEventDispatched)
+            {
+                GameplayEventsManager.DispatchEvent(GameplayEvent.DucksMotherLost);
+                wasLostEventDispatched = true;
+            }
         }
 
         private void Init()

@@ -23,11 +23,15 @@ namespace TheDuckFlock
                 Hide();
             }
 
-            if (Vector3.Distance(transform.position, FlockManager.Instance.MotherPosition) < WorldManager.Instance.HatchEggThreshold)
+            if (FlockManager.Instance.MotherPosition != Vector3.one * 1000)
             {
-                GameplayEventsManager.DispatchEvent(GameplayEvent.EggHatched, transform.position);
 
-                Hide();
+                if (Vector3.Distance(transform.position, FlockManager.Instance.MotherPosition) < WorldManager.Instance.HatchEggThreshold)
+                {
+                    GameplayEventsManager.DispatchEvent(GameplayEvent.EggHatched, transform.position);
+
+                    Hide();
+                }
             }
         }
 

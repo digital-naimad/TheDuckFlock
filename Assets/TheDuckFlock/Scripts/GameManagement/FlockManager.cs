@@ -19,7 +19,7 @@ namespace TheDuckFlock
         /// <summary>
         /// 
         /// </summary>
-        public Vector3 MotherPosition { get { return duckMothers[0].transform.position; } }
+        public Vector3 MotherPosition { get { return duckMothers.Count == 0 ? Vector3.one * 1000 : duckMothers[0].transform.position; } }
 
         // Start is called before the first frame update
         void Start()
@@ -40,7 +40,6 @@ namespace TheDuckFlock
         {
             // Sets DucksMother active
             GameObject duckObject = ObjectPooler.Instance.SpawnFromPool(PoolTag.DucksMother);
-            duckObject.SetActive(true);
 
             // Sets position
             duckObject.transform.parent = WorldManager.Instance.FlockRoot;
@@ -49,6 +48,8 @@ namespace TheDuckFlock
             // Adds mother to list
             DucksMother newDuck = duckObject.GetComponent<DucksMother>();
             duckMothers.Add(newDuck);
+
+            duckObject.SetActive(true);
         }
 
         /// <summary>

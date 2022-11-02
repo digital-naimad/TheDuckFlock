@@ -1,3 +1,4 @@
+using DG.Tweening;
 using UnityEngine;
 
 namespace TheDuckFlock
@@ -43,10 +44,31 @@ namespace TheDuckFlock
 
             NestSpawnMarker nestMarker = NestsManager.Instance.SpawnNest();
 
+            ScoreManager.Instance.IncreaseScoreGoal();
+            UIManager.Instance.SetScoreGoal(ScoreManager.Instance.CurrentScoreGoal);
+            UIManager.Instance.SwitchIndicatorsVisibility(true);
+
             EggsManager.Instance.SpawnEgg(nestMarker.EggSpawnMarker);
+
+            for (int i = 0; i < ScoreManager.Instance.CurrentScoreGoal * 5; i++)
+            {
+                EggsManager.Instance.SpawnEgg();
+            }
+
             FlockManager.Instance.SpawnDucksMother(nestMarker.DucksMotherSpawnMarker);
 
+            for (int i = 0; i < ScoreManager.Instance.currentFlockSize; i++)
+            {
+                DOVirtual.DelayedCall(i * .25f, () =>
+                {
+                    FlockManager.Instance.SpawnDuckie(nestMarker.DucksMotherSpawnMarker.transform.position);
+                });
+                
+            }
+
+
             CameraController.Instance.IsFollowingDucksMother = true; // warning: order of the calls matters
+            InputManager.Instance.IsTouchActive = true;
         }
 
         public void OnDucksMotherLost(params Vector3[] parameters)
@@ -54,12 +76,20 @@ namespace TheDuckFlock
             CameraController.Instance.IsFollowingDucksMother = false;
            
             FlockManager.Instance.RemoveAllDucks();
+
+            ScoreManager.Instance.AddToLostDuckies(WorldManager.Instance.FlockRoot.childCount);
             UIManager.Instance.ShowResultScreen();
+
+            ScoreManager.Instance.ResetScore();
+            UIManager.Instance.SetScoreGoal(1);
         }
 
         public void OnDuckieLost(params Vector3[] parameters)
         {
             Debug.Log(name + " | OnDuckieLost");
+
+            ScoreManager.Instance.OnDuckieLost();
+            UIManager.Instance.UpdateScore(ScoreManager.Instance.CurrentScore);
             
         }
 
@@ -69,7 +99,8 @@ namespace TheDuckFlock
         /// <param name="parameters"></param>
         public void OnEggLost(params Vector3[] parameters)
         {
-            EggsManager.Instance.SpawnEgg();
+            Debug.Log(name + " | OnEggLost");
+
             EggsManager.Instance.SpawnEgg();
         }
 
@@ -79,14 +110,47 @@ namespace TheDuckFlock
         /// <param name="parameters">Should provide position of the hatched Egg at index 0</param>
         public void OnEggHatched(params Vector3[] parameters)
         {
+            ScoreManager.Instance.OnDuckieHatched();
+
+            Debug.Log(name + " | OnEggHatched current score " + ScoreManager.Instance.CurrentScore);
+
+            UIManager.Instance.UpdateScore(ScoreManager.Instance.CurrentScore);
+
             FlockManager.Instance.SpawnDuckie(parameters[0]);
 
-            EggsManager.Instance.SpawnEgg();
+            for (int i = 0; i < ScoreManager.Instance.CurrentScoreGoal * 2; i++)
+            {
+                EggsManager.Instance.SpawnEgg();
+            }
+        }
 
+        public void OnReturnedToNest(params Vector3[] parameters)
+        {
+            InputManager.Instance.IsTouchActive = false;
+
+            UIManager.Instance.ShowResultScreen();
+            ScoreManager.Instance.IncrementLevel();
+
+            FlockManager.Instance.RemoveAllDucks();
+        }
+
+        public void OnScoreGoalAchieved(params Vector3[] parameters)
+        {
+            Debug.Log(name + " | OnScoreGoalAchieved ");
+
+            UIManager.Instance.SwitchNestIndicatorVisibility(true);
 
         }
 
-       
+        public void OnScoreGoalLost(params Vector3[] parameters)
+        {
+            Debug.Log(name + " | OnScoreGoalLost ");
+
+            UIManager.Instance.SwitchNestIndicatorVisibility(false);
+        }
+
+        
+
         #endregion
     }
 }

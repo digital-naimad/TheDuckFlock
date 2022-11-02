@@ -39,6 +39,11 @@ namespace TheDuckFlock
         Segment_8,
         Segment_9,
 
-        Nest = 19
+        Nest = 19,
+
+        HatchedDuckieIcon,
+        LostDuckieIcon,
+
+        ScoreIndicator
     }
 }

@@ -13,5 +13,11 @@ namespace TheDuckFlock
 
         public void OnEggHatched(params CustomParameterType[] parameters);
 
+        public void OnReturnedToNest(params CustomParameterType[] parameters);
+
+        public void OnScoreGoalAchieved(params CustomParameterType[] parameters);
+
+        public void OnScoreGoalLost(params CustomParameterType[] parameters);
+
     }
 }

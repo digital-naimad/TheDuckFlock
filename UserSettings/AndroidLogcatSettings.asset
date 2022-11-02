@@ -3,7 +3,7 @@
     "m_SelectedPackage": {
         "deviceId": "swlzpvpfwodmmzvk",
         "name": "com.PrettyFlyStudio.FamilyDuck",
-        "processId": 23596,
+        "processId": 17229,
         "exited": false
     },
     "m_SelectedPriority": 0,
@@ -18,6 +18,24 @@
             "deviceId": "swlzpvpfwodmmzvk",
             "name": "com.PrettyFlyStudio.FamilyDuck",
             "processId": 23596,
+            "exited": false
+        },
+        {
+            "deviceId": "swlzpvpfwodmmzvk",
+            "name": "com.PrettyFlyStudio.FamilyDuck",
+            "processId": 21584,
+            "exited": false
+        },
+        {
+            "deviceId": "swlzpvpfwodmmzvk",
+            "name": "com.PrettyFlyStudio.FamilyDuck",
+            "processId": 16234,
+            "exited": false
+        },
+        {
+            "deviceId": "swlzpvpfwodmmzvk",
+            "name": "com.PrettyFlyStudio.FamilyDuck",
+            "processId": 17229,
             "exited": false
         }
     ],

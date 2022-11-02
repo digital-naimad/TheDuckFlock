@@ -4,6 +4,16 @@ namespace TheDuckFlock
 {
     public class NestsManager : MonoSingleton<NestsManager>
     {
+        public float NestScopeRadius { get { return 4; } }
+        public Vector3 NestPosition
+        {
+            get
+            {
+                return nestTransform.position;
+            }
+        }
+
+        private Transform nestTransform;
 
         /// <summary>
         ///  /// <summary>
@@ -21,7 +31,11 @@ namespace TheDuckFlock
             nestObject.transform.parent = WorldManager.Instance.NestsRoot;
             nestObject.transform.position = choosenMarker.transform.position;
 
+            nestTransform = nestObject.transform;
+
             return choosenMarker;
         }
+
+
     }
 }

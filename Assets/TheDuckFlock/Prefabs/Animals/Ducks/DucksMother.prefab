@@ -1457,14 +1457,14 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 166016}
   serializedVersion: 2
-  m_Mass: 5
+  m_Mass: 10
   m_Drag: 0.5
   m_AngularDrag: 0.1
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 80
-  m_CollisionDetection: 2
+  m_CollisionDetection: 0
 --- !u!114 &1700057271734950941
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1480,11 +1480,11 @@ MonoBehaviour:
   currentDuckState: 0
   duckRadius: 8
   grainScopeRadius: 30
-  parentScopeRadius: 50
+  fullScale: 0
   rotationDuration: 1
   moveDuration: 1
   moveDistance: 2
-  parentToFollow: {fileID: 0}
+  spawnAnimationDuration: 1
 --- !u!65 &5368736423345968847
 BoxCollider:
   m_ObjectHideFlags: 0
