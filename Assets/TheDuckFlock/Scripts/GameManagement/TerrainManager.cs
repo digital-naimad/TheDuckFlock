@@ -11,6 +11,10 @@ namespace TheDuckFlock
         //[SerializeField] private Vector2 cellSize = new Vector2(18, 18);
         [SerializeField] private Vector2 cellSize = new Vector2(18 * 4, 18 * 4);
 
+        [SerializeField] private GameObject fogPlane;
+        [SerializeField] private Vector3 fogScale = new Vector3(.5f, 9f, .5f);
+        [SerializeField] private float fogAltitude = -3f;
+
         #region Getters
         public GameObject CentralSegment { get { return _centralSegment; } }
 
@@ -61,7 +65,7 @@ namespace TheDuckFlock
         // Update is called once per frame
         void Update()
         {
-
+            // TODO: update fog plane position
         }
 
         /// <summary>
@@ -72,6 +76,7 @@ namespace TheDuckFlock
         public void GenerateTerrain()
         {
             ClearTerrain();
+            SetupFogPlane();
 
             Debug.Log(name + " >> Generate terrain (x = " + gridSize.x + ", y = " + gridSize.y + ")");
 
@@ -106,6 +111,17 @@ namespace TheDuckFlock
             {
                 child.gameObject.SetActive(false);
             }
+        }
+
+        private void SetupFogPlane()
+        {
+            fogPlane.SetActive(true);
+            fogPlane.transform.localScale = new Vector3(
+                gridSize.x * cellSize.x * fogScale.x, 
+                fogScale.y, 
+                gridSize.y * cellSize.y * fogScale.z);
+
+            //fogPlane.transform.position = new Vector3(gridShift.x, fogAltitude, gridShift.y);
         }
 
     }

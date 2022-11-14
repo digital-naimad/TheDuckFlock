@@ -1,7 +1,5 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Timeline;
 
 namespace TheDuckFlock
 {
@@ -10,11 +8,6 @@ namespace TheDuckFlock
 
         [SerializeField] private List<DucksMother> duckMothers = new List<DucksMother>();
         [SerializeField] private List<Duckie> duckies = new List<Duckie>();
-
-        /// <summary>
-        /// 
-        /// </summary>
-        //public DucksMother Mother { get { return duckMothers[0]; } }
 
         /// <summary>
         /// 
