@@ -15,19 +15,7 @@ namespace TheDuckFlock
         }
 
         #region MonoBehaviour callbacks
-        // Start is called before the first frame update
-        /*
-        void Start()
-        {
-            
-        }
 
-        // Update is called once per frame
-        void Update()
-        {
-
-        }
-        */
 
         private void OnDestroy()
         {
@@ -36,6 +24,9 @@ namespace TheDuckFlock
         #endregion
 
         #region GameplayEvent listeners
+
+        
+
         public void OnStartGame(params Vector3[] parameters)
         {
             Debug.Log(name + " | OnStartGame()");
@@ -50,7 +41,7 @@ namespace TheDuckFlock
 
             EggsManager.Instance.SpawnEgg(nestMarker.EggSpawnMarker);
 
-            for (int i = 0; i < ScoreManager.Instance.CurrentScoreGoal * 5; i++)
+            for (int i = 0; i < ScoreManager.Instance.CurrentScoreGoal; i++)
             {
                 EggsManager.Instance.SpawnEgg();
             }
@@ -149,7 +140,8 @@ namespace TheDuckFlock
             UIManager.Instance.SwitchNestIndicatorVisibility(false);
         }
 
-        
+       
+
 
         #endregion
     }

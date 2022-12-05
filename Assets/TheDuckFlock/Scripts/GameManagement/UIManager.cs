@@ -7,12 +7,24 @@ using DG.Tweening;
 
 namespace TheDuckFlock
 {
-    public class UIManager : MonoSingleton<UIManager>
+    public class UIManager : MonoSingleton<UIManager>, IUIEventsListener<int>
     {
-        [SerializeField] private ResultsScreen resultsScreen;
+        [SerializeField] private ResultsPopup resultsPopup;
+        [SerializeField] private StartPopup startPopup;
+
         [SerializeField] private Transform UIRoot;
         [SerializeField] private GameObject indicatorsRoot;
         [SerializeField] private NestIndicator nestIndicator;
+
+        private void Awake()
+        {
+            UIEventsManager.SetupListeners(this);
+        }
+
+        private void OnDestroy()
+        {
+            UIEventsManager.RemoveListeners();
+        }
 
         // Start is called before the first frame update
         void Start()
@@ -45,9 +57,9 @@ namespace TheDuckFlock
         {
             ScoreManager.Instance.SwitchScoreVisibility(false);
 
-            resultsScreen.RefreshValues();
+            resultsPopup.RefreshValues();
 
-            resultsScreen.SwitchVisibility(true);
+            resultsPopup.ShowPopup();
 
             UIRoot.DOScale(1f, 1f).From(0, true).SetEase(Ease.OutBack);
         }
@@ -56,7 +68,7 @@ namespace TheDuckFlock
         {
             UIRoot.DOScale(0, 1f).SetEase(Ease.InBack).OnComplete( () =>
             {
-                resultsScreen.SwitchVisibility(false);
+                resultsPopup.HidePopup();
             });
            
         }
@@ -107,5 +119,18 @@ namespace TheDuckFlock
             nestIndicator.SwitchVisibility(isVisible);
         }
 
+        #region UIEvent listeners
+
+        public void OnCloseStartPopup(params int[] parameters)
+        {
+            startPopup.HidePopup();
+            resultsPopup.ShowPopup();
+        }
+
+        public void OnShowResultsPopup(params int[] parameters)
+        {
+            
+        }
+        #endregion
     }
 }

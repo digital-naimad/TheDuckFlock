@@ -4,7 +4,7 @@ namespace TheDuckFlock
     public enum GameplayEvent
     {
         
-
+        ShowResultsPopup,
         StartGame,
 
         DucksMotherLost,
