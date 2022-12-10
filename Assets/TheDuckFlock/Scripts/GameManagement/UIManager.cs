@@ -16,6 +16,8 @@ namespace TheDuckFlock
         [SerializeField] private GameObject indicatorsRoot;
         [SerializeField] private NestIndicator nestIndicator;
 
+        [SerializeField] private ScreenFader screenFader;
+
         private void Awake()
         {
             UIEventsManager.SetupListeners(this);
@@ -43,7 +45,7 @@ namespace TheDuckFlock
         /// </summary>
         public void OnPlayButtonClick()
         {
-            Debug.Log(name + " | OnPlayButtonClick()");
+            Debug.Log(name + " | OnPlayButtonClick() >>");
 
             HideResultScreen();
 
@@ -55,6 +57,8 @@ namespace TheDuckFlock
         /// </summary>
         public void ShowResultScreen()
         {
+            screenFader.DoFade(false);
+
             ScoreManager.Instance.SwitchScoreVisibility(false);
 
             resultsPopup.RefreshValues();
@@ -66,6 +70,8 @@ namespace TheDuckFlock
 
         public void HideResultScreen()
         {
+            screenFader.DoFade(true);
+
             UIRoot.DOScale(0, 1f).SetEase(Ease.InBack).OnComplete( () =>
             {
                 resultsPopup.HidePopup();
