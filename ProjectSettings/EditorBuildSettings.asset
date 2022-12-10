@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/TheDuckFlock/Scenes/MainGameplay.unity
+    path: Assets/TheDuckFlock/Scenes/GameBoot.unity
     guid: c850ee8c3b14cc8459e7e186857cf567
   m_configObjects:
     com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: e82d40f7b3d2ee644a7c0779d98353a5,
