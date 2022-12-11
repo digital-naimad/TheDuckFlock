@@ -11,7 +11,7 @@ namespace TheDuckFlock
         [SerializeField] private Sprite onSprite;
         [SerializeField] private Sprite offSprite;
 
-        [SerializeField] private UnityAction onClick;
+        [SerializeField] private UnityEvent onClickEvent;
 
         [SerializeField] protected bool isOn = true;
 
