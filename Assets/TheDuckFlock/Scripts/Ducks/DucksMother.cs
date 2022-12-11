@@ -95,6 +95,8 @@ namespace TheDuckFlock
         {
             currentDuckState = DuckState.Newborn;
 
+            parentToFollow = transform;
+
             fullScale = 1f;
             duckRadius = 8f;
             grainScopeRadius = 18*4;

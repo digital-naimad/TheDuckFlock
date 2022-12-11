@@ -9,6 +9,8 @@ namespace TheDuckFlock
     {
         [SerializeField] protected DuckState currentDuckState = DuckState.Idle;
 
+        [SerializeField] protected Transform parentToFollow = null;
+
         [SerializeField] protected float duckRadius = 8f;
         [SerializeField] protected float grainScopeRadius = 30f;
 
@@ -19,6 +21,11 @@ namespace TheDuckFlock
         [SerializeField] protected float moveDistance = 5f;
 
         [SerializeField] protected float spawnAnimationDuration = 1f;
+
+        public bool IsCandidateForParent
+        {
+            get { return parentToFollow != null; }
+        }
 
         protected Rigidbody rigidbody
         {

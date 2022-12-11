@@ -83,7 +83,7 @@ namespace TheDuckFlock
             if (parentToFollow == null)
             {
                 // Searching for a new parent
-                DuckController closestDuck = FlockManager.Instance.GetClosestDuckController(transform.position, this);
+                DuckController closestDuck = FlockManager.Instance.GetClosestMotherCandidate(transform.position, this);
 
                 if (closestDuck != null)
                 {
@@ -125,7 +125,7 @@ namespace TheDuckFlock
         {
             Transform closestDuck = parentToFollow != null 
                 ? parentToFollow 
-                : FlockManager.Instance.GetClosestDuckController(transform.position, this).transform;
+                : FlockManager.Instance.GetClosestMotherCandidate(transform.position, this).transform;
 
             if (closestDuck != null)
             {
