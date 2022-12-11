@@ -126,7 +126,8 @@ namespace TheDuckFlock
 
             foreach (DuckController duck in ducks)
             {
-                if ( duck.IsCandidateForParent && (duckToExclude == null || duckToExclude != duck))
+                //if ( duck.IsCandidateForParent && (duckToExclude == null || duckToExclude != duck))
+                if (duckToExclude == null || duckToExclude != duck)
                 {
                     float distance = Vector3.Distance(positionToCheck, duck.transform.position);
                     if (distance < minDistance)
@@ -137,11 +138,12 @@ namespace TheDuckFlock
                 }
 
             }
-
+            /*
             if (duckMothers.Count > 0 && Vector3.Distance(positionToCheck, MotherPosition) < minDistance)
             {
                 closestDuckController = duckMothers[0];
             }
+            */
 
             return closestDuckController;
 

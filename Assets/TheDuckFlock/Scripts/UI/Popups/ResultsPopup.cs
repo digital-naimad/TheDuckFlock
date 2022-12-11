@@ -12,7 +12,8 @@ namespace TheDuckFlock
         [SerializeField] private TextMeshProUGUI lostDuckiesValueText;
 
         [SerializeField] private Button buttonRestart;
-        
+        [SerializeField] private Button buttonQuit;
+
         private int hatchedEggs = 0;
         private int lostDuckies = 0;
 

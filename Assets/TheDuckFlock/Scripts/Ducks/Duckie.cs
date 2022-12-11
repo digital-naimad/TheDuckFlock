@@ -9,7 +9,7 @@ namespace TheDuckFlock
         [SerializeField] protected float parentSearchRadius = 18*2f;
         [SerializeField] protected float parentFollowRadius = 18/2f;
 
-        [SerializeField] protected Transform parentToFollow = null;
+        //[SerializeField] protected Transform parentToFollow = null;
 
         private float DistanceToParent
         {
@@ -34,6 +34,7 @@ namespace TheDuckFlock
         {
             Init();
         }
+
 
         private void DoState()
         {
@@ -167,7 +168,7 @@ namespace TheDuckFlock
             duckRadius = 4f;
             grainScopeRadius = 16f;
 
-            moveDuration = .18f;
+            moveDuration = .2f;
             moveDistance = .5f;
 
             wasLostEventDispatched = false;

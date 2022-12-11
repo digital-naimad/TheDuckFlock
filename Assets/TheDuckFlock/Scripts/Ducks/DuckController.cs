@@ -147,7 +147,7 @@ namespace TheDuckFlock
             if (moveTween == null)
             {
                 moveTween = rigidbody.DOMove(transform.position + transform.forward * moveDistance, moveDuration)
-                    .SetEase(Ease.InQuint)
+                    //.SetEase(Ease.InQuint)
                     .OnComplete(
                     () =>
                     {
@@ -156,10 +156,7 @@ namespace TheDuckFlock
             }
             else
             {
-               
-                
                 moveTween = rigidbody.DOMove(transform.position + transform.forward * moveDistance, moveDuration);
-                
             }
 
 
