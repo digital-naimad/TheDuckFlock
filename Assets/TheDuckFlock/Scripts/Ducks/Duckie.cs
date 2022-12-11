@@ -24,7 +24,11 @@ namespace TheDuckFlock
             base.Update();
 
             //Debug.Log("DUCKIE UPDATE");
-            DoState();
+            //if (IsTimeToUpdate)
+            {
+                DoState();
+            }
+           
         }
 
         /// <summary>
@@ -171,7 +175,7 @@ namespace TheDuckFlock
             moveDuration = .2f;
             moveDistance = .5f;
 
-            wasLostEventDispatched = false;
+            //wasLostEventDispatched = false;
         }
     }
 }

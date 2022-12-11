@@ -50,9 +50,11 @@ namespace TheDuckFlock
             Debug.Log(name + " | OnPlayButtonClick() >>");
 
             GameplayEventsManager.DispatchEvent(GameplayEvent.StartGame);
-            ScoreManager.Instance.IncreaseScoreGoal();
+            
 
             HideResultsPopup();
+
+            SoundManager.Instance.PlaySound(SoundTag.ButtonClick);
         }
 
         /// <summary>
@@ -65,6 +67,8 @@ namespace TheDuckFlock
             GameplayEventsManager.DispatchEvent(GameplayEvent.RestartGame);
 
             HideResultsPopup();
+
+            SoundManager.Instance.PlaySound(SoundTag.ButtonClick);
         }
 
         public void OnQuitButtonClick()
@@ -74,6 +78,8 @@ namespace TheDuckFlock
             GameplayEventsManager.DispatchEvent(GameplayEvent.QuitGame);
 
             HideResultsPopup(false);
+
+            SoundManager.Instance.PlaySound(SoundTag.ButtonClick);
         }
 
         public void HideResultsPopup(bool isWithFade = true)

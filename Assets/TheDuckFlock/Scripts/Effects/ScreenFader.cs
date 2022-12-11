@@ -10,8 +10,9 @@ namespace TheDuckFlock
         [SerializeField] private Image dimImage;
         [SerializeField] private Color dimColor = Color.black;
 
-        [Range(.1f, 5f)]
-        [SerializeField] private float fadeDuration = 1f;
+        //[Range(.1f, 5f)]
+        //[SerializeField] 
+        private float fadeDuration = 1.5f;
         [SerializeField] private Ease fadeEasing = Ease.InQuint;
 
         private void Awake()
@@ -39,6 +40,7 @@ namespace TheDuckFlock
             if (dimImage != null)
             {
                 dimImage.DOFade(isFadeIn ? 0f : 1f, fadeDuration)
+                    //.From()
                     .SetEase(fadeEasing)
                     .OnComplete(() =>
                     {

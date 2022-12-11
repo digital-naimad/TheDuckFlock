@@ -8,19 +8,24 @@ namespace TheDuckFlock
 
         private void Awake()
         {
-            CameraController.Instance.IsFollowingDucksMother = false;
-            
+            //CameraController.Instance.IsFollowingDucksMother = false;
 
-            GameplayEventsManager.SetupListeners(this);
+
+            
         }
 
         #region MonoBehaviour callbacks
 
+        private void OnEnable()
+        {
+            GameplayEventsManager.SetupListeners(this);
+        }
 
-        private void OnDestroy()
+        private void OnDisable()
         {
             GameplayEventsManager.RemoveListeners();
         }
+
         #endregion
 
         #region GameplayEvent listeners
@@ -31,25 +36,26 @@ namespace TheDuckFlock
         {
             Debug.Log(name + " | OnStartGame()");
 
+            GrainManager.Instance.ClearAllGrain();
             TerrainManager.Instance.GenerateTerrain();
 
             NestSpawnMarker nestMarker = NestsManager.Instance.SpawnNest();
 
-            //ScoreManager.Instance.ResetScore();
+            ScoreManager.Instance.ResetScore();
 
             UIManager.Instance.SetScoreGoal(ScoreManager.Instance.CurrentScoreGoal);
             UIManager.Instance.SwitchIndicatorsVisibility(true);
 
+            FlockManager.Instance.SpawnDucksMother(nestMarker.DucksMotherSpawnMarker);
+
             EggsManager.Instance.SpawnEgg(nestMarker.EggSpawnMarker);
 
-            for (int i = 0; i < ScoreManager.Instance.CurrentScoreGoal; i++)
+            for (int i = 0; i < ScoreManager.Instance.CurrentScoreGoal * 2; i++)
             {
                 EggsManager.Instance.SpawnEgg();
             }
 
-            FlockManager.Instance.SpawnDucksMother(nestMarker.DucksMotherSpawnMarker);
-
-            for (int i = 0; i < ScoreManager.Instance.currentFlockSize; i++)
+            for (int i = 0; i < ScoreManager.Instance.CurrentFlockSize; i++)
             {
                 DOVirtual.DelayedCall(i * .25f, () =>
                 {
@@ -58,13 +64,15 @@ namespace TheDuckFlock
                 
             }
 
-            CameraController.Instance.IsFollowingDucksMother = true; // warning: order of the calls matters
+            //CameraController.Instance.IsFollowingDucksMother = true; // warning: order of the calls matters
             InputManager.Instance.IsTouchActive = true;
         }
 
         public void OnRestartGame(params Vector3[] parameters)
         {
+            InputManager.Instance.IsTouchActive = false;
             Debug.Log(name + " | OnRestartGame ");
+            ScoreManager.Instance.ResetFlockSize();
 
             OnStartGame(parameters);
         }
@@ -75,36 +83,37 @@ namespace TheDuckFlock
 
             UIManager.Instance.ShowStartScreen();
 
+            GrainManager.Instance.ClearAllGrain();
             //UIManager.Instance.HideResultScreen();
 
-            //UIManager.Instance.SetScoreGoal(1);
-            //ScoreManager.Instance.ResetScore();
+            UIManager.Instance.SetScoreGoal(1);
+           // ScoreManager.Instance.ResetScore();
 
         }
 
         public void OnDucksMotherLost(params Vector3[] parameters)
         {
-            CameraController.Instance.IsFollowingDucksMother = false;
-           
+            InputManager.Instance.IsTouchActive = false;
+            // CameraController.Instance.IsFollowingDucksMother = false;
+            GrainManager.Instance.ClearAllGrain();
             FlockManager.Instance.RemoveAllDucks();
+            ScoreManager.Instance.ResetFlockSize();
 
             //ScoreManager.Instance.AddToLostDuckies(WorldManager.Instance.FlockRoot.childCount);
             UIManager.Instance.ShowResultScreen();
 
-            ScoreManager.Instance.ResetScore();
+           // ScoreManager.Instance.ResetScore();
           
         }
 
         public void OnDuckieLost(params Vector3[] parameters)
         {
             Debug.Log(name + " | OnDuckieLost");
-
-            InputManager.Instance.IsTouchActive = false;
-
+            
             ScoreManager.Instance.OnDuckieLost();
             UIManager.Instance.UpdateScore(ScoreManager.Instance.CurrentScore);
 
-            FlockManager.Instance.IncrementLostDuckiesCounter();
+            //FlockManager.Instance.IncrementLostDuckiesCounter();
             
         }
 
@@ -133,19 +142,23 @@ namespace TheDuckFlock
 
             FlockManager.Instance.SpawnDuckie(parameters[0]);
 
-            for (int i = 0; i < ScoreManager.Instance.CurrentScoreGoal * 2; i++)
+            //for (int i = 0; i < ScoreManager.Instance.CurrentScoreGoal; i++)
             {
+                EggsManager.Instance.SpawnEgg();
                 EggsManager.Instance.SpawnEgg();
             }
         }
 
         public void OnReturnedToNest(params Vector3[] parameters)
         {
+            Debug.Log(name + " | OnReturnedToNest ");
             InputManager.Instance.IsTouchActive = false;
 
+            UIManager.Instance.SwitchIndicatorsVisibility(false);
             UIManager.Instance.SwitchNestIndicatorVisibility(false);
             UIManager.Instance.ShowResultScreen();
 
+            ScoreManager.Instance.IncreaseScoreGoal();
             ScoreManager.Instance.IncrementLevelIfGoalAchieved();
 
             FlockManager.Instance.RemoveAllDucks();

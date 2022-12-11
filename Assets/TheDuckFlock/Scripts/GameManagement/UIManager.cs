@@ -78,7 +78,7 @@ namespace TheDuckFlock
             ScoreManager.Instance.SwitchScoreVisibility(false);
 
             resultsPopup.RefreshValues();
-            resultsPopup.SetupButton(ScoreManager.Instance.IsScoreGoalAchieved);
+            resultsPopup.SetupButton(ScoreManager.Instance.WasGoalAchieved);
             //resultsPopup.ShowPopup(true);
             resultsPopup.ShowResultsPopup();
         }
@@ -94,6 +94,7 @@ namespace TheDuckFlock
         {
             indicatorsRoot.SetActive(isVisible);
             duckiesCounterLabel.gameObject.SetActive(isVisible);
+           
         }
 
         public void SetScoreGoal(int numberOfDuckies)

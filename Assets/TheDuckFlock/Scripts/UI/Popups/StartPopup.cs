@@ -9,22 +9,13 @@ namespace TheDuckFlock
             buttonPlay.gameObject.SetActive(true);
         }
 
-        void Start()
-        {
-
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-
-        }
-
         public void OnButtonPlayClick()
         {
             buttonPlay.gameObject.SetActive(false);
 
             UIEventsManager.DispatchEvent(UIEvent.CloseStartPopup);
+
+            SoundManager.Instance.PlaySound(SoundTag.ButtonClick);
 
         }
 

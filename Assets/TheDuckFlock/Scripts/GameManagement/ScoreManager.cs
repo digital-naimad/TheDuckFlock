@@ -15,10 +15,10 @@ namespace TheDuckFlock
             set { _currentScoreGoal = value; }
         }
 
-        public bool IsScoreGoalAchieved
+        /*public bool IsScoreGoalAchieved
         {
             get { return _isScoreGoalAchieved;}
-        }
+        }*/
 
         public int CurrentScore { get { return _currentScore; } }
 
@@ -28,13 +28,18 @@ namespace TheDuckFlock
 
         public bool WasGoalAchieved { get { return CurrentScore >= CurrentScoreGoal; } }
 
-        public int currentFlockSize = 0;
+        public int CurrentFlockSize
+        {
+            get { return _currentFlockSize; }
+        }
+
+        public int _currentFlockSize = 0;
 
         private int _lostDuckies = 0;
 
         private int _currentLevel = 1;
 
-        private bool _isScoreGoalAchieved = false;
+        //private bool _isScoreGoalAchieved = false;
 
         /// <summary>
         /// 
@@ -47,15 +52,16 @@ namespace TheDuckFlock
 
         public void IncreaseScoreGoal()
         {
-            _currentScoreGoal += 1;
+            _currentScoreGoal += 2;
         }
 
         public void IncrementLevelIfGoalAchieved()
         {
-            if (IsScoreGoalAchieved)
+            //if (IsScoreGoalAchieved)
+            if (WasGoalAchieved)
             {
                 _currentLevel++;
-                _isScoreGoalAchieved = false;
+                //_isScoreGoalAchieved = false;
             }
         }
 
@@ -65,7 +71,7 @@ namespace TheDuckFlock
 
             _currentScore = Mathf.Max(_currentScore - 1, 0);
             _lostDuckies++;
-            currentFlockSize = Mathf.Max(currentFlockSize-1,0);
+            _currentFlockSize = Mathf.Max(_currentFlockSize - 1, 0);
 
             Debug.Log(name + " | On Duckie Lost score: " + _currentScore);
 
@@ -79,13 +85,14 @@ namespace TheDuckFlock
         {
             
             _currentScore++;
-            currentFlockSize++;
+            _currentFlockSize++;
 
             Debug.Log(name + " | DuckieHatched, current score " + _currentScore);
 
-            if (_currentScore >= CurrentScoreGoal)
+            //if (_currentScore >= CurrentScoreGoal)
+            if (WasGoalAchieved)
             {
-                _isScoreGoalAchieved = true;
+               // _isScoreGoalAchieved = true;
                 GameplayEventsManager.DispatchEvent(GameplayEvent.ScoreGoalAchieved);
 
             }
@@ -98,10 +105,16 @@ namespace TheDuckFlock
             //_currentLevel = 1;
         }
 
+        public void ResetFlockSize()
+        {
+            _currentFlockSize = 0;
+        }
+        /*
         public void AddToLostDuckies(int toAdd)
         {
             _lostDuckies += toAdd;
         }
+        */
 
     }
 }

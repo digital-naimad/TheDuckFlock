@@ -1,12 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace TheDuckFlock
 {
     public class InputManager : MonoSingleton<InputManager>   
     {
-        [SerializeField] private float inputRefreshUpdate = .5f;
+        [SerializeField] private float inputRefreshUpdate = .1f;
         [SerializeField] private bool isMultitouchEnabled = false;
         [SerializeField, Tooltip("Check if you want to use Swiping instead of Tapping")] private bool isSwipeEnabled = false;
 
@@ -31,7 +29,7 @@ namespace TheDuckFlock
         // Update is called once per frame
         void Update()
         {
-            if (_isTouchActive)
+            if (IsTouchActive)
             {
                 inputRefreshCounter += Time.deltaTime;
 

@@ -22,9 +22,24 @@ namespace TheDuckFlock
 
         [SerializeField] protected float spawnAnimationDuration = 1f;
 
+        
+
         public bool IsCandidateForParent
         {
             get { return parentToFollow != null; }
+        }
+
+        protected bool IsTimeToUpdate
+        {
+            get
+            {
+                if (Time.time >= nextTimeToStateUpdate)
+                {
+                    nextTimeToStateUpdate = Time.time + 1f / stateUpdateRate;
+                    return true;
+                }
+                return false;
+            }
         }
 
         protected Rigidbody rigidbody
@@ -53,15 +68,22 @@ namespace TheDuckFlock
 
         protected bool wasLostEventDispatched = false;
 
+        protected float stateUpdateRate = 15f;
+        protected float nextTimeToStateUpdate = 0f;
+
         private Rigidbody _rigidbody;
         private Animator _duckAnimator;
 
         private Tween rotateTween = null;
         private Tween moveTween = null;
 
-        
 
-        // Update is called once per frame
+        private void OnEnable()
+        {
+            wasLostEventDispatched = false;
+        }
+
+        
         protected void Update()
         {
             //Debug.Log("DUCK UPDATE");
@@ -72,12 +94,17 @@ namespace TheDuckFlock
             }
         }
 
+
+
         public abstract void OnSpawn();
+
+        
 
         #region Tween based animations
 
         protected void DoAnimateSpawn()
         {
+            
             transform
                 .DOScale(fullScale, spawnAnimationDuration)
                 .From(0, true)

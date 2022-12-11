@@ -16,6 +16,6 @@ namespace TheDuckFlock
         ReturnedToNest,
 
         ScoreGoalAchieved,
-        ScoreGoalLost
+        ScoreGoalLost,
     }
 }

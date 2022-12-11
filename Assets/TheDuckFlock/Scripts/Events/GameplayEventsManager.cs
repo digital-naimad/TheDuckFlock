@@ -8,9 +8,12 @@ namespace TheDuckFlock
     /// </summary>
     public class GameplayEventsManager : EventsManager<GameplayEvent, IGameplayEventsListener<Vector3>, Vector3>
     {
+        //public static int count = 0;
         public static void SetupListeners(IGameplayEventsListener<Vector3> listeners)
         {
             RemoveListeners();
+
+            //Debug.Log("GameplayEventsManager | " + count++);
 
             CurrentListeners = listeners;
 
@@ -37,7 +40,7 @@ namespace TheDuckFlock
             {
                 return;
             }
-
+            //Debug.Log("GameplayEventsManager | " + count++);
             UnregisterListener(GameplayEvent.StartGame, CurrentListeners.OnStartGame);
             UnregisterListener(GameplayEvent.RestartGame, CurrentListeners.OnRestartGame);
             UnregisterListener(GameplayEvent.QuitGame, CurrentListeners.OnQuitGame);

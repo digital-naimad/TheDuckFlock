@@ -13,12 +13,13 @@ namespace TheDuckFlock
         /// 
         /// </summary>
         public Vector3 MotherPosition { get { return duckMothers.Count == 0 ? Vector3.zero : duckMothers[0].transform.position; } }
-
+        /*
         public int CurrentDuckiesCount
         {
             get { return duckies.Count; }
         }
 
+        
         public int LostDuckiesCount
         { 
             get { return _lostDuckiesCount; } 
@@ -27,19 +28,8 @@ namespace TheDuckFlock
         //private int _currentDuckiesCount = 0;
 
         private int _lostDuckiesCount = 0;
+        */
 
-
-        // Start is called before the first frame update
-        void Start()
-        {
-
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-
-        }
 
         /// <summary>
         /// 
@@ -101,7 +91,7 @@ namespace TheDuckFlock
             }
 
             //_currentDuckiesCount = 0;
-            _lostDuckiesCount = 0;
+            //_lostDuckiesCount = 0;
         }
 
         /// <summary>
@@ -121,13 +111,20 @@ namespace TheDuckFlock
                 return null;
             }
 
-            float minDistance = float.PositiveInfinity;
-            DuckController closestDuckController = null;
+            float minDistance = duckMothers.Count > 0 ? Vector3.Distance(positionToCheck, MotherPosition) : float.PositiveInfinity;
+            DuckController closestDuckController = duckMothers.Count > 0 ? duckMothers[0] : null;
+
+            /*
+            if (duckMothers.Count > 0 && Vector3.Distance(positionToCheck, MotherPosition) < minDistance)
+            {
+                closestDuckController = duckMothers[0];
+            }
+            */
 
             foreach (DuckController duck in ducks)
             {
-                //if ( duck.IsCandidateForParent && (duckToExclude == null || duckToExclude != duck))
-                if (duckToExclude == null || duckToExclude != duck)
+                if ( duck.IsCandidateForParent && (duckToExclude == null || duckToExclude != duck))
+                //if (duckToExclude == null || duckToExclude != duck)
                 {
                     float distance = Vector3.Distance(positionToCheck, duck.transform.position);
                     if (distance < minDistance)
@@ -138,12 +135,9 @@ namespace TheDuckFlock
                 }
 
             }
-            /*
-            if (duckMothers.Count > 0 && Vector3.Distance(positionToCheck, MotherPosition) < minDistance)
-            {
-                closestDuckController = duckMothers[0];
-            }
-            */
+            
+           
+            
 
             return closestDuckController;
 
@@ -152,14 +146,16 @@ namespace TheDuckFlock
         /// <summary>
         /// 
         /// </summary>
+        /*
         public void IncrementLostDuckiesCounter()
         {
-            _lostDuckiesCount++;
+           // _lostDuckiesCount++;
 
             Debug.Log(name + " | current lost duckies count: " + _lostDuckiesCount);
 
 
         }
+        */
       
     }
 }

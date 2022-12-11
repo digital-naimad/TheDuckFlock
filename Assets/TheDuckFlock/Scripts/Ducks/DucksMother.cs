@@ -1,6 +1,3 @@
-using DG.Tweening;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace TheDuckFlock
@@ -12,8 +9,10 @@ namespace TheDuckFlock
             base.Update();
 
             // Debug.Log("DUCKS MOTHER UPDATE");
-
-            DoState();
+            //if (IsTimeToUpdate)
+            {
+                DoState();
+            }
 
             if (ScoreManager.Instance.WasGoalAchieved)
             {
@@ -98,13 +97,13 @@ namespace TheDuckFlock
             parentToFollow = transform;
 
             fullScale = 1f;
-            duckRadius = 8f;
+            duckRadius = 6f;// 8f;
             grainScopeRadius = 18*4;
 
             moveDuration = .1f;
             moveDistance = 1f;
 
-            wasLostEventDispatched = false;
+            //wasLostEventDispatched = false;
         }
 
         
