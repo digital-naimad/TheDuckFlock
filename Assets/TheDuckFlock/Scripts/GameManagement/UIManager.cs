@@ -31,7 +31,7 @@ namespace TheDuckFlock
         // Start is called before the first frame update
         void Start()
         {
-
+            startPopup.gameObject.SetActive(true); // TODO: move this to more accurate place
         }
 
         // Update is called once per frame
