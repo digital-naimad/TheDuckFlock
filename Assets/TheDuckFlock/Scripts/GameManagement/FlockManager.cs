@@ -14,6 +14,21 @@ namespace TheDuckFlock
         /// </summary>
         public Vector3 MotherPosition { get { return duckMothers.Count == 0 ? Vector3.one * 1000 : duckMothers[0].transform.position; } }
 
+        public int CurrentDuckiesCount
+        {
+            get { return duckies.Count; }
+        }
+
+        public int LostDuckiesCount
+        { 
+            get { return _lostDuckiesCount; } 
+        }
+
+        //private int _currentDuckiesCount = 0;
+
+        private int _lostDuckiesCount = 0;
+
+
         // Start is called before the first frame update
         void Start()
         {
@@ -62,6 +77,8 @@ namespace TheDuckFlock
             // Adds Duckie to list
             Duckie newDuck = duckObject.GetComponent<Duckie>();
             duckies.Add(newDuck);
+
+           // _currentDuckiesCount++;
         }
 
         /// <summary>
@@ -82,6 +99,9 @@ namespace TheDuckFlock
                 duck.transform.position = Vector3.zero;
                 duck.gameObject.SetActive(false);
             }
+
+            //_currentDuckiesCount = 0;
+            _lostDuckiesCount = 0;
         }
 
         /// <summary>
@@ -122,6 +142,17 @@ namespace TheDuckFlock
 
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        public void IncrementLostDuckiesCounter()
+        {
+            _lostDuckiesCount++;
+
+            Debug.Log(name + " | current lost duckies count: " + _lostDuckiesCount);
+
+
+        }
       
     }
 }

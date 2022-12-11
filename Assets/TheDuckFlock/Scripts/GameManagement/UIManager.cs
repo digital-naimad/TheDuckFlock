@@ -18,6 +18,15 @@ namespace TheDuckFlock
 
         [SerializeField] private ScreenFader screenFader;
 
+        [SerializeField] private TextMeshProUGUI duckiesCounterLabel;
+
+        [SerializeField] private Color idleDuckieColor = Color.white;
+        [SerializeField] private Color hatchedDuckieColor = Color.yellow;
+        [SerializeField] private Color lostDuckieColor = Color.red;
+        [SerializeField] private float duckieCounterBumpDuration = 1.6f;
+
+        private int previousScore = 0;
+
         private void Awake()
         {
             UIEventsManager.SetupListeners(this);
@@ -32,11 +41,31 @@ namespace TheDuckFlock
         void Start()
         {
             startPopup.gameObject.SetActive(true); // TODO: move this to more accurate place
+            SwitchIndicatorsVisibility(false); // TODO: move this 
         }
 
         // Update is called once per frame
         void Update()
         {
+
+        }
+
+        public void UpdateDuckiesCounterLabel(int currentValue, bool isLost = false)
+        {
+            duckiesCounterLabel.text = currentValue.ToString();
+
+            duckiesCounterLabel.DOColor(isLost ? lostDuckieColor : hatchedDuckieColor, duckieCounterBumpDuration/2). //.SetEase(Ease.)    
+            OnComplete(() =>
+            {
+                duckiesCounterLabel.DOColor(idleDuckieColor, duckieCounterBumpDuration / 2);
+            });
+
+            duckiesCounterLabel.rectTransform.DOScale(1.25f, duckieCounterBumpDuration / 2).SetEase(Ease.OutBack).
+                OnComplete(() =>
+                {
+                    duckiesCounterLabel.rectTransform.DOScale(1f, duckieCounterBumpDuration / 2).SetEase(Ease.Linear);
+                });
+
 
         }
 
@@ -63,26 +92,26 @@ namespace TheDuckFlock
 
             resultsPopup.RefreshValues();
 
-            resultsPopup.ShowPopup();
+            resultsPopup.ShowPopup(true);
 
-            UIRoot.DOScale(1f, 1f).From(0, true).SetEase(Ease.OutBack);
+            //UIRoot.DOScale(1f, 1f).From(0, true).SetEase(Ease.OutBack);
         }
 
         public void HideResultScreen()
         {
             screenFader.DoFade(true);
 
-            UIRoot.DOScale(0, 1f).SetEase(Ease.InBack).OnComplete( () =>
-            {
-                resultsPopup.HidePopup();
-            });
+            //UIRoot.DOScale(0, 1f).SetEase(Ease.InBack).OnComplete( () =>
+           // {
+                resultsPopup.HidePopup(true);
+           // });
            
         }
         
         public void SwitchIndicatorsVisibility(bool isVisible)
         {
             indicatorsRoot.SetActive(isVisible);
-
+            duckiesCounterLabel.enabled = isVisible;
         }
 
         public void SetScoreGoal(int numberOfDuckies)
@@ -118,6 +147,17 @@ namespace TheDuckFlock
 
                 Debug.Log(name + " | indicator " + iChild + " " + (iChild < numberOfDuckies));
             }
+
+            if (previousScore < numberOfDuckies) // duckie hatched
+            {
+                UpdateDuckiesCounterLabel(numberOfDuckies, false);
+            }
+            else // duckie lost
+            {
+                UpdateDuckiesCounterLabel(numberOfDuckies, true);
+            }
+
+            previousScore = numberOfDuckies;
         }
 
         public void SwitchNestIndicatorVisibility(bool isVisible)
@@ -129,7 +169,7 @@ namespace TheDuckFlock
 
         public void OnCloseStartPopup(params int[] parameters)
         {
-            startPopup.HidePopup();
+            startPopup.HidePopup(true);
 
             screenFader.DoFade(true);
 

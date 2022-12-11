@@ -81,6 +81,8 @@ namespace TheDuckFlock
 
             ScoreManager.Instance.OnDuckieLost();
             UIManager.Instance.UpdateScore(ScoreManager.Instance.CurrentScore);
+
+            FlockManager.Instance.IncrementLostDuckiesCounter();
             
         }
 
