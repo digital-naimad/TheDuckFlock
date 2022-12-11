@@ -130,7 +130,12 @@ namespace TheDuckFlock
         public void OnCloseStartPopup(params int[] parameters)
         {
             startPopup.HidePopup();
-            resultsPopup.ShowPopup();
+
+            screenFader.DoFade(true);
+
+            GameplayEventsManager.DispatchEvent(GameplayEvent.StartGame);
+
+            //resultsPopup.ShowPopup();
         }
 
         public void OnShowResultsPopup(params int[] parameters)
