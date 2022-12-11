@@ -4,7 +4,7 @@ namespace TheDuckFlock
 {
     public class WorldManager : MonoSingleton<WorldManager>
     {
-        [SerializeField] private float lostDuckThreshold = -20f;
+        [SerializeField] private float lostDuckThreshold = -10f;
         [SerializeField] private float lostEggThreshold = -10f;
 
         [SerializeField] private float hatchEggDistance = 10f;

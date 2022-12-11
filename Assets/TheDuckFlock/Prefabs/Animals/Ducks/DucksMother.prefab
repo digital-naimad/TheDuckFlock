@@ -1477,13 +1477,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2204e0e634b7dd7489b6d617c5a760c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentDuckState: 0
+  currentDuckState: 1
   duckRadius: 8
   grainScopeRadius: 30
   fullScale: 0
   rotationDuration: 1
   moveDuration: 1
-  moveDistance: 2
+  moveDistance: 5
   spawnAnimationDuration: 1
 --- !u!65 &5368736423345968847
 BoxCollider:
@@ -1629,6 +1629,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 2
     m_TransformParent: {fileID: 466016}
     m_Modifications:
     - target: {fileID: 622107090292395549, guid: e064959ab68bade42b714422a3aaf5a6,
@@ -1707,6 +1708,7 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: e064959ab68bade42b714422a3aaf5a6, type: 3}
 --- !u!4 &128707807928097251 stripped
 Transform:

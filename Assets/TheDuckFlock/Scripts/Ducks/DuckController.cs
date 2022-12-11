@@ -16,7 +16,7 @@ namespace TheDuckFlock
 
         [SerializeField] protected float rotationDuration = 1f;
         [SerializeField] protected float moveDuration = 1f;
-        [SerializeField] protected float moveDistance = 2f;
+        [SerializeField] protected float moveDistance = 5f;
 
         [SerializeField] protected float spawnAnimationDuration = 1f;
 
@@ -85,7 +85,7 @@ namespace TheDuckFlock
         {
             transform
                 .DOScale(0, spawnAnimationDuration)
-                .SetEase(Ease.InCubic)
+                .SetEase(Ease.OutCubic)
                 .OnComplete(() => onCompleteCallback());
         }
 
@@ -132,8 +132,34 @@ namespace TheDuckFlock
             }
         }
 
+        protected void Walk()
+        {
+            Debug.Log(name + " | Walk distance: " + moveDistance + " duration: " + moveDuration);
+            DuckAnimator.SetBool(nameof(DuckAnimation.walk), true);
+
+            if (moveTween == null)
+            {
+                moveTween = rigidbody.DOMove(transform.position + transform.forward * moveDistance, moveDuration)
+                    .SetEase(Ease.InQuint)
+                    .OnComplete(
+                    () =>
+                    {
+                        moveTween = null;
+                    });
+            }
+            else
+            {
+               
+                
+                moveTween = rigidbody.DOMove(transform.position + transform.forward * moveDistance, moveDuration);
+                
+            }
 
 
+            
+        }
+
+        /*
         protected void Walk()
         {
             DuckAnimator.SetBool(nameof(DuckAnimation.walk), true);
@@ -141,9 +167,13 @@ namespace TheDuckFlock
             if (moveTween != null && !moveTween.IsComplete())
             {
                 moveTween.Kill();
+               
             }
-            moveTween = rigidbody.DOMove(transform.position + transform.forward * moveDistance, moveDuration);
+            
+                moveTween = rigidbody.DOMove(transform.position + transform.forward * moveDistance, moveDuration);
+            
         }
+        */
 
         protected void RotateToLookAt(Vector3 targetPosition)
         {
@@ -170,13 +200,13 @@ namespace TheDuckFlock
 
             if (rotateTween != null)
             {
-                rotateTween.Complete();
+                rotateTween.Kill(); //Complete();
                 rotateTween = null;
             }
 
             if (moveTween != null)
             {
-                moveTween.Complete();
+                moveTween.Kill(); //Complete();
                 moveTween = null;
             }
 
