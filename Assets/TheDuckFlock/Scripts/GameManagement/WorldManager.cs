@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace TheDuckFlock
@@ -62,38 +60,44 @@ namespace TheDuckFlock
         /// 
         /// </summary>
         /// <param name="touchPosition"></param>
-        public void OnTap(Vector3 touchPosition, bool isOrtographic)
+        public void OnTap(Vector3 inputPosition)
         {
-            Debug.DrawRay(touchPosition, Vector3.up, Color.green);
-            Debug.DrawRay(touchPosition, Vector3.down, Color.green);
-            Debug.DrawRay(touchPosition, Vector3.left, Color.red);
-            Debug.DrawRay(touchPosition, Vector3.right, Color.red);
-            Debug.DrawRay(touchPosition, Vector3.forward, Color.blue);
-            Debug.DrawRay(touchPosition, Vector3.back, Color.blue);
+            //Debug.Log(name + " | input position: " + inputPosition);
 
-            RaycastWorld(touchPosition, isOrtographic);
+            Vector3 hitPoint = RaycastWorld(inputPosition, grainLayerMask);
+
+            if (hitPoint != Vector3.zero)
+            {
+                UpdateDropZoneMarker(hitPoint, true);
+                GrainManager.Instance.SpawnGrainAtPosition(hitPoint);
+            }
         }
-        
-        private void RaycastWorld(Vector3 positionToCheck, bool isOrtographic)
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="positionToCheck"></param>
+        /// <param name="layerMask"></param>
+        /// <returns>RaycastHit position or Vector3.zero if raycast didnt hit anything</returns>
+        public Vector3 RaycastWorld(Vector3 inputPosition, LayerMask layerMask)
         {
+            Vector3 positionToCheck = mainCamera.ScreenToWorldPoint(inputPosition);
+
             RaycastHit hit;
 
             Vector3 cameraPosition = mainCamera.transform.position;
-            Vector3 rayDirection = isOrtographic ? mainCamera.transform.forward : Vector3.Normalize( positionToCheck - cameraPosition);
+            Vector3 rayDirection = mainCamera.orthographic ? mainCamera.transform.forward : Vector3.Normalize( positionToCheck - cameraPosition);
 
-            if (Physics.Raycast(positionToCheck, rayDirection, out hit, Mathf.Infinity, grainLayerMask))
+            if (Physics.Raycast(positionToCheck, rayDirection, out hit, Mathf.Infinity, layerMask))
             {
                 //Debug.Log(name + "| RaycastWorld hit >> " + hit.collider.name);
                 //Debug.DrawRay(positionToCheck, rayDirection, Color.red);
 
-                UpdateDropZoneMarker(hit.point, true);
+                return hit.point;
+            }
 
-                GrainManager.Instance.SpawnGrainAtPosition(hit.point);
-            }
-            else
-            {
-                //Debug.Log(name + "| RaycastWorld not hit anything");
-            }
+            //Debug.Log(name + "| RaycastWorld doesnt hit anything");
+            return Vector3.zero;
         }
 
         private void UpdateDropZoneMarker(Vector3 position, bool isHit)

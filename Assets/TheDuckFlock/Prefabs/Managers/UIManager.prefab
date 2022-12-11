@@ -355,7 +355,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.7411765, g: 0.8980393, b: 1, a: 1}
+  m_Color: {r: 0.7411765, g: 0.8980393, b: 1, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -386,7 +386,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dimImage: {fileID: 0}
   dimColor: {r: 0.7411765, g: 0.8980393, b: 1, a: 1}
-  fadeDuration: 1.5
+  fadeDuration: 1
   fadeEasing: 1
 --- !u!1001 &954927645065653385
 PrefabInstance:
@@ -688,7 +688,7 @@ PrefabInstance:
     - target: {fileID: 2418499233912030101, guid: b992a4ced2650ac4ca767fb44406da0f,
         type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6679737873388926777, guid: b992a4ced2650ac4ca767fb44406da0f,
         type: 3}
@@ -803,7 +803,7 @@ PrefabInstance:
     - target: {fileID: 8451897623785945952, guid: b992a4ced2650ac4ca767fb44406da0f,
         type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []

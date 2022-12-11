@@ -53,12 +53,12 @@ namespace TheDuckFlock
                                 inputPosition.z = mainCamera.nearClipPlane;
                                 //Debug.Log(name + " | inputPosition x " + inputPosition.x + " y " + inputPosition.y);
 
-                                Vector3 touchPosition = mainCamera.ScreenToWorldPoint(inputPosition);
+                                //Vector3 touchPosition = mainCamera.ScreenToWorldPoint(inputPosition);
                                 //Debug.Log(name + " | touchPosition x " + touchPosition.x + " y " + touchPosition.y + " z " + touchPosition.z);
 
-                                Debug.DrawRay(touchPosition, Vector3.up, Color.red);
+                                //Debug.DrawRay(touchPosition, Vector3.up, Color.red);
 
-                                WorldManager.Instance.OnTap(touchPosition, mainCamera.orthographic);
+                                WorldManager.Instance.OnTap(inputPosition);
                             }
                         }
                     }
