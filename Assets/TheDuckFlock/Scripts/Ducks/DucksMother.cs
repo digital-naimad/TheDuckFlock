@@ -101,7 +101,7 @@ namespace TheDuckFlock
             duckRadius = 8f;
             grainScopeRadius = 18*4;
 
-            moveDuration = .1f;
+            moveDuration = .09f;
             moveDistance = 1f;
 
             wasLostEventDispatched = false;

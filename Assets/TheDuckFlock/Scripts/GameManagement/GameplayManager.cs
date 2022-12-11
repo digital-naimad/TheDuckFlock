@@ -122,7 +122,8 @@ namespace TheDuckFlock
             InputManager.Instance.IsTouchActive = false;
 
             UIManager.Instance.ShowResultScreen();
-            ScoreManager.Instance.IncrementLevel();
+
+            ScoreManager.Instance.IncrementLevelIfGoalAchieved();
 
             FlockManager.Instance.RemoveAllDucks();
         }

@@ -9,14 +9,17 @@ namespace TheDuckFlock
 
         [SerializeField] private int _currentScore = 0;
 
-        private int _lostDuckies = 0;
-
-        private int _currentLevel = 1;
+      
 
         public int CurrentScoreGoal
         {
             get { return _currentScoreGoal; }
             set { _currentScoreGoal = value; }
+        }
+
+        public bool IsScoreGoalAchieved
+        {
+            get { return _isScoreGoalAchieved;}
         }
 
         public int CurrentScore { get { return _currentScore; } }
@@ -29,6 +32,11 @@ namespace TheDuckFlock
 
         public int currentFlockSize = 0;
 
+        private int _lostDuckies = 0;
+
+        private int _currentLevel = 1;
+
+        private bool _isScoreGoalAchieved = false;
 
         /// <summary>
         /// 
@@ -44,9 +52,13 @@ namespace TheDuckFlock
             _currentScoreGoal += 2;
         }
 
-        public void IncrementLevel()
+        public void IncrementLevelIfGoalAchieved()
         {
-            _currentLevel++;
+            if (IsScoreGoalAchieved)
+            {
+                _currentLevel++;
+                _isScoreGoalAchieved = false;
+            }
         }
 
         public void OnDuckieLost()
@@ -75,8 +87,9 @@ namespace TheDuckFlock
 
             if (_currentScore >= CurrentScoreGoal)
             {
-                
+                _isScoreGoalAchieved = true;
                 GameplayEventsManager.DispatchEvent(GameplayEvent.ScoreGoalAchieved);
+
             }
         }
 
