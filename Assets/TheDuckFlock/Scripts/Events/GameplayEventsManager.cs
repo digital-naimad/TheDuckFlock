@@ -15,6 +15,7 @@ namespace TheDuckFlock
             CurrentListeners = listeners;
 
             RegisterListener(GameplayEvent.StartGame, listeners.OnStartGame);
+            RegisterListener(GameplayEvent.RestartGame, listeners.OnRestartGame);
 
             RegisterListener(GameplayEvent.DucksMotherLost, listeners.OnDucksMotherLost);
             RegisterListener(GameplayEvent.DuckieLost, listeners.OnDuckieLost);
@@ -37,6 +38,7 @@ namespace TheDuckFlock
             }
 
             UnregisterListener(GameplayEvent.StartGame, CurrentListeners.OnStartGame);
+            UnregisterListener(GameplayEvent.RestartGame, CurrentListeners.OnRestartGame);
 
             UnregisterListener(GameplayEvent.DucksMotherLost, CurrentListeners.OnDucksMotherLost);
             UnregisterListener(GameplayEvent.DuckieLost, CurrentListeners.OnDuckieLost);

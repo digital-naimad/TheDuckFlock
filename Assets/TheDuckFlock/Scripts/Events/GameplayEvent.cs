@@ -6,6 +6,7 @@ namespace TheDuckFlock
         
         ShowResultsPopup,
         StartGame,
+        RestartGame,
 
         DucksMotherLost,
         DuckieLost,

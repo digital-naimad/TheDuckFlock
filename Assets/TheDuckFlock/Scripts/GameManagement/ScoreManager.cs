@@ -4,12 +4,10 @@ namespace TheDuckFlock
 {
     public class ScoreManager : MonoSingleton<ScoreManager>
     {
-        [SerializeField] private int _currentScoreGoal = 0;
+        [SerializeField] private int _currentScoreGoal = 1;
         [SerializeField] private GameObject scoreIndicatorsRoot;
 
         [SerializeField] private int _currentScore = 0;
-
-      
 
         public int CurrentScoreGoal
         {
@@ -97,7 +95,7 @@ namespace TheDuckFlock
         {
             _currentScore = 0;
             _lostDuckies = 0;
-            _currentLevel = 1;
+            //_currentLevel = 1;
         }
 
         public void AddToLostDuckies(int toAdd)

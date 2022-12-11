@@ -35,7 +35,8 @@ namespace TheDuckFlock
 
             NestSpawnMarker nestMarker = NestsManager.Instance.SpawnNest();
 
-            ScoreManager.Instance.IncreaseScoreGoal();
+            //ScoreManager.Instance.ResetScore();
+
             UIManager.Instance.SetScoreGoal(ScoreManager.Instance.CurrentScoreGoal);
             UIManager.Instance.SwitchIndicatorsVisibility(true);
 
@@ -62,17 +63,24 @@ namespace TheDuckFlock
             InputManager.Instance.IsTouchActive = true;
         }
 
+        public void OnRestartGame(params Vector3[] parameters)
+        {
+            Debug.Log(name + " | OnRestartGame ");
+
+            OnStartGame(parameters);
+        }
+
         public void OnDucksMotherLost(params Vector3[] parameters)
         {
             CameraController.Instance.IsFollowingDucksMother = false;
            
             FlockManager.Instance.RemoveAllDucks();
 
-            ScoreManager.Instance.AddToLostDuckies(WorldManager.Instance.FlockRoot.childCount);
+            //ScoreManager.Instance.AddToLostDuckies(WorldManager.Instance.FlockRoot.childCount);
             UIManager.Instance.ShowResultScreen();
 
             ScoreManager.Instance.ResetScore();
-            UIManager.Instance.SetScoreGoal(1);
+            //UIManager.Instance.SetScoreGoal(1);
         }
 
         public void OnDuckieLost(params Vector3[] parameters)
@@ -121,6 +129,7 @@ namespace TheDuckFlock
         {
             InputManager.Instance.IsTouchActive = false;
 
+            UIManager.Instance.SwitchNestIndicatorVisibility(false);
             UIManager.Instance.ShowResultScreen();
 
             ScoreManager.Instance.IncrementLevelIfGoalAchieved();
@@ -142,9 +151,6 @@ namespace TheDuckFlock
 
             UIManager.Instance.SwitchNestIndicatorVisibility(false);
         }
-
-       
-
 
         #endregion
     }

@@ -3,55 +3,58 @@ using UnityEngine.UI;
 using DG.Tweening;
 using UnityEngine.Events;
 
-public class ScreenFader : MonoBehaviour
+namespace TheDuckFlock
 {
-    [SerializeField] private Image dimImage;
-    [SerializeField] private Color dimColor = Color.black;
-
-    [Range(.1f, 5f)]
-    [SerializeField] private float fadeDuration = 1f;
-    [SerializeField] private Ease fadeEasing = Ease.Linear;
-
-    private void Awake()
+    public class ScreenFader : MonoSingleton<ScreenFader>
     {
-        if (dimImage == null)
+        [SerializeField] private Image dimImage;
+        [SerializeField] private Color dimColor = Color.black;
+
+        [Range(.1f, 5f)]
+        [SerializeField] private float fadeDuration = 1f;
+        [SerializeField] private Ease fadeEasing = Ease.Linear;
+
+        private void Awake()
         {
-            dimImage = GetComponent<Image>();
+            if (dimImage == null)
+            {
+                dimImage = GetComponent<Image>();
+            }
+
+            InitDimColor();
         }
 
-        InitDimColor();
-    }
-
-    void Start()
-    {
-        
-    }
-    
-    void Update()
-    {
-        
-    }
-
-    public void DoFade(bool isFadeIn, UnityAction onCompleteCallback = null)
-    {
-        if (dimImage != null)
+        void Start()
         {
-            dimImage.DOFade(isFadeIn ? 0f : 1f, fadeDuration)
-                .SetEase(fadeEasing)
-                .OnComplete(() =>
-                {
-                    if (onCompleteCallback != null)
+
+        }
+
+        void Update()
+        {
+
+        }
+
+        public void DoFade(bool isFadeIn, UnityAction onCompleteCallback = null)
+        {
+            if (dimImage != null)
+            {
+                dimImage.DOFade(isFadeIn ? 0f : 1f, fadeDuration)
+                    .SetEase(fadeEasing)
+                    .OnComplete(() =>
                     {
-                        onCompleteCallback();
-                    }
-                });
-                
-            
-        }
-    }
+                        if (onCompleteCallback != null)
+                        {
+                            onCompleteCallback();
+                        }
+                    });
 
-    private void InitDimColor()
-    {
-        dimImage.color = dimColor;
+
+            }
+        }
+
+        private void InitDimColor()
+        {
+            dimImage.color = dimColor;
+        }
     }
 }

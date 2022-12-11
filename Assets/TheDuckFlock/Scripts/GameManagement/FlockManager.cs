@@ -12,7 +12,7 @@ namespace TheDuckFlock
         /// <summary>
         /// 
         /// </summary>
-        public Vector3 MotherPosition { get { return duckMothers.Count == 0 ? Vector3.one * 1000 : duckMothers[0].transform.position; } }
+        public Vector3 MotherPosition { get { return duckMothers.Count == 0 ? Vector3.zero : duckMothers[0].transform.position; } }
 
         public int CurrentDuckiesCount
         {

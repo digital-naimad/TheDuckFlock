@@ -69,6 +69,7 @@ namespace TheDuckFlock
 
         }
 
+        /*
         /// <summary>
         /// 
         /// </summary>
@@ -84,6 +85,19 @@ namespace TheDuckFlock
         /// <summary>
         /// 
         /// </summary>
+        public void OnRestartButtonClick()
+        {
+            Debug.Log(name + " | OnRestartButtonClick() >>");
+
+            HideResultScreen();
+
+            GameplayEventsManager.DispatchEvent(GameplayEvent.RestartGame);
+        }
+        */
+
+        /// <summary>
+        /// 
+        /// </summary>
         public void ShowResultScreen()
         {
             screenFader.DoFade(false);
@@ -91,12 +105,13 @@ namespace TheDuckFlock
             ScoreManager.Instance.SwitchScoreVisibility(false);
 
             resultsPopup.RefreshValues();
-
+            resultsPopup.SetupButton(ScoreManager.Instance.IsScoreGoalAchieved);
             resultsPopup.ShowPopup(true);
 
             //UIRoot.DOScale(1f, 1f).From(0, true).SetEase(Ease.OutBack);
         }
 
+        /*
         public void HideResultScreen()
         {
             screenFader.DoFade(true);
@@ -107,6 +122,7 @@ namespace TheDuckFlock
            // });
            
         }
+        */
         
         public void SwitchIndicatorsVisibility(bool isVisible)
         {
