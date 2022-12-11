@@ -58,7 +58,6 @@ namespace TheDuckFlock
                 
             }
 
-
             CameraController.Instance.IsFollowingDucksMother = true; // warning: order of the calls matters
             InputManager.Instance.IsTouchActive = true;
         }
@@ -68,6 +67,19 @@ namespace TheDuckFlock
             Debug.Log(name + " | OnRestartGame ");
 
             OnStartGame(parameters);
+        }
+
+        public void OnQuitGame(params Vector3[] parameters)
+        {
+            Debug.Log(name + " | OnQuitGame ");
+
+            UIManager.Instance.ShowStartScreen();
+
+            //UIManager.Instance.HideResultScreen();
+
+            //UIManager.Instance.SetScoreGoal(1);
+            //ScoreManager.Instance.ResetScore();
+
         }
 
         public void OnDucksMotherLost(params Vector3[] parameters)
@@ -80,12 +92,14 @@ namespace TheDuckFlock
             UIManager.Instance.ShowResultScreen();
 
             ScoreManager.Instance.ResetScore();
-            //UIManager.Instance.SetScoreGoal(1);
+          
         }
 
         public void OnDuckieLost(params Vector3[] parameters)
         {
             Debug.Log(name + " | OnDuckieLost");
+
+            InputManager.Instance.IsTouchActive = false;
 
             ScoreManager.Instance.OnDuckieLost();
             UIManager.Instance.UpdateScore(ScoreManager.Instance.CurrentScore);
@@ -151,7 +165,6 @@ namespace TheDuckFlock
 
             UIManager.Instance.SwitchNestIndicatorVisibility(false);
         }
-
         #endregion
     }
 }

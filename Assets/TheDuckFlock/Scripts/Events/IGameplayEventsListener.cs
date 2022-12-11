@@ -7,6 +7,8 @@ namespace TheDuckFlock
 
         public void OnRestartGame(params CustomParameterType[] parameters);
 
+        public void OnQuitGame(params CustomParameterType[] parameters);
+
         public void OnDucksMotherLost(params CustomParameterType[] parameters);
 
         public void OnDuckieLost(params CustomParameterType[] parameters);

@@ -1,6 +1,7 @@
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using DG.Tweening;
 
 namespace TheDuckFlock
 {
@@ -17,18 +18,6 @@ namespace TheDuckFlock
         private int hatchedEggs = 0;
         private int lostDuckies = 0;
 
-        // Start is called before the first frame update
-        void Start()
-        {
-           // UpdateValues(3, 4);
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-
-        }
-
         public void SetupButton(bool isGoalAchieved)
         {
             buttonPlay.gameObject.SetActive(isGoalAchieved);
@@ -43,7 +32,6 @@ namespace TheDuckFlock
             RefreshValues();
         }
 
-        
 
         public void RefreshValues()
         {
@@ -74,17 +62,44 @@ namespace TheDuckFlock
         {
             Debug.Log(name + " | OnRestartButtonClick() >>");
 
-           
-
             GameplayEventsManager.DispatchEvent(GameplayEvent.RestartGame);
 
             HideResultsPopup();
         }
 
-        public void HideResultsPopup()
+        public void OnQuitButtonClick()
         {
-            ScreenFader.Instance.DoFade(true);
+            Debug.Log(name + " | OnQuitButtonClick() >>");
+
+            GameplayEventsManager.DispatchEvent(GameplayEvent.QuitGame);
+
+            HideResultsPopup(false);
+        }
+
+        public void HideResultsPopup(bool isWithFade = true)
+        {
+            ScreenFader.Instance.DoFade(isWithFade);
             HidePopup(true);
+        }
+
+        public void ShowResultsPopup()
+        {
+            ShowPopup(true);
+
+            buttonPlay.transform.DOScale(1f, showAnimationDuration)
+                .SetDelay(showAnimationDuration / 3)
+                .From(0f, true)
+                .SetEase(Ease.OutBack);
+
+            buttonRestart.transform.DOScale(1f, showAnimationDuration)
+                .SetDelay(showAnimationDuration / 3 )
+                .From(0f, true)
+                .SetEase(Ease.OutBack);
+
+            buttonQuit.transform.DOScale(1f, showAnimationDuration)
+                .SetDelay(showAnimationDuration / 3 * 2 )
+                .From(0f, true)
+                .SetEase(Ease.OutBack);
         }
     }
 }

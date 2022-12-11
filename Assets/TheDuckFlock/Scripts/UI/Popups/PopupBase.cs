@@ -10,25 +10,19 @@ public class PopupBase : MonoBehaviour
 
     [SerializeField] protected Button buttonPlay;
 
-    [SerializeField] private float hideAnimationDuration = 1f;
+    [SerializeField] protected float showAnimationDuration = 1f;
+    [SerializeField] protected float hideAnimationDuration = 1f;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
     public void ShowPopup(bool withAnimation = false)
     {
         if (withAnimation)
         {
             gameObject.SetActive(true);
-            transform.parent.DOScale(1f, 1f).From(0, true).SetEase(Ease.OutBack);
+            transform.DOScale(1f, showAnimationDuration).From(.5f, true).SetEase(Ease.OutBack);
+            //transform.DOMoveY(0, showAnimationDuration).From(2000f, true).SetEase(Ease.InCubic);
+            panel.GetComponent<Image>().DOFade(1f, showAnimationDuration).From(0f,true).SetEase(Ease.OutCubic);
+            
         }
         else
         {
@@ -38,14 +32,15 @@ public class PopupBase : MonoBehaviour
 
     public void HidePopup(bool withAnimation = false)
     {
-        // TODO: hide with animation
+        
         if (withAnimation)
         {
-            transform.parent.DOScale(0, 1f).SetEase(Ease.InBack).OnComplete(() =>
+            transform.DOScale(0.5f, hideAnimationDuration).SetEase(Ease.InBack).OnComplete(() =>
             {
-                //resultsPopup.HidePopup();
                 gameObject.SetActive(false);
             });
+            //transform.parent.DOMoveY(-2000f, showAnimationDuration).SetEase(Ease.InCubic);
+            panel.GetComponent<Image>().DOFade(0f, showAnimationDuration).From(1f, true).SetEase(Ease.InCubic);
         }
         else
         {

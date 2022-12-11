@@ -1,8 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 using DG.Tweening;
 
 namespace TheDuckFlock
@@ -12,7 +9,7 @@ namespace TheDuckFlock
         [SerializeField] private ResultsPopup resultsPopup;
         [SerializeField] private StartPopup startPopup;
 
-        [SerializeField] private Transform UIRoot;
+        //[SerializeField] private Transform UIRoot;
         [SerializeField] private GameObject indicatorsRoot;
         [SerializeField] private NestIndicator nestIndicator;
 
@@ -40,7 +37,8 @@ namespace TheDuckFlock
         // Start is called before the first frame update
         void Start()
         {
-            startPopup.gameObject.SetActive(true); // TODO: move this to more accurate place
+            ShowStartScreen();  // TODO: move this to more accurate place
+
             SwitchIndicatorsVisibility(false); // TODO: move this 
         }
 
@@ -69,31 +67,6 @@ namespace TheDuckFlock
 
         }
 
-        /*
-        /// <summary>
-        /// 
-        /// </summary>
-        public void OnPlayButtonClick()
-        {
-            Debug.Log(name + " | OnPlayButtonClick() >>");
-
-            HideResultScreen();
-
-            GameplayEventsManager.DispatchEvent(GameplayEvent.StartGame);
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public void OnRestartButtonClick()
-        {
-            Debug.Log(name + " | OnRestartButtonClick() >>");
-
-            HideResultScreen();
-
-            GameplayEventsManager.DispatchEvent(GameplayEvent.RestartGame);
-        }
-        */
 
         /// <summary>
         /// 
@@ -106,28 +79,21 @@ namespace TheDuckFlock
 
             resultsPopup.RefreshValues();
             resultsPopup.SetupButton(ScoreManager.Instance.IsScoreGoalAchieved);
-            resultsPopup.ShowPopup(true);
-
-            //UIRoot.DOScale(1f, 1f).From(0, true).SetEase(Ease.OutBack);
+            //resultsPopup.ShowPopup(true);
+            resultsPopup.ShowResultsPopup();
         }
 
-        /*
-        public void HideResultScreen()
+        public void ShowStartScreen()
         {
-            screenFader.DoFade(true);
+            startPopup.ShowStartPopup();
 
-            //UIRoot.DOScale(0, 1f).SetEase(Ease.InBack).OnComplete( () =>
-           // {
-                resultsPopup.HidePopup(true);
-           // });
-           
+            ScoreManager.Instance.SwitchScoreVisibility(false);
         }
-        */
         
         public void SwitchIndicatorsVisibility(bool isVisible)
         {
             indicatorsRoot.SetActive(isVisible);
-            duckiesCounterLabel.enabled = isVisible;
+            duckiesCounterLabel.gameObject.SetActive(isVisible);
         }
 
         public void SetScoreGoal(int numberOfDuckies)

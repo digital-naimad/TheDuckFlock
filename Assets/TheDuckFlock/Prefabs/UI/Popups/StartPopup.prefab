@@ -646,7 +646,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ecf331478324654fa869e1af277bbeb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  panel: {fileID: 3314853085199674927}
   buttonPlay: {fileID: 2805968158398278941}
+  showAnimationDuration: 1
+  hideAnimationDuration: 1
 --- !u!1 &4152903730554844343
 GameObject:
   m_ObjectHideFlags: 0

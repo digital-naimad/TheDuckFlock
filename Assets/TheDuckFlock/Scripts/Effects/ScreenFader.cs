@@ -12,7 +12,7 @@ namespace TheDuckFlock
 
         [Range(.1f, 5f)]
         [SerializeField] private float fadeDuration = 1f;
-        [SerializeField] private Ease fadeEasing = Ease.Linear;
+        [SerializeField] private Ease fadeEasing = Ease.InQuint;
 
         private void Awake()
         {

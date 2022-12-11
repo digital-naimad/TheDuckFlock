@@ -47,7 +47,7 @@ namespace TheDuckFlock
 
         public void IncreaseScoreGoal()
         {
-            _currentScoreGoal += 2;
+            _currentScoreGoal += 1;
         }
 
         public void IncrementLevelIfGoalAchieved()
