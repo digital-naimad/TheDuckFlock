@@ -22,6 +22,8 @@ namespace TheDuckFlock
         public void HideStartPopup()
         {
             HidePopup(true);
+
+            SoundManager.Instance.TurnOffWithFade(SoundTag.MusicMenu);
         }
 
         public void ShowStartPopup()
@@ -32,6 +34,8 @@ namespace TheDuckFlock
                 .SetDelay(showAnimationDuration / 2)
                 .From(0f, true)
                 .SetEase(Ease.OutBack);
+            
+            SoundManager.Instance.PlayMusic(SoundTag.MusicMenu);
         }
         
     }

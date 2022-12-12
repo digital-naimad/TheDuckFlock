@@ -1,7 +1,9 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
+using static Unity.VisualScripting.Member;
 
 namespace TheDuckFlock
 {
@@ -27,18 +29,10 @@ namespace TheDuckFlock
 
         private string volumeParameterName = "volume";
 
+        private float fadeStep = .1f;
+        private float fadeDuration = 3f;
+        private Ease fadeEase = Ease.InOutCubic;
 
-        // Start is called before the first frame update
-        void Start()
-        {
-
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-
-        }
 
         /// <summary>
         /// 
@@ -46,7 +40,7 @@ namespace TheDuckFlock
         /// <param name="isMute"></param>
         public void SwitchSoundMute(bool isMute)
         {
-            Debug.Log( name + " | Sound mute: " + isMute );
+            // Debug.Log( name + " | Sound mute: " + isMute );
 
             isSoundMute = isMute;
 
@@ -59,21 +53,59 @@ namespace TheDuckFlock
         /// <param name="isMute"></param>
         public void SwitchMusicMute(bool isMute)
         {
-            Debug.Log(name + " | Music mute: " + isMute);
+           // Debug.Log(name + " | Music mute: " + isMute);
 
             isMusicMute = isMute;
 
             ApplyMusicMute();
         }
 
+        public void PlayMusic(SoundTag soundTag)
+        {
+            sounds[(int)soundTag].source.Play();
+            sounds[(int)soundTag].source.DOFade(sounds[(int)soundTag].volume, fadeDuration).From(0, true).SetEase(fadeEase);
+
+        }
+
+        public void TurnOffVolume(SoundTag soundTag)
+        {
+            sounds[(int)soundTag].source.volume = 0;
+        }
+
+        public void TurnUpVolume(SoundTag soundTag)
+        {
+            float currentVolume = sounds[(int)soundTag].source.volume;
+            sounds[(int)soundTag].source.DOFade(Mathf.Clamp01(currentVolume + fadeStep) * sounds[(int)soundTag].volume , fadeDuration).SetEase(fadeEase);
+        }
+
+        public void TurnDownVolume(SoundTag soundTag)
+        {
+            float currentVolume = sounds[(int)soundTag].source.volume;
+           
+            sounds[(int)soundTag].source.DOFade(Mathf.Clamp01(currentVolume - fadeStep) * sounds[(int)soundTag].volume, fadeDuration).SetEase(fadeEase);
+            
+        }
+
+        public void TurnOffWithFade(SoundTag soundTag)
+        {
+            
+            sounds[(int)soundTag].source.DOFade(0, fadeDuration).SetEase(fadeEase)
+                .OnComplete(() =>
+                {
+                    sounds[(int)soundTag].source.Stop();
+                });
+        }
+
         /// <summary>
         /// Plays sound given in the first parameter
         /// </summary>
-
         /// <param name="isRandomVolumeAndPitch">optional bool, default = false</param>
-        public void PlaySound(SoundTag soundTag, bool isRandomVolumeAndPitch = false)
+        public void PlaySound(SoundTag soundTag, bool isRandomVolumeAndPitch = false, bool isFadeIn = false)
         {
             Sound soundToPlay = sounds[(int)soundTag];
+
+            soundToPlay.source.clip = soundToPlay.soundClip;
+
             soundToPlay.source.Stop();
             soundToPlay.source.volume = !isRandomVolumeAndPitch ? (IsTagMuted(soundTag) ? 0 : soundToPlay.volume ) : Random.Range(minimumVolume, soundToPlay.volume);
             soundToPlay.source.pitch = !isRandomVolumeAndPitch ? soundToPlay.pitch : Random.Range(minimumPitch, maximumPitch);
@@ -111,8 +143,17 @@ namespace TheDuckFlock
         {
             soundVolume = isSoundMute ? 0 : 1;
 
-            sfxMixerChannel.audioMixer.SetFloat(volumeParameterName, soundVolume);
-            uiMixerChannel.audioMixer.SetFloat(volumeParameterName, soundVolume);
+            //sfxMixerChannel.audioMixer.SetFloat(volumeParameterName, soundVolume);
+            //uiMixerChannel.audioMixer.SetFloat(volumeParameterName, soundVolume);
+
+           
+
+            sounds[(int)SoundTag.ButtonClick].source.mute = isSoundMute;
+            sounds[(int)SoundTag.RunningDuck].source.mute = isSoundMute;
+            sounds[(int)SoundTag.SqueakingChicks].source.mute = isSoundMute;
+            sounds[(int)SoundTag.Quack].source.mute = isSoundMute;
+
+
 
         }
 
@@ -120,7 +161,10 @@ namespace TheDuckFlock
         {
             musicVolume = isMusicMute ? 0 : 1;
 
-            musicMixerChannel.audioMixer.SetFloat(volumeParameterName, soundVolume);
+            //musicMixerChannel.audioMixer.SetFloat(volumeParameterName, soundVolume);
+
+            sounds[(int)SoundTag.MusicMenu].source.mute = isMusicMute;
+            sounds[(int)SoundTag.MusicGameplay].source.mute = isMusicMute;
         }
     }
 }

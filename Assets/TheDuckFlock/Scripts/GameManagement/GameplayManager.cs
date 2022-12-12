@@ -34,7 +34,10 @@ namespace TheDuckFlock
 
         public void OnStartGame(params Vector3[] parameters)
         {
-            Debug.Log(name + " | OnStartGame()");
+            SoundManager.Instance.PlayMusic(SoundTag.MusicGameplay);
+            
+
+           // // Debug.Log(name + " | OnStartGame()");
 
             GrainManager.Instance.ClearAllGrain();
             TerrainManager.Instance.GenerateTerrain();
@@ -50,7 +53,7 @@ namespace TheDuckFlock
 
             EggsManager.Instance.SpawnEgg(nestMarker.EggSpawnMarker);
 
-            for (int i = 0; i < ScoreManager.Instance.CurrentScoreGoal * 2; i++)
+            for (int i = 0; i < ScoreManager.Instance.CurrentScoreGoal; i++)
             {
                 EggsManager.Instance.SpawnEgg();
             }
@@ -71,7 +74,7 @@ namespace TheDuckFlock
         public void OnRestartGame(params Vector3[] parameters)
         {
             InputManager.Instance.IsTouchActive = false;
-            Debug.Log(name + " | OnRestartGame ");
+            //// Debug.Log(name + " | OnRestartGame ");
             ScoreManager.Instance.ResetFlockSize();
 
             OnStartGame(parameters);
@@ -79,7 +82,7 @@ namespace TheDuckFlock
 
         public void OnQuitGame(params Vector3[] parameters)
         {
-            Debug.Log(name + " | OnQuitGame ");
+           // // Debug.Log(name + " | OnQuitGame ");
 
             UIManager.Instance.ShowStartScreen();
 
@@ -93,6 +96,8 @@ namespace TheDuckFlock
 
         public void OnDucksMotherLost(params Vector3[] parameters)
         {
+            SoundManager.Instance.PlaySound(SoundTag.Quack);
+
             InputManager.Instance.IsTouchActive = false;
             // CameraController.Instance.IsFollowingDucksMother = false;
             GrainManager.Instance.ClearAllGrain();
@@ -108,8 +113,10 @@ namespace TheDuckFlock
 
         public void OnDuckieLost(params Vector3[] parameters)
         {
-            Debug.Log(name + " | OnDuckieLost");
+           // // Debug.Log(name + " | OnDuckieLost");
             
+            SoundManager.Instance.PlaySound(SoundTag.Quack, true);
+
             ScoreManager.Instance.OnDuckieLost();
             UIManager.Instance.UpdateScore(ScoreManager.Instance.CurrentScore);
 
@@ -123,7 +130,7 @@ namespace TheDuckFlock
         /// <param name="parameters"></param>
         public void OnEggLost(params Vector3[] parameters)
         {
-            Debug.Log(name + " | OnEggLost");
+           // // Debug.Log(name + " | OnEggLost");
 
             EggsManager.Instance.SpawnEgg();
         }
@@ -136,7 +143,7 @@ namespace TheDuckFlock
         {
             ScoreManager.Instance.OnDuckieHatched();
 
-            Debug.Log(name + " | OnEggHatched current score " + ScoreManager.Instance.CurrentScore);
+            //// Debug.Log(name + " | OnEggHatched current score " + ScoreManager.Instance.CurrentScore);
 
             UIManager.Instance.UpdateScore(ScoreManager.Instance.CurrentScore);
 
@@ -145,13 +152,12 @@ namespace TheDuckFlock
             //for (int i = 0; i < ScoreManager.Instance.CurrentScoreGoal; i++)
             {
                 EggsManager.Instance.SpawnEgg();
-                EggsManager.Instance.SpawnEgg();
             }
         }
 
         public void OnReturnedToNest(params Vector3[] parameters)
         {
-            Debug.Log(name + " | OnReturnedToNest ");
+            //// Debug.Log(name + " | OnReturnedToNest ");
             InputManager.Instance.IsTouchActive = false;
 
             UIManager.Instance.SwitchIndicatorsVisibility(false);
@@ -166,7 +172,7 @@ namespace TheDuckFlock
 
         public void OnScoreGoalAchieved(params Vector3[] parameters)
         {
-            Debug.Log(name + " | OnScoreGoalAchieved ");
+            //// Debug.Log(name + " | OnScoreGoalAchieved ");
 
             UIManager.Instance.SwitchNestIndicatorVisibility(true);
 
@@ -174,7 +180,7 @@ namespace TheDuckFlock
 
         public void OnScoreGoalLost(params Vector3[] parameters)
         {
-            Debug.Log(name + " | OnScoreGoalLost ");
+           // // Debug.Log(name + " | OnScoreGoalLost ");
 
             UIManager.Instance.SwitchNestIndicatorVisibility(false);
         }

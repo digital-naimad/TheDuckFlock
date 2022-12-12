@@ -68,6 +68,37 @@ namespace TheDuckFlock
             Duckie newDuck = duckObject.GetComponent<Duckie>();
             duckies.Add(newDuck);
 
+            SoundManager.Instance.PlaySound(SoundTag.SqueakingChicks);
+            SoundManager.Instance.TurnOffVolume(SoundTag.SqueakingChicks);
+            if (duckies.Count > 1)
+            {
+                SoundManager.Instance.TurnUpVolume(SoundTag.SqueakingChicks);
+                if (duckies.Count > 2)
+                {
+                    SoundManager.Instance.TurnUpVolume(SoundTag.SqueakingChicks);
+                    if (duckies.Count > 3)
+                    {
+                        SoundManager.Instance.TurnUpVolume(SoundTag.SqueakingChicks);
+                        if (duckies.Count > 4)
+                        {
+                            SoundManager.Instance.TurnUpVolume(SoundTag.SqueakingChicks);
+                            if (duckies.Count > 5)
+                            {
+                                SoundManager.Instance.TurnUpVolume(SoundTag.SqueakingChicks);
+                                if (duckies.Count > 6)
+                                {
+                                    SoundManager.Instance.TurnUpVolume(SoundTag.SqueakingChicks);
+                                    if (duckies.Count > 7)
+                                    {
+                                        SoundManager.Instance.TurnUpVolume(SoundTag.SqueakingChicks);
+                                    }
+                                }
+                            }
+                        }
+
+                    }
+                }
+            }
            // _currentDuckiesCount++;
         }
 
@@ -90,6 +121,8 @@ namespace TheDuckFlock
                 duck.gameObject.SetActive(false);
             }
 
+            SoundManager.Instance.TurnOffWithFade(SoundTag.SqueakingChicks);
+
             //_currentDuckiesCount = 0;
             //_lostDuckiesCount = 0;
         }
@@ -111,15 +144,16 @@ namespace TheDuckFlock
                 return null;
             }
 
-            float minDistance = duckMothers.Count > 0 ? Vector3.Distance(positionToCheck, MotherPosition) : float.PositiveInfinity;
-            DuckController closestDuckController = duckMothers.Count > 0 ? duckMothers[0] : null;
+            //float minDistance = duckMothers.Count > 0 ? Vector3.Distance(positionToCheck, MotherPosition) : float.PositiveInfinity;
+           // DuckController closestDuckController = duckMothers.Count > 0 ? duckMothers[0] : null;
+            float minDistance =float.PositiveInfinity;
+            DuckController closestDuckController = null;
 
-            /*
             if (duckMothers.Count > 0 && Vector3.Distance(positionToCheck, MotherPosition) < minDistance)
             {
                 closestDuckController = duckMothers[0];
             }
-            */
+            
 
             foreach (DuckController duck in ducks)
             {

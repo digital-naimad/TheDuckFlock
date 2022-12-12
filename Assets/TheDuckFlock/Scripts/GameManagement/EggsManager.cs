@@ -23,7 +23,7 @@ namespace TheDuckFlock
         {
             get
             {
-                if (_spawnMarkers.Count == 0)
+                //if (_spawnMarkers.Count == 0)
                 {
                     CacheEggSpawnMarkers();
                 }
@@ -62,7 +62,7 @@ namespace TheDuckFlock
         /// <param name="spawnMarker"> optional - if left blank, then will be randomized</param>
         public void SpawnEgg(EggSpawnMarker eggSpawnMarker = null)
         {
-           // Debug.Log(name + " | Spawn Egg ");
+           // // // // // Debug.Log(name + " | Spawn Egg ");
 
             // Sets object active
             GameObject eggObject = ObjectPooler.Instance.SpawnFromPool(PoolTag.Egg);

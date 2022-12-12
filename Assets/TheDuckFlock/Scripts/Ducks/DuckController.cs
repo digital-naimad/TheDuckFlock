@@ -22,7 +22,12 @@ namespace TheDuckFlock
 
         [SerializeField] protected float spawnAnimationDuration = 1f;
 
-        
+        protected bool isMother = false;
+
+        private bool isOnBridge = false;
+
+        private bool isOnTrigger = false;
+        private bool isOnCollision = false;
 
         public bool IsCandidateForParent
         {
@@ -166,9 +171,39 @@ namespace TheDuckFlock
             }
         }
 
+        
+
+        private void OnTriggerEnter(Collider other)
+        {
+            //Debug.Log(name + " | trigger enter " + other);
+
+            isOnTrigger = true;
+        }
+
+        private void OnTriggerExit(Collider other)
+        {
+            //Debug.Log(name + " | trigger exit " + other);
+            isOnTrigger = false;
+        }
+
+        private void OnCollisionEnter(Collision collision)
+        {
+            //Debug.Log(name + " | Collider exit " );
+        }
+
+        private void OnCollisionExit(Collision collision)
+        {
+           // Debug.Log(name + " | Collider exit " );
+        }
+
         protected void Walk()
         {
-            Debug.Log(name + " | Walk distance: " + moveDistance + " duration: " + moveDuration);
+            if (isMother && isOnTrigger)
+            {
+                //SoundManager.Instance.PlayMusic(SoundTag.RunningDuck);
+            }
+
+            //Debug.Log(name + " | Walk distance: " + moveDistance + " duration: " + moveDuration);
             DuckAnimator.SetBool(nameof(DuckAnimation.walk), true);
 
             if (moveTween == null)

@@ -23,7 +23,7 @@ namespace TheDuckFlock
         /// <returns>Centrally placed NestSpawnMarker</returns>
         public NestSpawnMarker SpawnNest()
         {
-            Debug.Log(name + " | SpawnNest");
+            // Debug.Log(name + " | SpawnNest");
 
             NestSpawnMarker choosenMarker = TerrainManager.Instance.CentralSegment.GetComponentInChildren<NestSpawnMarker>(); 
 

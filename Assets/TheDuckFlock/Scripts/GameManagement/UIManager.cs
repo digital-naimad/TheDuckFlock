@@ -85,6 +85,8 @@ namespace TheDuckFlock
 
         public void ShowStartScreen()
         {
+            SoundManager.Instance.PlayMusic(SoundTag.MusicMenu);
+
             startPopup.ShowStartPopup();
 
             ScoreManager.Instance.SwitchScoreVisibility(false);
@@ -128,7 +130,7 @@ namespace TheDuckFlock
 
                 indicator.IsAchieved = iChild < numberOfDuckies;
 
-                Debug.Log(name + " | indicator " + iChild + " " + (iChild < numberOfDuckies));
+               // Debug.Log(name + " | indicator " + iChild + " " + (iChild < numberOfDuckies));
             }
 
             if (previousScore < numberOfDuckies) // duckie hatched

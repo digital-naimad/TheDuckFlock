@@ -103,6 +103,7 @@ namespace TheDuckFlock
             moveDuration = .1f;
             moveDistance = 1f;
 
+            isMother = true;
             //wasLostEventDispatched = false;
         }
 

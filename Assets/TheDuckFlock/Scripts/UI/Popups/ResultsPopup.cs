@@ -47,7 +47,7 @@ namespace TheDuckFlock
         /// </summary>
         public void OnPlayButtonClick()
         {
-            Debug.Log(name + " | OnPlayButtonClick() >>");
+            // Debug.Log(name + " | OnPlayButtonClick() >>");
 
             GameplayEventsManager.DispatchEvent(GameplayEvent.StartGame);
             
@@ -62,7 +62,7 @@ namespace TheDuckFlock
         /// </summary>
         public void OnRestartButtonClick()
         {
-            Debug.Log(name + " | OnRestartButtonClick() >>");
+           // Debug.Log(name + " | OnRestartButtonClick() >>");
 
             GameplayEventsManager.DispatchEvent(GameplayEvent.RestartGame);
 
@@ -73,7 +73,7 @@ namespace TheDuckFlock
 
         public void OnQuitButtonClick()
         {
-            Debug.Log(name + " | OnQuitButtonClick() >>");
+           // Debug.Log(name + " | OnQuitButtonClick() >>");
 
             GameplayEventsManager.DispatchEvent(GameplayEvent.QuitGame);
 
@@ -91,6 +91,9 @@ namespace TheDuckFlock
         public void ShowResultsPopup()
         {
             ShowPopup(true);
+
+            SoundManager.Instance.TurnOffWithFade(SoundTag.MusicGameplay);
+            SoundManager.Instance.PlayMusic(SoundTag.MusicMenu);
 
             buttonPlay.transform.DOScale(1f, showAnimationDuration)
                 .SetDelay(showAnimationDuration / 3)
