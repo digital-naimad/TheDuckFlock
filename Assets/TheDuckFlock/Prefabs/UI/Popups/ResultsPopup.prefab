@@ -642,7 +642,7 @@ RectTransform:
   m_GameObject: {fileID: 3231646050373401042}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.85, y: 0.85, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7230303243683991474}
@@ -783,6 +783,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   panel: {fileID: 3231646050373401042}
   buttonPlay: {fileID: 2605728796724247264}
+  showAnimationDuration: 1
   hideAnimationDuration: 1
   titleLabel: {fileID: 7796459468303153967}
   hatchedDuckiesValueText: {fileID: 38380519165314989}
