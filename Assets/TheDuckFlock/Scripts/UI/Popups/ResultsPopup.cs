@@ -71,13 +71,16 @@ namespace TheDuckFlock
             SoundManager.Instance.PlaySound(SoundTag.ButtonClick);
         }
 
-        public void OnQuitButtonClick()
+        public void OnQuitButtonClick(float eventDispatchingDelayDuration = 1f)
         {
-           // Debug.Log(name + " | OnQuitButtonClick() >>");
-
-            GameplayEventsManager.DispatchEvent(GameplayEvent.QuitGame);
+            // Debug.Log(name + " | OnQuitButtonClick() >>");
 
             HideResultsPopup(false);
+
+            DOVirtual.DelayedCall(eventDispatchingDelayDuration, () =>
+            {
+                GameplayEventsManager.DispatchEvent(GameplayEvent.QuitGame);
+            });
 
             SoundManager.Instance.PlaySound(SoundTag.ButtonClick);
         }

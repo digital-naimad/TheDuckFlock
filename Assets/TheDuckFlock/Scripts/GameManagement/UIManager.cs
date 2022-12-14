@@ -76,6 +76,7 @@ namespace TheDuckFlock
             screenFader.DoFade(false);
 
             ScoreManager.Instance.SwitchScoreVisibility(false);
+            SwitchIndicatorsVisibility(false);
 
             resultsPopup.RefreshValues();
             resultsPopup.SetupButton(ScoreManager.Instance.WasGoalAchieved);
@@ -90,6 +91,7 @@ namespace TheDuckFlock
             startPopup.ShowStartPopup();
 
             ScoreManager.Instance.SwitchScoreVisibility(false);
+            SwitchIndicatorsVisibility(false);
         }
         
         public void SwitchIndicatorsVisibility(bool isVisible)

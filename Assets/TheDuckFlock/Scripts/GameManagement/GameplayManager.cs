@@ -89,8 +89,12 @@ namespace TheDuckFlock
             GrainManager.Instance.ClearAllGrain();
             //UIManager.Instance.HideResultScreen();
 
+            ScoreManager.Instance.ResetScore();
+            ScoreManager.Instance.ResetFlockSize();
+
             UIManager.Instance.SetScoreGoal(1);
-           // ScoreManager.Instance.ResetScore();
+            UIManager.Instance.UpdateDuckiesCounterLabel(0, false);
+           
 
         }
 
